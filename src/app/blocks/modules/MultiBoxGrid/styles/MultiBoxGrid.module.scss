@@ -1,0 +1,60 @@
+@use '../../../../styles/variables' as *;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-large;
+
+    h2 {
+        color: var(--text-color);
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $gap-large;
+
+    @media screen and (max-width: $media-large) {
+        gap: $gap-medium;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.sectionText {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+}
+
+.smallBoxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-large;
+
+    @media screen and (max-width: $media-large) {
+        gap: $gap-medium;
+    }
+}
+
+.smallBox {
+    flex: 1;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.buttonCenter {
+    align-self: center;
+}
+
+.buttonLeft {
+    align-self: start;
+}
+
+.buttonRight {
+    align-self: end;
+}

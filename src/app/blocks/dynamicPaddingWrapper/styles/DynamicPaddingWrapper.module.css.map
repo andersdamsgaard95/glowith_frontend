@@ -1,0 +1,1 @@
+{"version":3,"sources":["DynamicPaddingWrapper.module.scss","../../../styles/_variables.scss","DynamicPaddingWrapper.module.css"],"names":[],"mappings":"AAEA;EACI,mBCOY;EDNZ,oBCMY;ACPhB;AFGI;EAJJ;IAKQ,kBCES;IDDT,mBCCS;ECDf;AACF;AFEI;EATJ;IAUQ,kBCJQ;IDKR,mBCLQ;ECMd;AACF","file":"DynamicPaddingWrapper.module.css"}

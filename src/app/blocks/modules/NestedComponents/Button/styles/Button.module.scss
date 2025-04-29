@@ -1,0 +1,44 @@
+@use '../../../../../styles/variables' as *;
+
+.button {
+    font-size: $button-font-size;
+    width: fit-content;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: $themeBlack;
+    display: block;
+    transition: all 0.2s;
+
+    &.themeDarkPink {
+        background-color: $themeDarkPink;
+
+        &:hover {
+            background-color: #f0a8b3;
+            transform: translateY(-0.5rem);
+            box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+            //border-radius: $border-radius;
+        }
+    }
+
+    &.themeBlue {
+        background-color: $themeBlue;
+
+        &:hover {
+            background-color: #c6e3ed;
+            transform: translateY(-0.5rem);
+            box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+            //border-radius: $border-radius;
+        }
+    }
+
+    &.themeGreen {
+        background-color: $themeGreen;
+
+        &:hover {
+            background-color: #c4e6c8;
+            transform: translateY(-0.5rem);
+            box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+            //border-radius: $border-radius;
+        }
+    }
+}

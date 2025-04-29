@@ -1,0 +1,88 @@
+// Screen Sizes
+$media-small: 400px;
+$media-medium: 700px;
+$media-large: 1000px;
+$media-xlarge: 1500px;
+$max-width: 2000px;
+
+// Page Paddings
+$padding-small: 1rem;
+$padding-medium: 5rem;
+$padding-large: 10rem;
+
+// Gaps
+$gap-small: 1rem;
+$gap-medium: 2.5rem;
+$gap-large: 5rem;
+$gap-xlarge: 10rem;
+
+// Colors
+$themeBlue: #b2d7e4;
+$themeLightPink: #e9ccd2;
+$themeDarkPink: #e68f9e;
+$themeYellow: #f0eea4;
+$themePurple: #b5b6da;
+$themeGreen: #b1dab6;
+$themeBlack: #000000;
+$themeWhite: #ffffff;
+
+// Font Sizes
+$button-font-size: 2rem;
+$h1-font-size: 10rem;
+$h2-font-size: 4rem;
+$h3-font-size: 3rem;
+$p-font-size: 1.6rem;
+
+@mixin h1-styles {
+    font-size: 10rem;
+    line-height: 100%;
+
+    @media screen and (max-width: $media-xlarge) {
+        font-size: 7rem;
+    }
+
+    @media screen and (max-width: $media-large) {
+        font-size: 5rem;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        font-size: 4rem;
+    }
+}
+
+@mixin h2-styles {
+    font-size: 6rem;
+    line-height: 100%;
+
+    @media screen and (max-width: $media-xlarge) {
+        font-size: 5rem;
+    }
+
+    @media screen and (max-width: $media-large) {
+        font-size: 4rem;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        font-size: 3rem;
+    }
+}
+
+@mixin h3-styles {
+    font-size: 5rem;
+    line-height: 100%;
+
+    @media screen and (max-width: $media-xlarge) {
+        font-size: 4rem;
+    }
+
+    @media screen and (max-width: $media-large) {
+        font-size: 3rem;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        font-size: 2rem;
+    }
+}
+
+// Border Radius
+$border-radius: 2rem;

@@ -1,0 +1,16 @@
+.dynamicPaddingWrapper {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+@media screen and (max-width: 1000px) {
+  .dynamicPaddingWrapper {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .dynamicPaddingWrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}/*# sourceMappingURL=DynamicPaddingWrapper.module.css.map */

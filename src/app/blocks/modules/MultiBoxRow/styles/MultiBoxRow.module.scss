@@ -1,0 +1,43 @@
+@use '../../../../styles/variables' as *;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-large;
+}
+
+.sectionText {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+}
+
+.container {
+    display: flex;
+    gap: $gap-large;
+
+    @media screen and (max-width: $media-large) {
+        gap: $gap-medium;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        flex-direction: column;
+    }
+}
+
+.box {
+    //aspect-ratio: 1/1;
+    flex: 1;
+}
+
+.buttonCenter {
+    align-self: center;
+}
+
+.buttonLeft {
+    align-self: start;
+}
+
+.buttonRight {
+    align-self: end;
+}

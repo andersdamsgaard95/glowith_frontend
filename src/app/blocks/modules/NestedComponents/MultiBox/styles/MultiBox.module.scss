@@ -1,0 +1,98 @@
+@use '../../../../../styles/variables' as *;
+
+.container {
+    width: 100%;
+    //height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-small;
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    color: var(--text-color);
+
+    &.boxHover {
+        cursor: pointer;
+    
+        &:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &.hasImage {
+        aspect-ratio: 1/1;
+    }
+}
+
+.textContentInsideBox {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-small;
+    padding: $gap-large;
+
+    @media screen and (max-width: $media-large) {
+        padding: $gap-medium;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        padding: $gap-small;
+    }
+}
+
+.imageContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.textWithImage {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-small;
+    z-index: 10;
+    padding: $gap-large;
+    align-self: end;
+    width: 100%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
+    transform: translateY($gap-medium);
+    transition: all 0.3s;
+
+    @media screen and (max-width: $media-large) {
+        padding: $gap-medium;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        padding: $gap-small;
+    }
+
+    &.textFadeIn {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.textContentUnderneathBox {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-small;
+}

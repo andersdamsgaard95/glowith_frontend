@@ -1,0 +1,102 @@
+@use '../../../../styles/variables' as *;
+
+.container {
+    display: flex;
+    gap: $gap-large;
+    position: relative;
+
+    @media screen and (max-width: $media-medium) {
+        flex-direction: column;
+    } 
+
+    &.imageRight {
+        flex-direction: row-reverse;
+
+        @media screen and (max-width: $media-medium) {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &.noGapMobile {
+        @media screen and (max-width: $media-medium) {
+            gap: 0;
+        }
+    }
+}
+
+.imageContainer {
+    flex: 1;
+    aspect-ratio: 1/1;
+
+    &.imageMarginLeft {
+        margin-left: $gap-xlarge;
+        margin-top: $gap-large;
+        margin-bottom: $gap-large;
+
+        @media screen and (max-width: $media-large) {
+            margin-left: $padding-medium;
+        }
+
+        @media screen and (max-width: $media-medium) {
+            margin-left: $padding-small;
+            margin-right: $padding-small;
+            margin-top: $gap-small;
+            margin-bottom: $gap-small;
+        }
+    }
+
+    &.imageMarginRight {
+        margin-right: $gap-xlarge;
+        margin-top: $gap-large;
+        margin-bottom: $gap-large;
+
+        @media screen and (max-width: $media-large) {
+            margin-right: $padding-medium;
+        }
+
+        @media screen and (max-width: $media-medium) {
+            margin-left: $padding-small;
+            margin-right: $padding-small;
+            margin-top: $gap-small;
+            margin-bottom: $gap-small;
+        }
+    }
+}
+
+.textContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $gap-large;
+
+    &.textPaddingLeft {
+        padding-right: $gap-large;
+        padding-left: $gap-xlarge;
+        padding-top: $gap-large;
+        padding-bottom: $gap-large;
+
+        @media screen and (max-width: $media-large) {
+            padding-left: $gap-large;
+        }
+
+        @media screen and (max-width: $media-medium) {
+            padding-left: $gap-small;
+        }
+    }
+
+    &.textPaddingRight {
+        padding-right: $gap-xlarge;
+        padding-left: $gap-large;
+        padding-top: $gap-large;
+        padding-bottom: $gap-large;
+
+        @media screen and (max-width: $media-large) {
+            padding-right: $gap-large;
+        }
+
+        @media screen and (max-width: $media-medium) {
+            padding-right: $gap-small;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@use '../../../styles/variables' as *;
+
+.contentWrapper {
+    margin: 0 auto;
+
+    &.constrainedWidth {
+        max-width: $max-width;
+        padding-left: $padding-large;
+        padding-right: $padding-large;
+
+        @media screen and (max-width: $media-large) {
+            padding-left: $padding-medium;
+            padding-right: $padding-medium;
+        }
+    
+        @media screen and (max-width: $media-medium) {
+            padding-left: $padding-small;
+            padding-right: $padding-small;
+        }
+    }
+}

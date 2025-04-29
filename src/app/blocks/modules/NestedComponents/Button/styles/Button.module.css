@@ -1,0 +1,34 @@
+.button {
+  font-size: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: #000000;
+  display: block;
+  transition: all 0.2s;
+}
+.button.themeDarkPink {
+  background-color: #e68f9e;
+}
+.button.themeDarkPink:hover {
+  background-color: #f0a8b3;
+  transform: translateY(-0.5rem);
+  box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+}
+.button.themeBlue {
+  background-color: #b2d7e4;
+}
+.button.themeBlue:hover {
+  background-color: #c6e3ed;
+  transform: translateY(-0.5rem);
+  box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+}
+.button.themeGreen {
+  background-color: #b1dab6;
+}
+.button.themeGreen:hover {
+  background-color: #c4e6c8;
+  transform: translateY(-0.5rem);
+  box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+}/*# sourceMappingURL=Button.module.css.map */

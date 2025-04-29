@@ -1,0 +1,164 @@
+.container {
+  height: 100vh;
+  position: relative;
+  display: flex;
+}
+.container.textAlignRight {
+  justify-content: end;
+}
+.container.splitBackground {
+  gap: 5rem;
+}
+@media screen and (max-width: 700px) {
+  .container.splitBackground {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+}
+@media screen and (min-width: calc(701px)) {
+  .container.flipped {
+    flex-direction: row-reverse;
+  }
+}
+
+.imageWrapperFullScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+.imageWrapperFullScreen .image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: scale 5s ease;
+}
+.imageWrapperFullScreen .image.zoom {
+  transform: scale(1);
+  animation: zoomIn 15s ease forwards;
+}
+@keyframes zoomIn {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+}
+.imageContainer.zoom {
+  transform: scale(1);
+  animation: zoomIn 15s ease forwards;
+}
+@keyframes zoomIn {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.imageWrapperHalfScreen {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2rem;
+}
+@media screen and (max-width: 700px) {
+  .imageWrapperHalfScreen {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  z-index: 1;
+  align-self: end;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  width: 50%;
+}
+@media screen and (max-width: 700px) {
+  .contentWrapper {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    width: auto;
+  }
+}
+.contentWrapper.alignCenter {
+  align-self: center;
+}
+.contentWrapper.alignStart {
+  align-self: start;
+}
+.contentWrapper .heading {
+  color: var(--text-color);
+}
+.contentWrapper .text {
+  color: var(--text-color);
+  font-size: 3rem;
+}
+
+.contentWrapperSplitBackground {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  z-index: 1;
+  align-self: end;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  flex: 1;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+@media screen and (max-width: 700px) {
+  .contentWrapperSplitBackground {
+    align-self: start;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    flex: 0;
+  }
+}
+@media screen and (min-width: calc(701px)) {
+  .contentWrapperSplitBackground.alignCenter {
+    align-self: center;
+  }
+}
+.contentWrapperSplitBackground.alignStart {
+  align-self: start;
+}
+.contentWrapperSplitBackground .heading {
+  color: var(--text-color);
+}
+.contentWrapperSplitBackground .text {
+  color: var(--text-color);
+  font-size: 3rem;
+}
+
+.contentPadding {
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+@media screen and (max-width: 1000px) {
+  .contentPadding {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .contentPadding {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}/*# sourceMappingURL=Hero.module.css.map */

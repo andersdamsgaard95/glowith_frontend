@@ -1,0 +1,93 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.container h2 {
+  font-size: 3rem;
+}
+.container h3 {
+  font-size: 2rem;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  color: var(--text-color);
+}
+.box.boxHover {
+  cursor: pointer;
+}
+.box.boxHover:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
+}
+.box.hasImage {
+  aspect-ratio: 1/1;
+}
+
+.textContentInsideBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .textContentInsideBox {
+    padding: 2.5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .textContentInsideBox {
+    padding: 1rem;
+  }
+}
+
+.imageContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.textWithImage {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+  padding: 5rem;
+  align-self: end;
+  width: 100%;
+  background: linear-gradient(to top, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
+  transform: translateY(2.5rem);
+  transition: all 0.3s;
+}
+@media screen and (max-width: 1000px) {
+  .textWithImage {
+    padding: 2.5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .textWithImage {
+    padding: 1rem;
+  }
+}
+.textWithImage.textFadeIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.textContentUnderneathBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}/*# sourceMappingURL=MultiBox.module.css.map */

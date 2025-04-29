@@ -1,0 +1,104 @@
+.container {
+  display: flex;
+  gap: 5rem;
+  position: relative;
+}
+@media screen and (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
+}
+.container.imageRight {
+  flex-direction: row-reverse;
+}
+@media screen and (max-width: 700px) {
+  .container.imageRight {
+    flex-direction: column-reverse;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container.noGapMobile {
+    gap: 0;
+  }
+}
+
+.imageContainer {
+  flex: 1;
+  aspect-ratio: 1/1;
+}
+.imageContainer.imageMarginLeft {
+  margin-left: 10rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .imageContainer.imageMarginLeft {
+    margin-left: 5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .imageContainer.imageMarginLeft {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+.imageContainer.imageMarginRight {
+  margin-right: 10rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .imageContainer.imageMarginRight {
+    margin-right: 5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .imageContainer.imageMarginRight {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.textContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+}
+.textContainer.textPaddingLeft {
+  padding-right: 5rem;
+  padding-left: 10rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .textContainer.textPaddingLeft {
+    padding-left: 5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .textContainer.textPaddingLeft {
+    padding-left: 1rem;
+  }
+}
+.textContainer.textPaddingRight {
+  padding-right: 10rem;
+  padding-left: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .textContainer.textPaddingRight {
+    padding-right: 5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .textContainer.textPaddingRight {
+    padding-right: 1rem;
+  }
+}/*# sourceMappingURL=TextWithImage.module.css.map */

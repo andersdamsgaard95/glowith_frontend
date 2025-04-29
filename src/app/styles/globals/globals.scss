@@ -1,0 +1,65 @@
+@use '../variables' as *;
+
+:root {
+    --text-color: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: "ballinger", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    @include h1-styles;
+}
+
+h2 {
+    @include h2-styles
+}
+
+h3 {
+    @include h3-styles;
+}
+
+p {
+    font-size: $p-font-size;
+}
+
+/*  FONTS
+# Ballinger Regular
+font-family: "ballinger", sans-serif;
+font-weight: 400;
+font-style: normal;
+
+# Ballinger Regular Italic
+font-family: "ballinger", sans-serif;
+font-weight: 400;
+font-style: italic;
+
+# Ballinger Bold
+font-family: "ballinger", sans-serif;
+font-weight: 700;
+font-style: normal;
+
+# Ballinger Bold Italic
+font-family: "ballinger", sans-serif;
+font-weight: 700;
+font-style: italic;
+
+# Ballinger Black
+font-family: "ballinger", sans-serif;
+font-weight: 900;
+font-style: normal;
+
+# Ballinger Black Italic
+font-family: "ballinger", sans-serif;
+font-weight: 900;
+font-style: italic;
+*/

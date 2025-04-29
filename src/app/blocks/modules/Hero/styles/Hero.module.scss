@@ -1,0 +1,174 @@
+@use '../../../../styles/variables' as *;
+
+.container {
+    height: 100vh;
+    position: relative;
+    display: flex;
+
+    &.textAlignRight {
+        justify-content: end;
+    }
+
+    &.splitBackground {
+        gap: $gap-large;
+
+        @media screen and (max-width: $media-medium) {
+            flex-direction: column;
+            gap: $gap-medium;
+        }
+    }
+
+    &.flipped {
+        @media screen and (min-width: calc(#{$media-medium + 1px})) {
+           flex-direction: row-reverse; 
+        }
+        
+    }
+}
+
+.imageWrapperFullScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+
+        .image {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            transition: scale 5s ease;
+
+            &.zoom {
+                transform: scale(1);
+                animation: zoomIn 15s ease forwards;
+            }
+
+            @keyframes zoomIn {
+                to {
+                  transform: scale(1.1);
+                }
+            }
+        }
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+
+    &.zoom {
+        transform: scale(1);
+        animation: zoomIn 15s ease forwards;
+    }
+
+    @keyframes zoomIn {
+        to {
+          transform: scale(1.1);
+        }
+    }
+}
+
+.imageWrapperHalfScreen {
+    margin-top: $gap-xlarge;
+    margin-bottom: $gap-large;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    border-radius: $border-radius;
+
+    @media screen and (max-width: $media-medium) {
+        margin-top: $gap-small;
+        margin-bottom: 0;
+    }
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+    z-index: 1;
+    align-self: end;
+    margin-top: $gap-xlarge;
+    margin-bottom: $gap-large;
+    max-width: fit-content;
+    width: 50%;
+
+    @media screen and (max-width: $media-medium) {
+        margin-top: 0;
+        margin-bottom: $gap-small;
+        width: auto;
+    }
+
+        &.alignCenter {
+            align-self: center;
+        }
+
+        &.alignStart {
+            align-self: start;
+        }
+
+        .heading {
+            color: var(--text-color);
+        }
+
+        .text {
+            color: var(--text-color);
+            font-size: $h3-font-size;
+        }
+}
+
+.contentWrapperSplitBackground {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+    z-index: 1;
+    align-self: end;
+    margin-top: $gap-xlarge;
+    margin-bottom: $gap-large;
+    flex: 1;
+    max-width: fit-content;
+
+    @media screen and (max-width: $media-medium) {
+        align-self: start;
+        margin-top: 0;
+        margin-bottom: $gap-small;
+        flex: 0;
+    }
+
+        &.alignCenter {
+            @media screen and (min-width: calc(#{$media-medium + 1px})) {
+                align-self: center;
+            }
+        }
+
+        &.alignStart {
+            align-self: start;
+        }
+
+        .heading {
+            color: var(--text-color);
+        }
+
+        .text {
+            color: var(--text-color);
+            font-size: $h3-font-size;
+        }
+}
+
+.contentPadding {
+    margin-left: $padding-large;
+    margin-right: $padding-large;
+
+    @media screen and (max-width: $media-large) {
+        margin-left: $padding-medium;
+        margin-right: $padding-medium;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        margin-left: $padding-small;
+        margin-right: $padding-small;
+    }
+}

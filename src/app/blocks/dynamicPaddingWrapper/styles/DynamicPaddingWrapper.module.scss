@@ -1,0 +1,16 @@
+@use '../../../styles/variables' as *;
+
+.dynamicPaddingWrapper {
+    padding-left: $padding-large;
+    padding-right: $padding-large;
+
+    @media screen and (max-width: $media-large) {
+        padding-left: $padding-medium;
+        padding-right: $padding-medium;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        padding-left: $padding-small;
+        padding-right: $padding-small;
+    }
+}

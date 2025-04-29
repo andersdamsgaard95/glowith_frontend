@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.sectionText {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.container {
+  display: flex;
+  gap: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .container {
+    gap: 2.5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.box {
+  flex: 1;
+}
+
+.buttonCenter {
+  align-self: center;
+}
+
+.buttonLeft {
+  align-self: start;
+}
+
+.buttonRight {
+  align-self: end;
+}/*# sourceMappingURL=MultiBoxRow.module.css.map */
