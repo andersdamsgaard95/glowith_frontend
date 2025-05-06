@@ -4,10 +4,6 @@
     display: flex;
     flex-direction: column;
     gap: $gap-large;
-
-    h2 {
-        color: var(--text-color);
-    }
 }
 
 .container {
@@ -22,6 +18,7 @@
     @media screen and (max-width: $media-medium) {
         display: flex;
         flex-direction: column;
+        gap: $gap-large;
     }
 }
 
@@ -29,6 +26,7 @@
     display: flex;
     flex-direction: column;
     gap: $gap-medium;
+    color: var(--text-color);
 }
 
 .smallBoxContainer {
@@ -39,12 +37,16 @@
     @media screen and (max-width: $media-large) {
         gap: $gap-medium;
     }
+
+    @media screen and (max-width: $media-medium) {
+        gap: $gap-large;
+    }
 }
 
 .smallBox {
     flex: 1;
     width: 100%;
-    aspect-ratio: 1/1;
+    //aspect-ratio: 1/1;
 }
 
 .buttonCenter {

@@ -1,4 +1,4 @@
-import Hero from "../blocks/modules/Hero/Hero"
+import Hero from "./modules/Hero/Hero"
 import MultiBoxGrid from "./modules/MultiBoxGrid/MultiBoxGrid";
 import MultiBoxRow from "./modules/MultiBoxRow/MultiBoxRow";
 import TextWithImage from "./modules/TextWithImage/TextWithImage";

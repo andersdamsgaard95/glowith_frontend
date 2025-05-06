@@ -4,32 +4,44 @@
     display: flex;
     gap: $gap-large;
     position: relative;
+    color: var(--text-color);
 
     @media screen and (max-width: $media-medium) {
         flex-direction: column;
     } 
 
     &.imageRight {
-        flex-direction: row-reverse;
+        //flex-direction: row-reverse;
 
-        @media screen and (max-width: $media-medium) {
-            flex-direction: column-reverse;
+        @media screen and (min-width: $media-medium) {
+            //flex-direction: column;
+            flex-direction: row-reverse;
         }
     }
 
-    &.noGapMobile {
-        @media screen and (max-width: $media-medium) {
-            gap: 0;
-        }
+    &.noGap {
+        gap: 0;
     }
 }
 
-.imageContainer {
+.imageWrapper {
     flex: 1;
+    display: flex;
+    align-items: center;
+
+    &.imageToLeft {
+        display: flex;
+        justify-content: end;  
+    }    
+}
+
+.imageContainer {
+    width: 100%;
     aspect-ratio: 1/1;
 
     &.imageMarginLeft {
         margin-left: $gap-xlarge;
+        margin-right: $gap-large;
         margin-top: $gap-large;
         margin-bottom: $gap-large;
 
@@ -47,6 +59,7 @@
 
     &.imageMarginRight {
         margin-right: $gap-xlarge;
+        margin-left: $gap-large;
         margin-top: $gap-large;
         margin-bottom: $gap-large;
 
@@ -61,6 +74,12 @@
             margin-bottom: $gap-small;
         }
     }
+
+    &.imageMaxWidth {
+        @media screen and (min-width: $max-width) {
+            max-width: calc($max-width / 2 - $padding-large - $gap-large);
+        }
+    }
 }
 
 .textContainer {
@@ -68,35 +87,51 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: $gap-large;
 
-    &.textPaddingLeft {
-        padding-right: $gap-large;
-        padding-left: $gap-xlarge;
-        padding-top: $gap-large;
-        padding-bottom: $gap-large;
-
-        @media screen and (max-width: $media-large) {
-            padding-left: $gap-large;
-        }
-
-        @media screen and (max-width: $media-medium) {
-            padding-left: $gap-small;
-        }
+    &.textAlignEnd {
+        align-items: end;
     }
 
-    &.textPaddingRight {
-        padding-right: $gap-xlarge;
-        padding-left: $gap-large;
-        padding-top: $gap-large;
-        padding-bottom: $gap-large;
+    .text {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-medium;
+        color: var(--text-color);
 
-        @media screen and (max-width: $media-large) {
-            padding-right: $gap-large;
+        &.textMaxWidth {
+            @media screen and (min-width: $max-width) {
+                max-width: calc($max-width / 2);
+            }
         }
 
-        @media screen and (max-width: $media-medium) {
-            padding-right: $gap-small;
+        &.textPaddingLeft {
+            padding-right: $gap-large;
+            padding-left: $gap-xlarge;
+            padding-top: $gap-large;
+            padding-bottom: $gap-large;
+    
+            @media screen and (max-width: $media-large) {
+                padding-left: $gap-large;
+            }
+    
+            @media screen and (max-width: $media-medium) {
+                padding-left: $gap-small;
+            }
+        }
+    
+        &.textPaddingRight {
+            padding-right: $gap-xlarge;
+            padding-left: $gap-large;
+            padding-top: $gap-large;
+            padding-bottom: $gap-large;
+    
+            @media screen and (max-width: $media-large) {
+                padding-right: $gap-large;
+            }
+    
+            @media screen and (max-width: $media-medium) {
+                padding-right: $gap-small;
+            }
         }
     }
 }

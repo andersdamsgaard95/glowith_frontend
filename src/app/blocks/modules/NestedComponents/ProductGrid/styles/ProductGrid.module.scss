@@ -1,0 +1,8 @@
+@use '../../../../../styles/variables' as *;
+
+.productGrid {
+    margin-top: $gap-large;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: $gap-large;
+}

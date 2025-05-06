@@ -1,11 +1,28 @@
 @use '../../../../../styles/variables' as *;
 
+.link {
+    text-decoration: none;
+}
+
 .container {
     width: 100%;
-    //height: 100%;
+    height: 100%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     gap: $gap-small;
+    color: var(--text-color);
+
+    &.boxHover {
+        cursor: pointer;
+    
+        &:hover {
+            .box {
+                transform: translateY(-0.5rem);
+                box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
 
     h2 {
         font-size: 3rem;
@@ -20,21 +37,12 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
     transition: all 0.3s;
     color: var(--text-color);
-
-    &.boxHover {
-        cursor: pointer;
-    
-        &:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
-        }
-    }
 
     &.hasImage {
         aspect-ratio: 1/1;
@@ -45,14 +53,17 @@
     display: flex;
     flex-direction: column;
     gap: $gap-small;
-    padding: $gap-large;
 
-    @media screen and (max-width: $media-large) {
-        padding: $gap-medium;
-    }
+    &.hasPadding {
+        padding: $gap-large;
 
-    @media screen and (max-width: $media-medium) {
-        padding: $gap-small;
+        @media screen and (max-width: $media-large) {
+            padding: $gap-medium;
+        }
+    
+        @media screen and (max-width: $media-medium) {
+            padding: $gap-small;
+        }
     }
 }
 
@@ -76,6 +87,7 @@
     background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
     transform: translateY($gap-medium);
     transition: all 0.3s;
+    color: $themeBlack;
 
     @media screen and (max-width: $media-large) {
         padding: $gap-medium;

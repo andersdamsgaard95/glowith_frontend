@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  text-decoration: none;
+  color: #000000;
+  transition: all 0.3s;
+}
+.container:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.name {
+  padding: 0 1rem 2.5rem 1rem;
+  font-size: 2rem;
+}/*# sourceMappingURL=ProductSpot.module.css.map */

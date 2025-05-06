@@ -1,0 +1,21 @@
+.container {
+  margin: 150px 0;
+  display: flex;
+  gap: 5rem;
+}
+
+.imageContainer {
+  flex: 1;
+  aspect-ratio: 1/1;
+}
+
+.text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-top: 5rem;
+}
+.text .name {
+  font-size: 3rem;
+}/*# sourceMappingURL=pdpPage.module.css.map */

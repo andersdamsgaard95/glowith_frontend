@@ -11,10 +11,37 @@ export interface ButtonType {
     color?: string;
 }
 
+export interface Product {
+    name?: string;
+    description?: string;
+    image?: ImageType[];
+    pdpSlug?: string;
+    category?: string;
+}
+
 export interface BlockSettings {
     backgroundColor?: {color: string};
     blockPadding?: {
         paddingTop?: string;
         paddingBottom?: string;  
     }
+}
+
+export interface menuItem {
+    name?: string;
+    destinationPath?: string;
+    id?: number;
+    menuChild: menuChildItem[] | [];
+    inspirationLink?: {
+        heading?: string;
+        destinationPath?: string;
+        image?: ImageType;
+    }
+}
+
+export interface menuChildItem {
+    name?: string;
+    destinationPath?: string;
+    id?: number;
+    description?: string;
 }

@@ -1,0 +1,87 @@
+@use '../../../../styles/variables' as *;
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-right: $gap-large;
+    background-color: $themeWhite;
+    border: 1px solid $themeBlack;
+    position: relative;
+}
+
+.burgerLevel1 {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-large;
+    padding: $gap-large;
+
+        .exitBurger {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+}
+
+.menuItemWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .plusIcon {
+        font-size: 3rem;
+        cursor: pointer;
+        padding: 0 1rem;
+    }
+}
+
+.menuItem {
+    text-decoration: none;
+    color: $themeBlack;
+    font-size: 1.8rem;
+}
+
+.slideWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform 0.6s ease;
+
+    &.openLevel2 {
+        transform: translateX(0);
+    }
+}
+
+.burgerLevel2 {
+    //position: absolute;
+    //top: 0;
+    //left: 0;
+    //width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-large;
+    background-color: $themeWhite;
+    padding: $gap-large;
+    border: 1px solid black;
+
+        .burgerLevel2HeadingWrapper {
+            display: flex;
+            gap: $gap-small;
+            align-items: center;
+            
+                .arrowBack {
+                    cursor: pointer;
+                }
+        
+                .burgerLevel2Heading {
+                    font-size: 2.5rem;
+                    
+                }
+        }
+}
+
+

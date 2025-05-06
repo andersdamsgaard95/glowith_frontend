@@ -1,0 +1,6 @@
+.productGrid {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5rem;
+}/*# sourceMappingURL=ProductGrid.module.css.map */

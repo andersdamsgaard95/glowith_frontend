@@ -25,6 +25,7 @@ $themePurple: #b5b6da;
 $themeGreen: #b1dab6;
 $themeBlack: #000000;
 $themeWhite: #ffffff;
+$themeGrey: grey;
 
 // Font Sizes
 $button-font-size: 2rem;
@@ -32,6 +33,9 @@ $h1-font-size: 10rem;
 $h2-font-size: 4rem;
 $h3-font-size: 3rem;
 $p-font-size: 1.6rem;
+
+// Heights
+$headerHeight: 100px;
 
 @mixin h1-styles {
     font-size: 10rem;

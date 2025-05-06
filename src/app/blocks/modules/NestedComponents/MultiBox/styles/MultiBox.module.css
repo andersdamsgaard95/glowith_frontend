@@ -1,8 +1,22 @@
+.link {
+  text-decoration: none;
+}
+
 .container {
   width: 100%;
+  height: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 1rem;
+  color: var(--text-color);
+}
+.container.boxHover {
+  cursor: pointer;
+}
+.container.boxHover:hover .box {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
 }
 .container h2 {
   font-size: 3rem;
@@ -15,19 +29,11 @@
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
   transition: all 0.3s;
   color: var(--text-color);
-}
-.box.boxHover {
-  cursor: pointer;
-}
-.box.boxHover:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.15);
 }
 .box.hasImage {
   aspect-ratio: 1/1;
@@ -37,15 +43,17 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.textContentInsideBox.hasPadding {
   padding: 5rem;
 }
 @media screen and (max-width: 1000px) {
-  .textContentInsideBox {
+  .textContentInsideBox.hasPadding {
     padding: 2.5rem;
   }
 }
 @media screen and (max-width: 700px) {
-  .textContentInsideBox {
+  .textContentInsideBox.hasPadding {
     padding: 1rem;
   }
 }
@@ -70,6 +78,7 @@
   background: linear-gradient(to top, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
   transform: translateY(2.5rem);
   transition: all 0.3s;
+  color: #000000;
 }
 @media screen and (max-width: 1000px) {
   .textWithImage {

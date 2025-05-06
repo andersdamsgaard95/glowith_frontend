@@ -22,6 +22,7 @@
 
     @media screen and (max-width: $media-medium) {
         flex-direction: column;
+        gap: $gap-large;
     }
 }
 

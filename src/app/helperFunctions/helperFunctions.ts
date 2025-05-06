@@ -13,8 +13,14 @@ export function getThemeColor (backgroundColor: string | undefined) {
             return '#b5b6da';
         case 'Theme Green':
             return '#b1dab6';
+        case 'Theme Black':
+            return '#000000';
+        case 'Theme White':
+            return '#ffffff';
+        case 'None':
+            return 'transparent'
         default:
-            return '';
+            return '#ffffff';
     }
 }
 
@@ -30,7 +36,7 @@ export function getThemeStyles (backgroundColor: string) {
             } as React.CSSProperties;
         case 'Theme Dark Pink':
             return {
-                '--text-color': '#ffffff'
+                '--text-color': '#000000'
             } as React.CSSProperties;
         case 'Theme Yellow':
             return {
@@ -38,9 +44,17 @@ export function getThemeStyles (backgroundColor: string) {
             } as React.CSSProperties;
         case 'Theme Purple':
             return {
-                '--text-color': '#ffffff'
+                '--text-color': '#000000'
             } as React.CSSProperties;
         case 'Theme Green':
+            return {
+                '--text-color': '#000000'
+            } as React.CSSProperties;
+        case 'Theme Black':
+            return {
+                '--text-color': '#ffffff'
+            } as React.CSSProperties;
+        case 'Theme White':
             return {
                 '--text-color': '#000000'
             } as React.CSSProperties;

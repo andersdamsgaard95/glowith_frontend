@@ -27,7 +27,7 @@ const Hero: React.FC<HeroProps> = (props) => {
     const textPositionClass = props.imageFullBackground && props.textPosition?.includes('Right') ? styles.textAlignRight : undefined;
 
     return (
-        <BlockWrapper backgroundColor={props.backgroundColor?.color} noTopBottomPadding={true}>
+        <BlockWrapper isHero={true} backgroundColor={props.backgroundColor?.color} noTopBottomPadding={true}>
             <ContentWrapper isFullBackground={props.imageFullBackground}>
                 <section style={!props.imageFullBackground ? themeStyles : undefined} className={`${styles.container} ${textPositionClass} ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : undefined} ${!props.imageFullBackground ? styles.splitBackground : undefined}`}>
 

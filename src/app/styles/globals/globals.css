@@ -14,6 +14,15 @@ html {
   font-style: normal;
 }
 
+header {
+  z-index: 100;
+  position: relative;
+}
+
+main {
+  z-index: 0;
+}
+
 h1 {
   font-size: 10rem;
   line-height: 100%;
