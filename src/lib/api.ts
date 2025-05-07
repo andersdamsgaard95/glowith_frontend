@@ -128,3 +128,19 @@ export async function fetchMenuData() {
     const json = await res.json();
     return json.data || [];
 }
+
+// Fetch footer data
+export async function fetchFooterData() {
+    const res = await fetch(`${API_URL}/api/footer`, {
+        headers: {
+            Authorization: `Bearer ${API_TOKEN}`,
+          },
+    });
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch footer data');
+    }
+
+    const json = await res.json();
+    return json.data || [];
+}

@@ -20,8 +20,6 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = (props) => {
 
-    console.log(props);
-
     const themeStyles = !props.imageFullBackground && props.backgroundColor?.color ? getThemeStyles(props.backgroundColor.color) : undefined; 
 
     const textPositionClass = props.imageFullBackground && props.textPosition?.includes('Right') ? styles.textAlignRight : undefined;
@@ -29,7 +27,10 @@ const Hero: React.FC<HeroProps> = (props) => {
     return (
         <BlockWrapper isHero={true} backgroundColor={props.backgroundColor?.color} noTopBottomPadding={true}>
             <ContentWrapper isFullBackground={props.imageFullBackground}>
-                <section style={!props.imageFullBackground ? themeStyles : undefined} className={`${styles.container} ${textPositionClass} ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : undefined} ${!props.imageFullBackground ? styles.splitBackground : undefined}`}>
+                <section 
+                    style={!props.imageFullBackground ? themeStyles : undefined} 
+                    className={`${styles.container} ${textPositionClass} ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : undefined} ${!props.imageFullBackground ? styles.splitBackground : undefined}`}
+                >
 
                     {/* Image */}
                     {props.image && (

@@ -11,6 +11,7 @@ import { menuItem } from '@/app/types/types';
 import ImageComponent from '../modules/NestedComponents/Image/ImageComponent';
 import { useWindowSize } from 'react-use';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
+import Image from 'next/image';
 
 export interface headerProps {
     menuItems: menuItem[];
@@ -97,7 +98,17 @@ export default function Header (props:headerProps) {
                 <div className={`${styles.header} ${!showHeader ? styles.hideHeader : ''}`}>
                     <div className={`${styles.innerHeader} ${!headerIsAtTop ? styles.scrolledHeader : ''}`}>
 
-                        <div className={styles.logo}>LOGO</div>
+                        <Link 
+                            className={styles.logoContainer}
+                            href={'/'}
+                        >
+                            <Image
+                                src={"/logo/Glowith_Skincare_logo_Black_.png"}
+                                alt="pik"
+                                fill
+                                className={styles.logo}
+                            />
+                        </Link>
 
                         {isTabletOrSmaller ? (
                             <div 
@@ -119,11 +130,11 @@ export default function Header (props:headerProps) {
                                 {menuItems.map((menuItem:menuItem, index:number) => (
                                     <div
                                         key={menuItem.id}
-                                        className={styles.menuItemWrapper}
+                                        className={`${styles.menuItemWrapper} ${hoveredMenuItem === index && menuItem.menuChild.length > 0 ? styles.activeStyle : ''} ${pathname === menuItem.destinationPath ? styles.active : ''}`}
                                         onMouseEnter={() => setHoveredMenuItem(index)}
                                     >
                                         <Link
-                                            className={styles.menuItem}
+                                            className={`${styles.menuItem}`}
                                             href={menuItem.destinationPath ? menuItem.destinationPath : ''}
                                         >
                                             {menuItem.name}

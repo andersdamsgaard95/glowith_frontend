@@ -1,6 +1,15 @@
 .productGrid {
-  margin-top: 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .productGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 500px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
 }/*# sourceMappingURL=ProductGrid.module.css.map */

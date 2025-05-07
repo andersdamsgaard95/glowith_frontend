@@ -40,9 +40,11 @@ export default async function dynamicProductCategoryPage ({ params }: { params: 
             
             {/* Products */}
             {thisCategoryProducts.length > 0 && (
-                <ProductGrid
-                    products={thisCategoryProducts}
-                />
+                <div className={blocksBeforeProducts.length === 0 ? styles.topMargin : ''}>
+                    <ProductGrid
+                        products={thisCategoryProducts}
+                    />
+                </div>
             )}
 
             {/* Blocks after products */}

@@ -4,21 +4,57 @@
     margin: 150px 0;
     display: flex;
     gap: $gap-large;
+
+    @media screen and (max-width: $media-medium) {
+        flex-direction: column;
+    }
+
+}
+
+.imageWrapper {
+    flex: 1;
 }
 
 .imageContainer {
-    flex: 1;
     aspect-ratio: 1/1;
+    width: 100%;
 }
 
 .text {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: $gap-large;
-    margin-top: $gap-large;
+    //justify-content: center;
+    gap: $gap-medium;
+    padding-top: $gap-medium;
+    //background-color: $themeBlue;
+    //padding: $gap-medium;
+    //border-radius: $border-radius;
+
+    @media screen and (max-width: $media-medium) {
+        margin-top: 0;
+    }
 
         .name {
             font-size: 3rem;
+        }
+
+        .description {
+            display: flex;
+            flex-direction: column;
+            gap: $gap-small;
+
+            h1 {
+                font-size: 3rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            h4 {
+                font-size: 1rem;
+            }
         }
 }

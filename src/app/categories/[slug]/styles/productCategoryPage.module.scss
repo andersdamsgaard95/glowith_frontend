@@ -1,1 +1,5 @@
 @use '../../../styles/variables' as *;
+
+.topMargin {
+    margin-top: $gap-xlarge;
+}

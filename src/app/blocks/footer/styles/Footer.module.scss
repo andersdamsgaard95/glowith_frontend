@@ -1,0 +1,13 @@
+@use '../../../styles/variables' as *;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    //gap: $gap-large;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 100%;
+    max-width: 400px;
+}

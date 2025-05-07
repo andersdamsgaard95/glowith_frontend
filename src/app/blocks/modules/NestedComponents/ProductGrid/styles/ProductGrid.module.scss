@@ -1,8 +1,16 @@
 @use '../../../../../styles/variables' as *;
 
 .productGrid {
-    margin-top: $gap-large;
+    //margin-top: $gap-large;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: $gap-large;
+
+    @media screen and (max-width: $media-large) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (max-width: $media-small) {
+        grid-template-columns: 1fr;
+    }
 }

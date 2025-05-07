@@ -42,6 +42,16 @@
   background-color: #ffffff;
 }
 
+.logoContainer {
+  width: 150px;
+  height: 100px;
+  position: relative;
+}
+.logoContainer .logo {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .menu {
   display: flex;
   flex-direction: row;
@@ -56,10 +66,20 @@
 
 .menuItemWrapper {
   transition: all 0.3s;
+  padding: 0 10px;
+  cursor: pointer;
 }
 .menuItemWrapper:hover {
   transform: translateY(-0.2rem);
   text-shadow: 0 5px 6px rgba(0, 0, 0, 0.4);
+}
+.menuItemWrapper.activeStyle {
+  transform: translateY(-0.2rem);
+  text-shadow: 0 5px 6px rgba(0, 0, 0, 0.4);
+}
+.menuItemWrapper.active {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 .menuItemWrapper .menuItem {
   text-decoration: none;
@@ -114,7 +134,7 @@
   transition: all 0.3s;
 }
 .subMenuAirWrapper .subMenu .subMenuItems .subMenuItem .hoverItem .childMenuItemDescription {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 .subMenuAirWrapper .subMenu .subMenuItems .subMenuItem .hoverItem:hover .childMenuItemName {
   transform: translateY(-0.2rem);

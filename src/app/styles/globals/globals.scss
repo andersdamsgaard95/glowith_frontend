@@ -16,6 +16,12 @@ html {
     font-style: normal;
 }
 
+body {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+}
+
 header {
     z-index: 100;
     position: relative;

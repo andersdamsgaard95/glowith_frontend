@@ -9,10 +9,16 @@
 .container.splitBackground {
   gap: 5rem;
 }
+@media screen and (max-width: 1000px) {
+  .container.splitBackground {
+    gap: 2.5rem;
+  }
+}
 @media screen and (max-width: 700px) {
   .container.splitBackground {
     flex-direction: column;
     gap: 2.5rem;
+    height: unset;
   }
 }
 @media screen and (min-width: calc(701px)) {
@@ -63,7 +69,7 @@
 }
 
 .imageWrapperHalfScreen {
-  margin-top: 10rem;
+  margin-top: 12.5rem;
   margin-bottom: 5rem;
   flex: 1;
   overflow: hidden;
@@ -72,8 +78,9 @@
 }
 @media screen and (max-width: 700px) {
   .imageWrapperHalfScreen {
-    margin-top: 1rem;
+    margin-top: 10rem;
     margin-bottom: 0;
+    aspect-ratio: 1/1;
   }
 }
 
@@ -116,7 +123,7 @@
   gap: 2.5rem;
   z-index: 1;
   align-self: end;
-  margin-top: 10rem;
+  margin-top: 12.5rem;
   margin-bottom: 5rem;
   flex: 1;
   max-width: -moz-fit-content;

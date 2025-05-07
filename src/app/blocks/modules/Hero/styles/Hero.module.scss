@@ -12,9 +12,14 @@
     &.splitBackground {
         gap: $gap-large;
 
+        @media screen and (max-width: $media-large) {
+            gap: $gap-medium;
+        }
+
         @media screen and (max-width: $media-medium) {
             flex-direction: column;
             gap: $gap-medium;
+            height: unset;
         }
     }
 
@@ -60,19 +65,19 @@
     height: 100%;
 
     &.zoom {
-        transform: scale(1);
-        animation: zoomIn 15s ease forwards;
-    }
+                transform: scale(1);
+                animation: zoomIn 15s ease forwards;
+            }
 
-    @keyframes zoomIn {
-        to {
-          transform: scale(1.1);
-        }
-    }
+            @keyframes zoomIn {
+                to {
+                  transform: scale(1.1);
+                }
+            }
 }
 
 .imageWrapperHalfScreen {
-    margin-top: $gap-xlarge;
+    margin-top: calc($gap-xlarge + $gap-medium);
     margin-bottom: $gap-large;
     flex: 1;
     overflow: hidden;
@@ -80,8 +85,9 @@
     border-radius: $border-radius;
 
     @media screen and (max-width: $media-medium) {
-        margin-top: $gap-small;
+        margin-top: $gap-xlarge;
         margin-bottom: 0;
+        aspect-ratio: 1/1;
     }
 }
 
@@ -126,7 +132,7 @@
     gap: $gap-medium;
     z-index: 1;
     align-self: end;
-    margin-top: $gap-xlarge;
+    margin-top: calc($gap-xlarge + $gap-medium);
     margin-bottom: $gap-large;
     flex: 1;
     max-width: fit-content;

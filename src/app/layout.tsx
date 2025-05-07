@@ -3,6 +3,7 @@ import "./styles/globals/globals.scss";
 import { AppProvider } from '@/context/AppContext';
 import Header from "./blocks/header/Header";
 import { fetchMenuData } from "@/lib/api";
+import Footer from "./blocks/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,6 +26,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
           <main>
             {children}
           </main>
+          <footer>
+            <Footer/>
+          </footer>
         </AppProvider>
       </body>
     </html>

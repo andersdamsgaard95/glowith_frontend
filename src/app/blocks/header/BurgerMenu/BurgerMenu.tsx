@@ -40,6 +40,7 @@ export default function BurgerMenu(props: BurgerMenuProps) {
                         <Link
                             className={styles.menuItem}
                             href={menuItem.destinationPath ? menuItem.destinationPath : ''}
+                            onClick={props.closeBurger}
                         >
                             {menuItem.name}
                         </Link>
