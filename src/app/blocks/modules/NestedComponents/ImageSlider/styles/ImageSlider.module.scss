@@ -1,0 +1,39 @@
+@use '../../../../../styles/variables' as *;
+
+.imageWrapper {
+    flex: 1;
+    aspect-ratio: 1/1;
+    overflow-x: auto;
+    position: relative;
+
+        .arrowNext {
+            position: absolute;
+            right: $gap-small;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .arrowPrev {
+            position: absolute;
+            left: $gap-small;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+}
+
+.imageSliderTrack {
+    display: flex;
+    transition: all 0.5s;
+}
+
+.imageContainer {
+    aspect-ratio: 1/1;
+    width: 100%;
+    flex: 0 0 100%;
+}
+
+.arrow {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

@@ -164,8 +164,15 @@
   box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
 }
 
-.burgerIcon {
+.burgerIconContainer {
   cursor: pointer;
+  position: relative;
+  width: 50px;
+  aspect-ratio: 1/1;
+}
+.burgerIconContainer .burgerIcon {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .burgerMenu {

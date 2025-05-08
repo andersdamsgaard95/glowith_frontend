@@ -20,6 +20,17 @@
         .exitBurger {
             font-size: 2rem;
             cursor: pointer;
+            position: relative;
+            width: $gap-medium;
+            aspect-ratio: 1/1;
+            padding: 15px;
+            border-radius: 50%;
+            //border: 1px solid $themeBlack;
+            background-color: $themeDarkPink;
+
+                .closeIcon {
+                    object-fit: contain;
+                }
         }
 }
 

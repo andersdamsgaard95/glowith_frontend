@@ -3,6 +3,7 @@ import { headerProps } from '../Header';
 import styles from './styles/BurgerMenu.module.scss';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface BurgerMenuProps extends headerProps {
     showBurger: boolean;
@@ -30,7 +31,12 @@ export default function BurgerMenu(props: BurgerMenuProps) {
                     className={styles.exitBurger}
                     onClick={props.closeBurger}
                 >
-                    X
+                    <Image
+                        src={'/icons/close.svg'}
+                        fill
+                        alt='Close mobile menu'
+                        className={styles.closeIcon}
+                    />
                 </div>
                 {menuItems.map((menuItem: menuItem, index: number) => (
                     <div

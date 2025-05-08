@@ -9,15 +9,6 @@
   }
 }
 
-.imageWrapper {
-  flex: 1;
-}
-
-.imageContainer {
-  aspect-ratio: 1/1;
-  width: 100%;
-}
-
 .text {
   flex: 1;
   display: flex;

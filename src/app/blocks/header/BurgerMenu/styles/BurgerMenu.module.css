@@ -18,6 +18,16 @@
 .burgerLevel1 .exitBurger {
   font-size: 2rem;
   cursor: pointer;
+  position: relative;
+  width: 2.5rem;
+  aspect-ratio: 1/1;
+  padding: 15px;
+  border-radius: 50%;
+  background-color: #e68f9e;
+}
+.burgerLevel1 .exitBurger .closeIcon {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .menuItemWrapper {

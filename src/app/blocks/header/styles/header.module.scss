@@ -54,7 +54,6 @@
     width: 150px;
     height: 100px;
     position: relative;
-    //transform: translateX(-75px);
 
         .logo {
             object-fit: contain;
@@ -190,8 +189,15 @@ transition: all 0.3s;
     } 
 }
 
-.burgerIcon {
+.burgerIconContainer {
     cursor: pointer;
+    position: relative;
+    width: 50px;
+    aspect-ratio: 1/1;
+
+    .burgerIcon {
+        object-fit: contain;
+    }
 }
 
 .burgerMenu {

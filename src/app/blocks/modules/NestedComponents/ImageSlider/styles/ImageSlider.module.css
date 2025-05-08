@@ -1,0 +1,35 @@
+.imageWrapper {
+  flex: 1;
+  aspect-ratio: 1/1;
+  overflow-x: auto;
+  position: relative;
+}
+.imageWrapper .arrowNext {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.imageWrapper .arrowPrev {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.imageSliderTrack {
+  display: flex;
+  transition: all 0.5s;
+}
+
+.imageContainer {
+  aspect-ratio: 1/1;
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+.arrow {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=ImageSlider.module.css.map */

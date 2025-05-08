@@ -104,7 +104,7 @@ export default function Header (props:headerProps) {
                         >
                             <Image
                                 src={"/logo/Glowith_Skincare_logo_Black_.png"}
-                                alt="pik"
+                                alt="Glowith logo"
                                 fill
                                 className={styles.logo}
                             />
@@ -118,9 +118,14 @@ export default function Header (props:headerProps) {
                                         setBurgerMenuIsOpen(true) 
                                     }, 0);
                                 }}
-                                className={styles.burgerIcon}
+                                className={styles.burgerIconContainer}
                             >
-                                <p>burger</p>
+                                <Image
+                                    src={'/icons/burger_menu.svg'}
+                                    alt='Hamburger icon'
+                                    fill
+                                    className={styles.burgerIcon}
+                                />
                             </div>
                         ) : (
                             <nav 
