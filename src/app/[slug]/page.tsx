@@ -1,9 +1,19 @@
 import DynamicBlock from "../blocks/DynamicBlock";
-import { fetchDynamicPageData } from "@/lib/api";
+import { fetchAllContentPages, fetchDynamicPageData } from "@/lib/api";
+
+export async function generateStaticParams() {
+  const allPages = await fetchAllContentPages();
+
+  return allPages.map((page: any) => ({
+    slug: page.slug
+  }))
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
 
-  const blocks = await fetchDynamicPageData(params.slug);
+  const { slug } = await params;
+  
+  const blocks = await fetchDynamicPageData(slug);
 
   return (
     <>

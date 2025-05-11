@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import styles from './styles/pdpPage.module.scss';
 import ContentWrapper from "@/app/blocks/contentWrapper/ContentWrapper";
 import { Product } from "@/app/types/types";
@@ -7,11 +9,11 @@ import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/Image
 
 export default async function dynamicPdpPage ({ params }: { params: {slug: string} }) {
 
-    const productData = await fetchSingleProduct(params.slug);
+    const { slug } = await params;
+
+    const productData = await fetchSingleProduct(slug);
 
     const product: Product = productData[0];
-
-    console.log(productData);
 
     return (
         <ContentWrapper>

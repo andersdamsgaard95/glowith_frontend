@@ -4,9 +4,8 @@
   gap: 2.5rem;
   text-decoration: none;
   color: #000000;
-  transition: all 0.3s;
 }
-.container:hover {
+.container:hover .imageContainer {
   transform: translateY(-0.5rem);
   box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
 }
@@ -14,6 +13,7 @@
 .imageContainer {
   width: 100%;
   aspect-ratio: 1/1;
+  transition: all 0.3s;
 }
 
 .name {

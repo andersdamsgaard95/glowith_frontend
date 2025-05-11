@@ -37,3 +37,10 @@
     border: none;
     cursor: pointer;
 }
+
+.arrowIcon {
+
+    &.hideArrow {
+        opacity: 30%;
+    }
+}

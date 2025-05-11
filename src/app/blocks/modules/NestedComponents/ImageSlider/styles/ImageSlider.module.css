@@ -32,4 +32,8 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.arrowIcon.hideArrow {
+  opacity: 30%;
 }/*# sourceMappingURL=ImageSlider.module.css.map */

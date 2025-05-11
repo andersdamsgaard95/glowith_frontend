@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import ContentWrapper from '@/app/blocks/contentWrapper/ContentWrapper';
 import styles from './styles/productCategoryPage.module.scss';
 import DynamicBlock from "@/app/blocks/DynamicBlock";
@@ -11,7 +13,10 @@ import ProductGrid from '@/app/blocks/modules/NestedComponents/ProductGrid/Produ
 }*/
 
 export default async function dynamicProductCategoryPage ({ params }: { params: {slug: string} }) {
-    const data = await fetchDynamicProductCategoryPageData(params.slug);
+    
+    const { slug } = await params;
+
+    const data = await fetchDynamicProductCategoryPageData(slug);
 
     const blocksBeforeProducts = data.blocksBeforeProducts;
     const blocksAfterProducts = data.blocksAfterProducts;

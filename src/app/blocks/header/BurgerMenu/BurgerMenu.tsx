@@ -58,7 +58,12 @@ export default function BurgerMenu(props: BurgerMenuProps) {
                                     setShowLevel2(true);
                                 }}
                             >
-                                +
+                                <Image
+                                    height={50}
+                                    width={50}
+                                    alt='Arrow to right'
+                                    src={'/icons/arrow_right.svg'}
+                                />
                             </div>
                         )}
                     </div>
@@ -79,7 +84,12 @@ export default function BurgerMenu(props: BurgerMenuProps) {
                                 }}
                                 className={styles.arrowBack}
                             >
-                                Arrow back
+                                <Image
+                                    src={'/icons/arrow_left.svg'}
+                                    height={50}
+                                    width={50}
+                                    alt='Arrow back'
+                                />
                             </div>
                             <span className={styles.burgerLevel2Heading}>{menuItems[clickedMenuItem].name}</span>
                         </div>

@@ -76,17 +76,18 @@
 }
 
 .textWithImage {
-    opacity: 0;
+    //opacity: 0;
     display: flex;
     flex-direction: column;
-    gap: $gap-small;
+    //gap: $gap-small;
+    gap: 0;
     z-index: 10;
     padding: $gap-large;
     align-self: end;
     width: 100%;
-    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%);
-    transform: translateY($gap-medium);
-    transition: all 0.3s;
+    //background: linear-gradient(to top, rgba(255, 255, 255, 1), transparent);
+    transform: translateY(0);
+    transition: transform 0.3s;
     color: $themeBlack;
 
     @media screen and (max-width: $media-large) {
@@ -97,10 +98,32 @@
         padding: $gap-small;
     }
 
-    &.textFadeIn {
-        opacity: 1;
-        transform: translateY(0);
+    p {
+        max-height: 0;
+        //transform: scaleY(0);
+        //opacity: 0;
+        overflow: hidden;
+        //transform-origin: bottom;
+        //transition: all 0.3s;
     }
+
+    &.textFadeIn {
+        transform: translateY(-10px);
+        gap: $gap-small;
+
+        p {
+            max-height: none;
+            //transform: scaleY(1);
+            //opacity: 1;
+        }
+    }
+}
+
+.backgroundFade {
+    background: linear-gradient(to top, rgba(255, 255, 255, 1), transparent);
+    width: 100%;
+    align-self: end;
+    z-index: 10;
 }
 
 .textContentUnderneathBox {

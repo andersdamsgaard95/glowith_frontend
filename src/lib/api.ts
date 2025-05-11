@@ -33,6 +33,22 @@ export async function fetchDynamicPageData(slug: string) {
     return json.data[0]?.blocks || [];
 }
 
+//All content pages
+export async function fetchAllContentPages() {
+    const res = await fetch(`${API_URL}/api/content-pages`, {
+      headers: {
+        Authorization: `Bearer ${API_TOKEN}`,
+      },
+    });
+  
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+  
+    const json = await res.json();
+    return json.data;
+}
+
 // Fetch all product category slugs
 /*export async function fetchAllProductCategorySlugs() {
     const res = await fetch(`${API_URL}/api/product-category-pages`, {

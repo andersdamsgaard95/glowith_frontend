@@ -64,6 +64,8 @@ export default function MultiBox (props: MultiBoxProps) {
         } 
     }
 
+    //console.log(styles.backgroundFade);
+
     return (
         props.link ? (
             <Link className={styles.link} href={props.link}>
@@ -84,8 +86,10 @@ export default function MultiBox (props: MultiBoxProps) {
                         )}
     
                         {props.image && props.text && textPosition === 'insideBox' && (
-                            <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
-                                <ReactMarkdown>{props.text}</ReactMarkdown>
+                            <div className={styles.backgroundFade}>
+                                <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
+                                    <ReactMarkdown>{props.text}</ReactMarkdown>
+                                </div>
                             </div>
                         )}
     
@@ -124,8 +128,10 @@ export default function MultiBox (props: MultiBoxProps) {
                     )}
     
                     {props.image && props.text && textPosition === 'insideBox' && (
-                        <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
-                            <ReactMarkdown>{props.text}</ReactMarkdown>
+                        <div className={styles.backgroundFade}>
+                            <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
+                                <ReactMarkdown>{props.text}</ReactMarkdown>
+                            </div>
                         </div>
                     )}
     

@@ -6,17 +6,21 @@
     gap: $gap-medium;
     text-decoration: none;
     color: $themeBlack;
-    transition: all 0.3s;
 
     &:hover {
-        transform: translateY(-0.5rem);
-        box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
+
+        .imageContainer {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);  
+        }
+        
     }
 }
 
 .imageContainer {
     width: 100%;
     aspect-ratio: 1/1;
+    transition: all 0.3s;
 }
 
 .name {
