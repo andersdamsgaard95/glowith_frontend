@@ -1,18 +1,18 @@
 export const dynamic = 'force-dynamic';
 
-import ContentWrapper from '@/app/blocks/contentWrapper/ContentWrapper';
+//import ContentWrapper from '@/app/blocks/contentWrapper/ContentWrapper';
 import styles from './styles/productCategoryPage.module.scss';
 import DynamicBlock from "@/app/blocks/DynamicBlock";
-import ProductSpot from "@/app/blocks/modules/NestedComponents/ProductSpot/ProductSpot";
-import { Product } from "@/app/types/types";
 import { fetchDynamicProductCategoryPageData, fetchProducts } from "@/lib/api";
 import ProductGrid from '@/app/blocks/modules/NestedComponents/ProductGrid/ProductGrid';
+import { DynamicPageProps } from '@/app/[slug]/page';
 
 /*export async function generateStaticParams() {
     return await fetchAllProductCategorySlugs();
 }*/
 
-export default async function dynamicProductCategoryPage ({ params }: { params: {slug: string} }) {
+
+export default async function dynamicProductCategoryPage ({ params }: DynamicPageProps) {
     
     const { slug } = params;
 

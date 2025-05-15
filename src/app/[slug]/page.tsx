@@ -9,13 +9,13 @@ export async function generateStaticParams() {
   }))
 }
 
-type PageProps = {
+export type DynamicPageProps = {
   params: {
     slug: string;
   };
 };
 
-export default async function Page( { params }: PageProps ) {
+export default async function Page( { params }: DynamicPageProps ) {
 
   const { slug } = params;
   

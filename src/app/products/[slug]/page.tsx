@@ -6,8 +6,9 @@ import { Product } from "@/app/types/types";
 import { fetchSingleProduct } from "@/lib/api";
 import ReactMarkdown from 'react-markdown';
 import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/ImageSlider';
+import { DynamicPageProps } from '@/app/[slug]/page';
 
-export default async function dynamicPdpPage ({ params }: { params: {slug: string} }) {
+export default async function dynamicPdpPage ({ params }: DynamicPageProps) {
 
     const { slug } = params;
 
