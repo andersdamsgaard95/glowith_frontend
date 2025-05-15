@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import DynamicBlock from "../blocks/DynamicBlock";
 import { fetchAllContentPages, fetchDynamicPageData } from "@/lib/api";
 
