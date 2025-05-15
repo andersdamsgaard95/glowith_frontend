@@ -14,7 +14,7 @@ import ProductGrid from '@/app/blocks/modules/NestedComponents/ProductGrid/Produ
 
 export default async function dynamicProductCategoryPage ({ params }: { params: {slug: string} }) {
     
-    const { slug } = await params;
+    const { slug } = params;
 
     const data = await fetchDynamicProductCategoryPageData(slug);
 

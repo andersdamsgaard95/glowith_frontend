@@ -9,9 +9,15 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
-  const { slug } = await params;
+export default async function Page( { params }: PageProps ) {
+
+  const { slug } = params;
   
   const blocks = await fetchDynamicPageData(slug);
 

@@ -9,7 +9,7 @@ import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/Image
 
 export default async function dynamicPdpPage ({ params }: { params: {slug: string} }) {
 
-    const { slug } = await params;
+    const { slug } = params;
 
     const productData = await fetchSingleProduct(slug);
 
