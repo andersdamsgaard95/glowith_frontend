@@ -1,13 +1,13 @@
 import DynamicBlock from "../blocks/DynamicBlock";
 import { fetchAllContentPages, fetchDynamicPageData } from "@/lib/api";
 
-export async function generateStaticParams() {
+/*export async function generateStaticParams() {
   const allPages = await fetchAllContentPages();
 
   return allPages.map((page: any) => ({
     slug: page.slug
   }))
-}
+}*/
 
 type Props = {
   params: Promise<{ slug: string }>
