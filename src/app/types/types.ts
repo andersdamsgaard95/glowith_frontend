@@ -1,7 +1,8 @@
 export interface ImageType {
     url: string;
     alternativeText?: string;
-
+    width?: number;
+    height?: number;
 }
 
 export interface ButtonType {
