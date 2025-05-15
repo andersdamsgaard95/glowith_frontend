@@ -7,6 +7,7 @@ export async function fetchHomepageData() {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
+    cache: 'no-store',
   });
 
   if (!res.ok) {
@@ -23,6 +24,7 @@ export async function fetchDynamicPageData(slug: string) {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
       },
+      cache: 'no-store',
     });
   
     if (!res.ok) {
@@ -39,6 +41,7 @@ export async function fetchAllContentPages() {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
       },
+      cache: 'no-store',
     });
   
     if (!res.ok) {
@@ -79,6 +82,7 @@ export async function fetchDynamicProductCategoryPageData(slug: string) {
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
         },
+        cache: 'no-store',
       }
     );
   
@@ -101,7 +105,8 @@ export async function fetchProducts() {
     const res = await fetch(`${API_URL}/api/products?populate=image`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
-          },
+        },
+        cache: 'no-store',
     });
 
     if (!res.ok) {
@@ -117,7 +122,8 @@ export async function fetchSingleProduct(slug: string) {
     const res = await fetch(`${API_URL}/api/products?filters[pdpSlug][$eq]=${slug}&populate=image`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
-          },
+        },
+        cache: 'no-store',
     });
 
     if (!res.ok) {
@@ -134,7 +140,8 @@ export async function fetchMenuData() {
     const res = await fetch(`${API_URL}/api/menus?populate[menuChild]=*&populate[inspirationLink][populate]=image&sort=displayOrder:asc`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
-          },
+        },
+        cache: 'no-store',
     });
 
     if (!res.ok) {
@@ -150,7 +157,8 @@ export async function fetchFooterData() {
     const res = await fetch(`${API_URL}/api/footer`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
-          },
+        },
+        cache: 'no-store',
     });
 
     if (!res.ok) {
