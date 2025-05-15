@@ -24,6 +24,10 @@
 .text .name {
   font-size: 3rem;
 }
+.text .shortDescription {
+  font-size: 2rem;
+  font-weight: 400;
+}
 .text .description {
   display: flex;
   flex-direction: column;

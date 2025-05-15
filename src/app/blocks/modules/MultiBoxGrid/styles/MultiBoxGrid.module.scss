@@ -19,6 +19,10 @@
         display: flex;
         flex-direction: column;
         gap: $gap-large;
+
+        &.flipLayout {
+            flex-direction: column-reverse;
+        }
     }
 }
 

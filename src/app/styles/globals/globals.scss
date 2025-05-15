@@ -31,6 +31,10 @@ main {
     z-index: 0;
 }
 
+footer {
+    z-index: 1;
+}
+
 h1 {
     @include h1-styles;
 }

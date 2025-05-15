@@ -17,7 +17,8 @@ export default function ImageComponent (props:ImageComponentProps) {
         <div className={styles.container}>
             <Image
                 src={`${backendUrl}${props.image?.url}`}
-                alt={props.image.alternativeText ? props.image.alternativeText : 'alternativeText'}
+                //src={`${props.image?.url}`}
+                alt={props.image.alternativeText ?? ''}
                 //className={props.className}
                 className={styles.image}
                 fill

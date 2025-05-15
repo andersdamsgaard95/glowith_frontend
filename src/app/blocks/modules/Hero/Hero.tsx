@@ -1,3 +1,5 @@
+'use client';
+
 import styles from '../Hero/styles/Hero.module.scss';
 import BlockWrapper from '../../blockWrapper/BlockWrapper';
 import ImageComponent from '../NestedComponents/Image/ImageComponent';
@@ -5,6 +7,7 @@ import Button from '../NestedComponents/Button/Button';
 import { ImageType, ButtonType } from '@/app/types/types';
 import ContentWrapper from '../../contentWrapper/ContentWrapper';
 import { getThemeStyles } from '@/app/helperFunctions/helperFunctions';
+import { useEffect, useState } from 'react';
 
 interface HeroProps {
     heading?: string;
@@ -16,9 +19,28 @@ interface HeroProps {
     textPosition?: string;
     textColorOnImage?: string;
     imageZoomOn?: boolean;
+    stickyImageEffect: boolean;
 }
 
 const Hero: React.FC<HeroProps> = (props) => {
+    const [hideImage, setHideImage] = useState(false);
+
+    useEffect(() => {
+        if (!props.stickyImageEffect) return;
+        
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            if (scrollY > window.innerHeight) {
+                setHideImage(true);
+            } else {
+                setHideImage(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const themeStyles = !props.imageFullBackground && props.backgroundColor?.color ? getThemeStyles(props.backgroundColor.color) : undefined; 
 
@@ -34,11 +56,11 @@ const Hero: React.FC<HeroProps> = (props) => {
 
                     {/* Image */}
                     {props.image && (
-                        <div className={props.imageFullBackground ? styles.imageWrapperFullScreen : styles.imageWrapperHalfScreen}>  
+                        <div className={`${props.imageFullBackground ? styles.imageWrapperFullScreen : styles.imageWrapperHalfScreen} ${props.imageFullBackground && props.stickyImageEffect ? styles.stickyImage : ''} ${hideImage && props.stickyImageEffect ? styles.hideImage : ''}`}>  
                             <div
                                 className={`${styles.imageContainer} ${props.imageZoomOn ? styles.zoom : ''}`}
                             >
-                               <ImageComponent
+                                <ImageComponent
                                     image={props.image}
                                 /> 
                             </div>

@@ -13,6 +13,7 @@ export interface ButtonType {
 
 export interface Product {
     name?: string;
+    shortDescription: string;
     description?: string;
     image?: ImageType[];
     pdpSlug?: string;

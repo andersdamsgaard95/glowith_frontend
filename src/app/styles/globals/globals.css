@@ -29,6 +29,10 @@ main {
   z-index: 0;
 }
 
+footer {
+  z-index: 1;
+}
+
 h1 {
   font-size: 10rem;
   line-height: 100%;

@@ -26,6 +26,7 @@ export default async function dynamicPdpPage ({ params }: { params: {slug: strin
                 {(product.name || product.description) && (
                     <div className={styles.text}>
                         <h1 className={styles.name}>{product.name}</h1>
+                        <h2 className={styles.shortDescription}>{product.shortDescription}</h2>
                         <div className={styles.description}>
                            <ReactMarkdown>{product.description}</ReactMarkdown> 
                         </div>

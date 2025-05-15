@@ -23,7 +23,13 @@
     transition: all 0.3s;
 }
 
-.name {
+.productText {
     padding: 0 $gap-small $gap-medium $gap-small;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.name {
     font-size: 2rem;
 }

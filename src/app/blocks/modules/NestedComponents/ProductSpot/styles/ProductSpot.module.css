@@ -16,7 +16,13 @@
   transition: all 0.3s;
 }
 
-.name {
+.productText {
   padding: 0 1rem 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.name {
   font-size: 2rem;
 }/*# sourceMappingURL=ProductSpot.module.css.map */

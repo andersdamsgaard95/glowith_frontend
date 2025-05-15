@@ -4,6 +4,7 @@
     height: 100vh;
     position: relative;
     display: flex;
+    overflow: hidden;
 
     &.textAlignRight {
         justify-content: end;
@@ -37,27 +38,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
     overflow: hidden;
 
-        .image {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            transition: scale 5s ease;
+    &.stickyImage {
+        position: fixed;
+        z-index: -1;
 
-            &.zoom {
-                transform: scale(1);
-                animation: zoomIn 15s ease forwards;
-            }
-
-            @keyframes zoomIn {
-                to {
-                  transform: scale(1.1);
-                }
-            }
+        &.hideImage {
+            position: absolute;
         }
+    }
 }
 
 .imageContainer {
@@ -65,15 +56,15 @@
     height: 100%;
 
     &.zoom {
-                transform: scale(1);
-                animation: zoomIn 15s ease forwards;
-            }
+        transform: scale(1);
+        animation: zoomIn 15s ease forwards;
+    }
 
-            @keyframes zoomIn {
-                to {
-                  transform: scale(1.1);
-                }
+        @keyframes zoomIn {
+            to {
+                transform: scale(1.1);
             }
+        }
 }
 
 .imageWrapperHalfScreen {

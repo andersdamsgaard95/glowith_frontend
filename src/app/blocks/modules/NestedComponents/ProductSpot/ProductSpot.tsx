@@ -46,6 +46,9 @@ export default function ProductSpot(props: ProductSpotProps) {
                         {props.product.name && (
                            <h2 className={styles.name}>{props.product.name}</h2> 
                         )}
+                        {props.product.shortDescription && (
+                            <p>{props.product.shortDescription}</p>
+                        )}
                     </div>
                 )}
             </Link>
