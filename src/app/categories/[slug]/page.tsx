@@ -5,16 +5,24 @@ import styles from './styles/productCategoryPage.module.scss';
 import DynamicBlock from "@/app/blocks/DynamicBlock";
 import { fetchDynamicProductCategoryPageData, fetchProducts } from "@/lib/api";
 import ProductGrid from '@/app/blocks/modules/NestedComponents/ProductGrid/ProductGrid';
-import { DynamicPageProps } from '@/app/[slug]/page';
 
 /*export async function generateStaticParams() {
     return await fetchAllProductCategorySlugs();
 }*/
 
+type Props = {
+    params: Promise<{ slug: string }>
+};
 
-export default async function dynamicProductCategoryPage ({ params }: DynamicPageProps) {
+
+export default async function dynamicProductCategoryPage ({ params }: Props) {
     
-    const { slug } = params;
+    const resolvedParams = await params;
+    const slug = resolvedParams?.slug;
+
+    if (!slug) {
+        return <p>Slug not found</p>; // or handle error / 404 here
+    }
 
     const data = await fetchDynamicProductCategoryPageData(slug);
 

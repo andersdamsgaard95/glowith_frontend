@@ -9,15 +9,18 @@ export async function generateStaticParams() {
   }))
 }
 
-export type DynamicPageProps = {
-  params: {
-    slug: string;
-  };
+type Props = {
+  params: Promise<{ slug: string }>
 };
 
-export default async function Page( { params }: DynamicPageProps ) {
+export default async function Page( { params }: Props ) {
 
-  const { slug } = params;
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug;
+
+  if (!slug) {
+    return <p>Slug not found</p>; // or handle error / 404 here
+  }
   
   const blocks = await fetchDynamicPageData(slug);
 

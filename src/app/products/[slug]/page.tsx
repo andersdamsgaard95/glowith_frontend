@@ -6,11 +6,19 @@ import { Product } from "@/app/types/types";
 import { fetchSingleProduct } from "@/lib/api";
 import ReactMarkdown from 'react-markdown';
 import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/ImageSlider';
-import { DynamicPageProps } from '@/app/[slug]/page';
 
-export default async function dynamicPdpPage ({ params }: DynamicPageProps) {
+type Props = {
+    params: Promise<{ slug: string }>
+};
 
-    const { slug } = params;
+export default async function dynamicPdpPage ({ params }: Props) {
+
+    const resolvedParams = await params;
+    const slug = resolvedParams?.slug;
+
+    if (!slug) {
+        return <p>Slug not found</p>; // or handle error / 404 here
+    }
 
     const productData = await fetchSingleProduct(slug);
 
