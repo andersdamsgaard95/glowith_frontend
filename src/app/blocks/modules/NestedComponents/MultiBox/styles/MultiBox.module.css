@@ -100,7 +100,7 @@
 }
 
 .backgroundFade {
-  background: linear-gradient(to top, rgb(255, 255, 255), transparent);
+  background: linear-gradient(to top, #fafafa, transparent);
   width: 100%;
   align-self: end;
   z-index: 10;

@@ -120,7 +120,7 @@
 }
 
 .backgroundFade {
-    background: linear-gradient(to top, rgba(255, 255, 255, 1), transparent);
+    background: linear-gradient(to top, rgba($themeWhite, 1), transparent);
     width: 100%;
     align-self: end;
     z-index: 10;

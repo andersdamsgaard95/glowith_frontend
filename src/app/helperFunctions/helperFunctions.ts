@@ -16,11 +16,11 @@ export function getThemeColor (backgroundColor: string | undefined) {
         case 'Theme Black':
             return '#000000';
         case 'Theme White':
-            return '#ffffff';
+            return '#fafafa';
         case 'None':
             return 'transparent'
         default:
-            return '#ffffff';
+            return '#fafafa';
     }
 }
 

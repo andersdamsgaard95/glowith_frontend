@@ -33,7 +33,7 @@
     align-items: center;
     padding-left: $padding-large;
     padding-right: $padding-large;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, border-bottom 0.3s;
 
     @media screen and (max-width: $media-large) {
         padding-left: $padding-medium;
@@ -47,6 +47,7 @@
 
     &.scrolledHeader {
         background-color: $themeWhite;
+        border-bottom: 1px solid $themeBlack;
     }
 }
 
@@ -175,6 +176,7 @@
                     .submenuImageContainer {
                         width: 100%;
                         aspect-ratio: 1/1;
+                        overflow: hidden;
                     }
             }
         }

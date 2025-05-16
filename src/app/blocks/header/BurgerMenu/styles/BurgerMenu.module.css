@@ -4,7 +4,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   margin-right: 5rem;
-  background-color: #ffffff;
+  background-color: #fafafa;
   border: 1px solid #000000;
   position: relative;
 }
@@ -65,7 +65,7 @@
   display: flex;
   flex-direction: column;
   gap: 5rem;
-  background-color: #ffffff;
+  background-color: #fafafa;
   padding: 5rem;
   border-left: 1px solid black;
 }

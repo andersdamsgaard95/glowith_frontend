@@ -21,7 +21,7 @@ export default async function dynamicProductCategoryPage ({ params }: Props) {
     const slug = resolvedParams?.slug;
 
     if (!slug) {
-        return <p>Slug not found</p>; // or handle error / 404 here
+        return <p>Slug not found</p>;
     }
 
     const data = await fetchDynamicProductCategoryPageData(slug);
