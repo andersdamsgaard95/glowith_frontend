@@ -37,13 +37,6 @@
   z-index: 1;
   overflow: hidden;
 }
-.imageWrapperFullScreen.stickyImage {
-  position: fixed;
-  z-index: -1;
-}
-.imageWrapperFullScreen.stickyImage.hideImage {
-  position: absolute;
-}
 
 .imageContainer {
   width: 100%;
