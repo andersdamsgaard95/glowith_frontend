@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+//export const dynamic = 'force-dynamic';
 
 //import ContentWrapper from '@/app/blocks/contentWrapper/ContentWrapper';
 import styles from './styles/productCategoryPage.module.scss';
@@ -6,9 +6,6 @@ import DynamicBlock from "@/app/blocks/DynamicBlock";
 import { fetchDynamicProductCategoryPageData, fetchProducts } from "@/lib/api";
 import ProductGrid from '@/app/blocks/modules/NestedComponents/ProductGrid/ProductGrid';
 
-/*export async function generateStaticParams() {
-    return await fetchAllProductCategorySlugs();
-}*/
 
 type Props = {
     params: Promise<{ slug: string }>

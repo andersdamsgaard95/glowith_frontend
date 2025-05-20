@@ -17,11 +17,11 @@
 @media screen and (max-width: 700px) {
   .container {
     display: flex;
-    flex-direction: column;
-    gap: 5rem;
-  }
-  .container.flipLayout {
     flex-direction: column-reverse;
+    gap: 5rem;
+    /*&.flipLayout {
+        flex-direction: column-reverse;
+    }*/
   }
 }
 
@@ -51,6 +51,10 @@
 .smallBox {
   flex: 1;
   width: 100%;
+}
+
+.bigBoxContainer {
+  align-self: center;
 }
 
 .buttonCenter {

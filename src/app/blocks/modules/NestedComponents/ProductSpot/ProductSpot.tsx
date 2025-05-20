@@ -19,8 +19,8 @@ export default function ProductSpot(props: ProductSpotProps) {
 
         if (!multipleImages) return;
 
-        if (shownImageIndex === 0) {
-            setShownImageIndex(1)
+        if (imageIsHovered) {
+            setShownImageIndex(1);
         } else {
             setShownImageIndex(0);
         }

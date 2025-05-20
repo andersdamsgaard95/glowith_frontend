@@ -7,7 +7,8 @@ export async function fetchHomepageData() {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
-    cache: 'no-store',
+    //cache: 'no-store',
+    cache: 'force-cache',
   });
 
   if (!res.ok) {
@@ -24,7 +25,8 @@ export async function fetchDynamicPageData(slug: string) {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
       },
-      cache: 'no-store',
+      //cache: 'no-store',
+      cache: 'force-cache',
     });
   
     if (!res.ok) {
@@ -41,7 +43,8 @@ export async function fetchAllContentPages() {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
       },
-      cache: 'no-store',
+      //cache: 'no-store',
+      cache: 'force-cache',
     });
   
     if (!res.ok) {
@@ -82,7 +85,8 @@ export async function fetchDynamicProductCategoryPageData(slug: string) {
         headers: {
           Authorization: `Bearer ${API_TOKEN}`,
         },
-        cache: 'no-store',
+        //cache: 'no-store',
+        cache: 'force-cache',
       }
     );
   
@@ -106,7 +110,8 @@ export async function fetchProducts() {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },
-        cache: 'no-store',
+        //cache: 'no-store',
+        cache: 'force-cache',
     });
 
     if (!res.ok) {
@@ -123,7 +128,8 @@ export async function fetchSingleProduct(slug: string) {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },
-        cache: 'no-store',
+        //cache: 'no-store',
+        cache: 'force-cache',
     });
 
     if (!res.ok) {
@@ -141,7 +147,8 @@ export async function fetchMenuData() {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },
-        cache: 'no-store',
+        //cache: 'no-store',
+        cache: 'force-cache',
     });
 
     if (!res.ok) {
@@ -158,7 +165,8 @@ export async function fetchFooterData() {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },
-        cache: 'no-store',
+        //cache: 'no-store',
+        cache: 'force-cache',
     });
 
     if (!res.ok) {

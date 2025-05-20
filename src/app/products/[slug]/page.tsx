@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+//export const dynamic = 'force-dynamic';
 
 import styles from './styles/pdpPage.module.scss';
 import ContentWrapper from "@/app/blocks/contentWrapper/ContentWrapper";

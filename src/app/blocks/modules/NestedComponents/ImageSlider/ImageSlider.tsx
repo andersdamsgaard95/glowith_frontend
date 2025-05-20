@@ -12,7 +12,7 @@ interface ImageSliderProps {
 
 export default function ImageSlider(props: ImageSliderProps) {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-    const [touchStartX, setTouchStartX] = useState(0);
+    //const [touchStartX, setTouchStartX] = useState(0);
 
     const { images } = props;
 
@@ -24,11 +24,11 @@ export default function ImageSlider(props: ImageSliderProps) {
         images && setCurrentIndex((prev) => (prev - 1));
     };
 
-    const handleTouchStart = (e: React.TouchEvent) => {
+    /*const handleTouchStart = (e: React.TouchEvent) => {
         setTouchStartX(e.changedTouches[0].clientX);
-    };
+    };*/
 
-    const handleTouchEnd = (e: React.TouchEvent) => {
+    /*const handleTouchEnd = (e: React.TouchEvent) => {
 
         const distance = touchStartX - e.changedTouches[0].clientX;
 
@@ -37,7 +37,7 @@ export default function ImageSlider(props: ImageSliderProps) {
         } else if (distance < -50) {
             prevSlide(); // Swiped right
         }
-    };
+    };*/
     
     return (
         images && (
@@ -45,8 +45,8 @@ export default function ImageSlider(props: ImageSliderProps) {
                 <div 
                     className={styles.imageSliderTrack}
                     style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    onTouchStart={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
+                    //onTouchStart={handleTouchStart}
+                    //onTouchEnd={handleTouchEnd}
                 >
                     {images?.map((image, index) => (
                         <div 

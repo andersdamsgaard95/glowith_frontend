@@ -109,6 +109,7 @@
   align-self: end;
   margin-top: 12.5rem;
   margin-bottom: 5rem;
+  padding: 2.5rem 0;
   flex: 1;
   max-width: -moz-fit-content;
   max-width: fit-content;
@@ -118,6 +119,7 @@
     align-self: start;
     margin-top: 0;
     margin-bottom: 1rem;
+    padding: 0;
     flex: 0;
   }
 }

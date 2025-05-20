@@ -3,7 +3,12 @@ import MultiBoxGrid from "./modules/MultiBoxGrid/MultiBoxGrid";
 import MultiBoxRow from "./modules/MultiBoxRow/MultiBoxRow";
 import TextWithImage from "./modules/TextWithImage/TextWithImage";
 
-export default function DynamicBlock ({blockName, blockProps}:any) {
+interface DynamicBlockProps {
+    blockName: string;
+    blockProps?: any;
+}
+
+export default function DynamicBlock ({blockName, blockProps}: DynamicBlockProps) {
 
     let renderedBlock;
 
@@ -28,3 +33,6 @@ export default function DynamicBlock ({blockName, blockProps}:any) {
         </>
     )
 }
+
+
+

@@ -44,8 +44,7 @@ const Hero: React.FC<HeroProps> = (props) => {
                                 <ImageComponent
                                     image={props.image}
                                 /> 
-                            </div>
-                                     
+                            </div>         
                         </div> 
                     )}  
                     
@@ -56,7 +55,8 @@ const Hero: React.FC<HeroProps> = (props) => {
                                 className={styles.heading}
                                 style={{color: props.imageFullBackground && props.textColorOnImage === 'Dark' ? '#000000' : props.imageFullBackground && props.textColorOnImage === 'Light' ? '#ffffff' : undefined}}
                             >
-                                {props.heading}</h1> 
+                                {props.heading}
+                            </h1> 
                         )}
 
                         {/* Text */}

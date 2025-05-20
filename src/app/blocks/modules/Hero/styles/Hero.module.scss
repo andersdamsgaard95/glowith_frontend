@@ -116,6 +116,7 @@
     align-self: end;
     margin-top: calc($gap-xlarge + $gap-medium);
     margin-bottom: $gap-large;
+    padding: $gap-medium 0;
     flex: 1;
     max-width: fit-content;
 
@@ -123,6 +124,7 @@
         align-self: start;
         margin-top: 0;
         margin-bottom: $gap-small;
+        padding: 0;
         flex: 0;
     }
 

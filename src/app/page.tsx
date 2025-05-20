@@ -5,8 +5,6 @@ export default async function HomePage() {
 
   const blocks = await fetchHomepageData();
 
-  console.log(blocks);
-
     return (
         <>
             {blocks.map((block:any, index:number) => {

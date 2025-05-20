@@ -8,7 +8,6 @@ interface ButtonProps {
 }
 
 export default function Button (props: ButtonProps) {
-    console.log(props);
 
     const buttonStyleClass = props.button.color === 'Theme Dark Pink' ? styles.themeDarkPink : props.button.color === 'Theme Blue' ? styles.themeBlue : props.button.color === 'Theme Green' ? styles.themeGreen : styles.themeBlue;
 

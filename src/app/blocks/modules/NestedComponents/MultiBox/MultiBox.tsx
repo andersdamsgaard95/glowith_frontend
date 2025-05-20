@@ -18,6 +18,7 @@ export interface MultiBoxProps {
     text?: string;
     link?: string;
     imageOptions?: string;
+    openLinkInNewTab?: boolean;
 }
 
 export default function MultiBox (props: MultiBoxProps) {
@@ -68,7 +69,7 @@ export default function MultiBox (props: MultiBoxProps) {
 
     return (
         props.link ? (
-            <Link className={styles.link} href={props.link}>
+            <Link className={styles.link} href={props.link} target={props.openLinkInNewTab ? '_blank' : '_self'}>
                 <div className={`${styles.container} ${styles.boxHover}`}>
                     <div 
                         className={`${styles.box} ${props.image ? styles.hasImage : ''}`}
