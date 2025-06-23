@@ -67,7 +67,7 @@ const MultiBoxGrid: React.FC<MultiBoxGridProps> = (props) => {
                             style={{
                                 gridColumn: props.bigBoxLeft ? '1/3' : '2/4',
                                 gridRow: '1/2',
-                                aspectRatio: props.multiBoxBig?.image ? '1/1' : ''
+                                aspectRatio: props.multiBoxBig?.imageCoverOrContain ? '1/1' : ''
                             }}
                         >
                             <MultiBox

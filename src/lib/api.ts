@@ -3,7 +3,7 @@ const API_TOKEN = process.env.STRAPI_API_TOKEN;
 
 // Homepage data
 export async function fetchHomepageData() {
-  const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=home&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.image,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxBig.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor`, {
+  const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=home&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.image,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxSmall.imageCoverOrContain.image,blocks.multiBoxBig.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
@@ -16,7 +16,7 @@ export async function fetchHomepageData() {
   }
 
   const json = await res.json();
-  return json.data[0]?.blocks || [];
+  return json.data[0] || {};
 }
 
 //Dynamic Page Data
@@ -34,7 +34,7 @@ export async function fetchDynamicPageData(slug: string) {
     }
   
     const json = await res.json();
-    return json.data[0]?.blocks || [];
+    return json.data[0] || {};
 }
 
 //All content pages
@@ -101,12 +101,32 @@ export async function fetchDynamicProductCategoryPageData(slug: string) {
       blocksBeforeProducts: data?.blocksBeforeProducts || [],
       blocksAfterProducts: data?.blocksAfterProducts || [],
       category: data?.category || '',
+      title: data?.title || "",
+      metaDescription: data?.metaDescription || "",
     };
+}
+
+//Fetch all product category pages
+export async function fetchAllCategoryPages() {
+  const res = await fetch(`${API_URL}/api/product-category-pages`, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+    //cache: 'no-store',
+    cache: 'force-cache',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  const json = await res.json();
+  return json.data;
 }
 
 // Fetch products
 export async function fetchProducts() {
-    const res = await fetch(`${API_URL}/api/products?populate=image`, {
+    const res = await fetch(`${API_URL}/api/products?populate[imageCoverOrContain][populate]=image`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },
@@ -124,7 +144,7 @@ export async function fetchProducts() {
 
 // Fetch single Product
 export async function fetchSingleProduct(slug: string) {
-    const res = await fetch(`${API_URL}/api/products?filters[pdpSlug][$eq]=${slug}&populate=image`, {
+    const res = await fetch(`${API_URL}/api/products?filters[pdpSlug][$eq]=${slug}&populate[imageCoverOrContain][populate]=image`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },

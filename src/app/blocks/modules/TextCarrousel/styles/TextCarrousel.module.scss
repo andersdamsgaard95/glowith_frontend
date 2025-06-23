@@ -1,0 +1,63 @@
+@use '../../../../styles/variables' as *;
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+
+  .fadingEdge {
+    position: absolute;
+    content: "";
+    width: 150px;
+    height: 100%;
+    top: 0;
+
+    @media screen and (max-width: $media-large) {
+        width: 100px;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        width: 50px;
+    }
+
+        &.leftFade {
+            left: 0;
+        }
+
+        &.rightFade {
+            right: 0;
+        }
+}
+}
+
+.track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $gap-xlarge;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+  transform-style: preserve-3d;
+
+  span {
+    white-space: nowrap;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+  
+
+
+  
+
+  

@@ -1,7 +1,23 @@
+export const dynamic = 'force-static';
+
 import { fetchProducts, fetchDynamicProductCategoryPageData } from "@/lib/api";
 import ProductGrid from "../blocks/modules/NestedComponents/ProductGrid/ProductGrid";
 import DynamicBlock from "../blocks/DynamicBlock";
 import styles from './styles/allProducts.module.scss';
+
+export async function generateMetadata() {
+
+    const data = await fetchDynamicProductCategoryPageData('products');
+
+    return {
+        title: data?.title || data?.title || "Product Category",
+        description: data?.metaDescription || `Explore products in the ${data?.category || 'selected'} category.`,
+        openGraph: {
+            title: data?.title || data?.title || "Product Category",
+            description: data?.metaDescription || `Explore products in the ${data?.category || 'selected'} category.`,
+        },
+    };
+}
 
 export default async function AllProductsPage() {
     

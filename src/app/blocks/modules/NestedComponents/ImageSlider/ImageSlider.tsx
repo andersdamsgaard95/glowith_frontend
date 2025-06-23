@@ -1,13 +1,13 @@
 'use client';
 
 import styles from './styles/ImageSlider.module.scss';
-import { ImageType } from "@/app/types/types";
+import { ImageType, imageCoverOrContainObject } from "@/app/types/types";
 import { useState } from "react";
 import ImageComponent from '../Image/ImageComponent';
 import Image from 'next/image';
 
 interface ImageSliderProps {
-    images: ImageType[];
+    images: imageCoverOrContainObject[];
 }
 
 export default function ImageSlider(props: ImageSliderProps) {
@@ -53,7 +53,7 @@ export default function ImageSlider(props: ImageSliderProps) {
                             className={styles.imageContainer}
                             key={index}
                         >
-                            <ImageComponent image={image} />
+                            <ImageComponent image={image.image} isProductImage={image.isProductImage} />
                         </div>
                     ))}
                 </div>

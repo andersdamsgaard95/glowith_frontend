@@ -2,16 +2,16 @@
 
 import { getThemeColor } from '@/app/helperFunctions/helperFunctions';
 import styles from './styles/MultiBox.module.scss';
-import { ImageType } from '@/app/types/types';
 import ReactMarkdown from 'react-markdown';
 import ImageComponent from '../Image/ImageComponent';
 import { useEffect, useState } from 'react';
 import { getThemeStyles } from '@/app/helperFunctions/helperFunctions';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { imageCoverOrContainObject } from '@/app/types/types';
 
 export interface MultiBoxProps {
     backgroundColor?: {color: string};
-    image?: ImageType[];
     textOptionsIfImage?: string;
     ImageDisplayOptions?: string;
     id?: number;
@@ -19,6 +19,7 @@ export interface MultiBoxProps {
     link?: string;
     imageOptions?: string;
     openLinkInNewTab?: boolean;
+    imageCoverOrContain?: imageCoverOrContainObject[];
 }
 
 export default function MultiBox (props: MultiBoxProps) {
@@ -29,7 +30,10 @@ export default function MultiBox (props: MultiBoxProps) {
     const textPosition = props.textOptionsIfImage === 'Visible on hover inside box' ? 'insideBox' : 'underneathBox';
 
     useEffect(() => {
-        const multipleImages = props.image && props.image.length > 1;
+        //const hasCoverOrContain = props.imageCoverOrContain && props.imageCoverOrContain.length > 0;
+        const imagesArray = props.imageCoverOrContain ?? null;
+    
+        const multipleImages = imagesArray && imagesArray.length > 1;
     
         if (!multipleImages) return;
     
@@ -37,10 +41,10 @@ export default function MultiBox (props: MultiBoxProps) {
             if (boxIsHovered) return;
     
             const interval = setInterval(() => {
-                setShownImageIndex(prev => (prev + 1) % props.image!.length);
+                setShownImageIndex(prev => (prev + 1) % imagesArray!.length);
             }, 2000);
     
-            return () => clearInterval(interval); // cleanup
+            return () => clearInterval(interval); // Cleanup on unmount or deps change
         }
     
         if (props.imageOptions === 'Shift to next on hover') {
@@ -50,17 +54,22 @@ export default function MultiBox (props: MultiBoxProps) {
                 setShownImageIndex(0);
             }
         }
-    }, [props.image, boxIsHovered, props.imageOptions]);
+    }, [
+        props.imageCoverOrContain,
+        boxIsHovered,
+        props.imageOptions
+    ]);
+    
     
 
     function handleMouseEnter () {
-        if (props.image && ((props.text && textPosition === 'insideBox') || props.image.length > 1)) {
+        if (props.imageCoverOrContain && ((props.text && textPosition === 'insideBox') || props.imageCoverOrContain.length > 1)) {
             setBoxIsHovered(true);
         } 
     }
 
     function handleMouseLeave () {
-        if (props.image && ((props.text && textPosition === 'insideBox') || props.image.length > 1)) {
+        if (props.imageCoverOrContain && ((props.text && textPosition === 'insideBox') || props.imageCoverOrContain.length > 1)) {
             setBoxIsHovered(false);
         } 
     }
@@ -72,39 +81,50 @@ export default function MultiBox (props: MultiBoxProps) {
             <Link className={styles.link} href={props.link} target={props.openLinkInNewTab ? '_blank' : '_self'}>
                 <div className={`${styles.container} ${styles.boxHover}`}>
                     <div 
-                        className={`${styles.box} ${props.image ? styles.hasImage : ''}`}
+                        className={`${styles.box} ${props.imageCoverOrContain ? styles.hasImage : ''}`}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                         style={{
-                            ...(props.backgroundColor && !props.image ? getThemeStyles(props.backgroundColor.color) : {}),
+                            ...(props.backgroundColor && !props.imageCoverOrContain ? getThemeStyles(props.backgroundColor.color) : {}),
                             ...(props.backgroundColor ? { backgroundColor: getThemeColor(props.backgroundColor.color) } : {})
                         }}
                     >
-                        {!props.image && props.text && (
+                        {!props.imageCoverOrContain && props.text && (
                             <div className={`${styles.textContentInsideBox} ${props.backgroundColor?.color !== 'None' ? styles.hasPadding : ''}`}>
                                 <ReactMarkdown>{props.text}</ReactMarkdown>
                             </div>  
                         )}
     
-                        {props.image && props.text && textPosition === 'insideBox' && (
+                        {props.imageCoverOrContain && props.text && textPosition === 'insideBox' && (
                             <div className={styles.backgroundFade}>
                                 <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
                                     <ReactMarkdown>{props.text}</ReactMarkdown>
                                 </div>
                             </div>
-                        )}
+                        )} 
     
-                        {props.image && (
-                            <div className={styles.imageContainer}>
-                                <ImageComponent
-                                    image={props.image[shownImageIndex]}
-                                    className={styles.image}
-                                />
-                            </div>
-                        )}   
+                        <AnimatePresence mode="wait">
+                            {props.imageCoverOrContain && props.imageCoverOrContain.length > 0 && (
+                                <motion.div
+                                    key={shownImageIndex} // this triggers re-animation on index change
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.12, ease: 'easeInOut' }}
+                                    className={styles.imageContainer}
+                                >
+                                    <ImageComponent
+                                        image={props.imageCoverOrContain[shownImageIndex].image}
+                                        isProductImage={props.imageCoverOrContain[shownImageIndex].isProductImage}
+                                        className={styles.image}
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
                     </div>
     
-                    {props.image && props.text && textPosition === 'underneathBox' && (
+                    {props.imageCoverOrContain && props.text && textPosition === 'underneathBox' && (
                         <div className={styles.textContentUnderneathBox}>
                             <ReactMarkdown>{props.text}</ReactMarkdown>
                         </div> 
@@ -112,45 +132,56 @@ export default function MultiBox (props: MultiBoxProps) {
                 </div>
             </Link>
         ) : (
-            <div className={styles.container}>
+            <div className={`${styles.container}`}>
                 <div 
-                    className={`${styles.box} ${props.image ? styles.hasImage : ''}`}
+                    className={`${styles.box} ${props.imageCoverOrContain ? styles.hasImage : ''}`}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     style={{
-                        ...(props.backgroundColor && !props.image ? getThemeStyles(props.backgroundColor.color) : {}),
+                        ...(props.backgroundColor && !props.imageCoverOrContain ? getThemeStyles(props.backgroundColor.color) : {}),
                         ...(props.backgroundColor ? { backgroundColor: getThemeColor(props.backgroundColor.color) } : {})
                     }}
                 >
-                    {!props.image && props.text && (
+                    {!props.imageCoverOrContain && props.text && (
                         <div className={`${styles.textContentInsideBox} ${props.backgroundColor?.color !== 'None' ? styles.hasPadding : ''}`}>
                             <ReactMarkdown>{props.text}</ReactMarkdown>
                         </div>  
                     )}
-    
-                    {props.image && props.text && textPosition === 'insideBox' && (
+
+                    {props.imageCoverOrContain && props.text && textPosition === 'insideBox' && (
                         <div className={styles.backgroundFade}>
                             <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
                                 <ReactMarkdown>{props.text}</ReactMarkdown>
                             </div>
                         </div>
-                    )}
-    
-                    {props.image && (
-                        <div className={styles.imageContainer}>
-                            <ImageComponent
-                                image={props.image[shownImageIndex]}
-                                className={styles.image}
-                            />
-                        </div>
-                    )}
+                    )} 
+
+                    <AnimatePresence mode="wait">
+                        {props.imageCoverOrContain && props.imageCoverOrContain.length > 0 && (
+                            <motion.div
+                                key={shownImageIndex} // this triggers re-animation on index change
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.12, ease: 'easeInOut' }}
+                                className={styles.imageContainer}
+                            >
+                                <ImageComponent
+                                    image={props.imageCoverOrContain[shownImageIndex].image}
+                                    isProductImage={props.imageCoverOrContain[shownImageIndex].isProductImage}
+                                    className={styles.image}
+                                />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
                 </div>
-    
-                {props.image && props.text && textPosition === 'underneathBox' && (
+
+                {props.imageCoverOrContain && props.text && textPosition === 'underneathBox' && (
                     <div className={styles.textContentUnderneathBox}>
                         <ReactMarkdown>{props.text}</ReactMarkdown>
                     </div> 
-                )}  
+                )}
             </div>
         )
     );

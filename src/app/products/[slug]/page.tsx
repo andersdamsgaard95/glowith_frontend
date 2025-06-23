@@ -1,15 +1,41 @@
-//export const dynamic = 'force-dynamic';
-
 import styles from './styles/pdpPage.module.scss';
 import ContentWrapper from "@/app/blocks/contentWrapper/ContentWrapper";
 import { Product } from "@/app/types/types";
-import { fetchSingleProduct } from "@/lib/api";
+import { fetchProducts, fetchSingleProduct } from "@/lib/api";
 import ReactMarkdown from 'react-markdown';
 import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/ImageSlider';
+import type { Metadata } from "next";
 
 type Props = {
     params: Promise<{ slug: string }>
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = await params;
+
+    if (!slug) {
+        return {
+            title: "Product Not Found",
+            description: "The requested product could not be found."
+        };
+    }
+
+    const productData = await fetchSingleProduct(slug);
+    const product: Product = productData[0];
+
+    return {
+        title: product?.name || "Glowith Product Page",
+        description: product?.metaDescription || "Details about this product.",
+    };
+}
+
+export async function generateStaticParams() {
+    const allProducts = await fetchProducts();
+
+    return allProducts.map((product: Product) => ({
+        slug: product.pdpSlug,
+    }))
+}
 
 export default async function dynamicPdpPage ({ params }: Props) {
 
@@ -24,12 +50,14 @@ export default async function dynamicPdpPage ({ params }: Props) {
 
     const product: Product = productData[0];
 
+    //console.log(product);
+
     return (
         <ContentWrapper>
             <section className={styles.container}>
-                {product.image && (
+                {product.imageCoverOrContain && product.imageCoverOrContain.length > 0 && (
                     <ImageSlider
-                        images={product.image}
+                        images={product.imageCoverOrContain}
                     />
                 )}
                 {(product.name || product.description) && (

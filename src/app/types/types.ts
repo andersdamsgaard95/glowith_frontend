@@ -16,9 +16,10 @@ export interface Product {
     name?: string;
     shortDescription: string;
     description?: string;
-    image?: ImageType[];
+    imageCoverOrContain: imageCoverOrContainObject[];
     pdpSlug?: string;
     category?: string;
+    metaDescription?: string;
 }
 
 export interface BlockSettings {
@@ -46,4 +47,9 @@ export interface menuChildItem {
     destinationPath?: string;
     id?: number;
     description?: string;
+}
+
+export interface imageCoverOrContainObject {
+    image: ImageType;
+    isProductImage?: boolean;
 }

@@ -1,6 +1,7 @@
 import Hero from "./modules/Hero/Hero"
 import MultiBoxGrid from "./modules/MultiBoxGrid/MultiBoxGrid";
 import MultiBoxRow from "./modules/MultiBoxRow/MultiBoxRow";
+import TextCarrousel from "./modules/TextCarrousel/TextCarrousel";
 import TextWithImage from "./modules/TextWithImage/TextWithImage";
 
 interface DynamicBlockProps {
@@ -24,6 +25,9 @@ export default function DynamicBlock ({blockName, blockProps}: DynamicBlockProps
             break;
         case 'text-with-image.text-with-image':
             renderedBlock = <TextWithImage {...blockProps}/>
+            break;
+        case 'carrousel-text.carrousel-text':
+            renderedBlock = <TextCarrousel {...blockProps}/>
             break;
     }
 
