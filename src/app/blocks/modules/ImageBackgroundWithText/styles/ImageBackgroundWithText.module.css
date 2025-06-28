@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 70rem;
+}
+.content .heading {
+  text-align: center;
+}
+.content.textBackground h2, .content.textBackground p {
+  text-shadow: 0 0 2px #fafafa, 0 0 6px #fafafa, 0 0 12px #fafafa, 0 0 20px #fafafa;
+}/*# sourceMappingURL=ImageBackgroundWithText.module.css.map */

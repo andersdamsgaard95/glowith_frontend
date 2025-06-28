@@ -3,7 +3,7 @@
 import { ImageType } from '@/app/types/types';
 import styles from '../Image/styles/Image.module.scss';
 import Image from 'next/image';
-//import { useAppContext } from '@/context/AppContext';
+import { useAppContext } from '@/context/AppContext';
 
 interface ImageComponentProps {
     className?: string;
@@ -12,13 +12,13 @@ interface ImageComponentProps {
 }
 
 export default function ImageComponent (props:ImageComponentProps) {
-    //const { backendUrl } = useAppContext()
+    const { backendUrl } = useAppContext()
 
     return (
         <div className={styles.container}>
             <Image
                 //src={`${backendUrl}${props.image?.url}`}
-                src={`${props.image?.url}`}
+                src={backendUrl.includes("localhost") ? `${backendUrl}${props.image?.url}` : props.image?.url}
                 alt={props.image.alternativeText ?? ''}
                 //className={props.className}
                 className={`${styles.image} ${props.isProductImage ? styles.productImage : ""}`}

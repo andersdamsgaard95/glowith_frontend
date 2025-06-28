@@ -26,6 +26,12 @@ export default function Header (props:headerProps) {
     const [headerIsAtTop, setHeaderIsAtTop] = useState<boolean>(true);
     const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState<boolean>(false);
     const [burgerMenuExists, setBurgerMenuExists] = useState<boolean>(false);
+    const [isClient, setIsClient] = useState<boolean>(false);
+
+    //Is Hydrated
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     // Submenu hide on scroll
     useEffect(() => {
@@ -110,7 +116,7 @@ export default function Header (props:headerProps) {
                             />
                         </Link>
 
-                        {isTabletOrSmaller ? (
+                        {isClient && isTabletOrSmaller ? (
                             <div 
                                 onClick={() => {
                                     setBurgerMenuExists(true);

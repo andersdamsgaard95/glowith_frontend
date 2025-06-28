@@ -1,0 +1,29 @@
+@use '../../../../styles/variables' as *;
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+    align-items: center;
+    max-width: 70rem;
+
+        .heading {
+            text-align: center;
+        }
+
+        &.textBackground {
+            h2, p {
+                text-shadow:
+                    0 0 2px $themeWhite,
+                    0 0 6px $themeWhite,
+                    0 0 12px $themeWhite,
+                    0 0 20px $themeWhite;
+            }     
+        }
+}

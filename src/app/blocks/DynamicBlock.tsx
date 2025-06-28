@@ -3,6 +3,9 @@ import MultiBoxGrid from "./modules/MultiBoxGrid/MultiBoxGrid";
 import MultiBoxRow from "./modules/MultiBoxRow/MultiBoxRow";
 import TextCarrousel from "./modules/TextCarrousel/TextCarrousel";
 import TextWithImage from "./modules/TextWithImage/TextWithImage";
+import DividerLine from "./modules/DividerLine/DividerLine";
+import DividerColorFade from "./modules/DividerColorFade/DividerColorFade";
+import ImageBackgroundWithText from "./modules/ImageBackgroundWithText/ImageBackgroundWithText";
 
 interface DynamicBlockProps {
     blockName: string;
@@ -28,6 +31,15 @@ export default function DynamicBlock ({blockName, blockProps}: DynamicBlockProps
             break;
         case 'carrousel-text.carrousel-text':
             renderedBlock = <TextCarrousel {...blockProps}/>
+            break;
+        case 'dividers.divider-color-fade':
+            renderedBlock = <DividerColorFade {...blockProps}/>
+            break;
+        case 'dividers.line-divider':
+            renderedBlock = <DividerLine {...blockProps}/>
+            break;
+        case 'image-background-with-text.image-background-with-text':
+            renderedBlock = <ImageBackgroundWithText {...blockProps}/>
             break;
     }
 

@@ -6,6 +6,8 @@ import DynamicBlock from "@/app/blocks/DynamicBlock";
 import { fetchAllCategoryPages, fetchDynamicProductCategoryPageData, fetchProducts } from "@/lib/api";
 import ProductGrid from '@/app/blocks/modules/NestedComponents/ProductGrid/ProductGrid';
 import { Metadata } from 'next';
+import PageNotFound from '@/app/blocks/PageNotFoundComponent/PageNotFound';
+import { Product } from '@/app/types/types';
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -49,10 +51,14 @@ export default async function dynamicProductCategoryPage ({ params }: Props) {
     const slug = resolvedParams?.slug;
 
     if (!slug) {
-        return <p>Slug not found</p>;
+        return <PageNotFound/>
     }
 
     const data = await fetchDynamicProductCategoryPageData(slug);
+
+    if (!data) {
+        return <PageNotFound/>
+    }
 
     const blocksBeforeProducts = data.blocksBeforeProducts;
     const blocksAfterProducts = data.blocksAfterProducts;
@@ -60,9 +66,13 @@ export default async function dynamicProductCategoryPage ({ params }: Props) {
 
     const allProducts = await fetchProducts();
 
-    const thisCategoryProducts = allProducts.filter((product: any) => {
+    const thisCategoryProducts = allProducts.filter((product: Product) => {
         return product.category?.toLowerCase() === productPageCategory?.toLowerCase();
     })
+
+    if (thisCategoryProducts.length === 0 && blocksBeforeProducts.length === 0 && blocksAfterProducts.length === 0) {
+        return <PageNotFound/>
+    }
 
     //console.log(thisCategoryProducts);
 

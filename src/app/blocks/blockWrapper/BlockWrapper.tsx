@@ -1,6 +1,7 @@
 import { getBlockPadding, getThemeColor } from "@/app/helperFunctions/helperFunctions";
-import { BlockSettings } from "@/app/types/types";
+import { BlockSettings, ImageType } from "@/app/types/types";
 import styles from './styles/BlockWrapper.module.scss';
+import ImageComponent from "../modules/NestedComponents/Image/ImageComponent";
 
 interface BlockWrapperProps {
     children: React.ReactNode;
@@ -8,6 +9,7 @@ interface BlockWrapperProps {
     settings?: BlockSettings;
     backgroundColor?: string;
     isHero?: boolean;
+    backgroundImage?: ImageType;
 }
 
 export default function BlockWrapper (props: BlockWrapperProps) {
@@ -19,8 +21,16 @@ export default function BlockWrapper (props: BlockWrapperProps) {
                 paddingTop: props.noTopBottomPadding ? '0' : props.settings?.blockPadding?.paddingTop ? getBlockPadding(props.settings.blockPadding.paddingTop) : '50px',
                 paddingBottom: props.noTopBottomPadding ? '0' : props.settings?.blockPadding?.paddingBottom ? getBlockPadding(props.settings.blockPadding.paddingBottom) : '50px',
             }}
-            className={props.isHero ? styles.hero : ''}
+            className={styles.container}
         >
+            {/* If background image */}
+            {props.backgroundImage && (
+                <div className={styles.backgroundImage}>
+                    <ImageComponent
+                        image={props.backgroundImage}
+                    />
+                </div>
+            )}
             {props.children}
         </div>
     )

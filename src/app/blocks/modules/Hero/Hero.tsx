@@ -7,7 +7,6 @@ import Button from '../NestedComponents/Button/Button';
 import { ImageType, ButtonType } from '@/app/types/types';
 import ContentWrapper from '../../contentWrapper/ContentWrapper';
 import { getThemeStyles } from '@/app/helperFunctions/helperFunctions';
-import { useEffect, useState } from 'react';
 
 interface HeroProps {
     heading?: string;
@@ -65,7 +64,8 @@ const Hero: React.FC<HeroProps> = (props) => {
                                 className={styles.text}
                                 style={{color: props.imageFullBackground && props.textColorOnImage === 'Dark' ? '#000000' : props.imageFullBackground && props.textColorOnImage === 'Light' ? '#ffffff' : undefined}}
                             >
-                                {props.text}</p>
+                                {props.text}
+                            </p>
                         )}
 
                         {/* Button */}
