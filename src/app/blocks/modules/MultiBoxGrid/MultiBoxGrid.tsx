@@ -21,7 +21,7 @@ interface MultiBoxGridProps {
 const MultiBoxGrid: React.FC<MultiBoxGridProps> = (props) => {
 
     const buttonPositionClass = props.buttonPosition && props.buttonPosition === 'Left' ? styles.buttonLeft : props.buttonPosition === 'Right' ? styles.buttonRight : styles.buttonCenter; 
-
+    
     return (
         <BlockWrapper
             settings={props.settings}
@@ -55,7 +55,7 @@ const MultiBoxGrid: React.FC<MultiBoxGridProps> = (props) => {
                         >
                             {props.multiBoxSmall?.map((box) => (
                                 <div className={styles.smallBox} key={box.id}>
-                                <MultiBox 
+                                    <MultiBox 
                                         {...box}
                                     /> 
                                 </div>

@@ -8,6 +8,10 @@
   display: block;
   transition: all 0.2s;
 }
+.button.fullWidth {
+  width: 100%;
+  text-align: center;
+}
 .button.themeDarkPink {
   background-color: #e68f9e;
 }

@@ -111,6 +111,10 @@
         //transition: all 0.3s;
     }
 
+    .button {
+        display: none;
+    }
+
     &.textFadeIn {
         transform: translateY(-10px);
         gap: $gap-small;
@@ -119,6 +123,10 @@
             max-height: none;
             //transform: scaleY(1);
             //opacity: 1;
+        }
+
+        .button {
+            display: block;
         }
     }
 }
@@ -134,4 +142,19 @@
     display: flex;
     flex-direction: column;
     gap: $gap-small;
+}
+
+.button {
+    width: 100%;
+    text-align: center;
+    border: 1px solid $themeBlack;
+    padding: 1rem 0;
+    transition: all 0.2s;
+    margin-top: 1rem;
+    //transition-delay: 0.2s;
+
+    &:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
+    }
 }

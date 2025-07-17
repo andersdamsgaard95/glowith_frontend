@@ -127,4 +127,16 @@
   .textContainer .text.textPaddingRight {
     padding-right: 1rem;
   }
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }/*# sourceMappingURL=TextWithImage.module.css.map */

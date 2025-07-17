@@ -6,6 +6,7 @@ import TextWithImage from "./modules/TextWithImage/TextWithImage";
 import DividerLine from "./modules/DividerLine/DividerLine";
 import DividerColorFade from "./modules/DividerColorFade/DividerColorFade";
 import ImageBackgroundWithText from "./modules/ImageBackgroundWithText/ImageBackgroundWithText";
+import ImageAlone from "./modules/ImageAlone/ImageAlone";
 
 interface DynamicBlockProps {
     blockName: string;
@@ -40,6 +41,9 @@ export default function DynamicBlock ({blockName, blockProps}: DynamicBlockProps
             break;
         case 'image-background-with-text.image-background-with-text':
             renderedBlock = <ImageBackgroundWithText {...blockProps}/>
+            break;
+        case 'image-alone.image-alone':
+            renderedBlock = <ImageAlone {...blockProps}/>
             break;
     }
 

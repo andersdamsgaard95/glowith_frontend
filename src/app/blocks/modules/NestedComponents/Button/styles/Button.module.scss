@@ -9,6 +9,11 @@
     display: block;
     transition: all 0.2s;
 
+    &.fullWidth {
+        width: 100%;
+        text-align: center;
+    }
+
     &.themeDarkPink {
         background-color: $themeDarkPink;
 

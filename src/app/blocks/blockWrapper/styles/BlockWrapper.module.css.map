@@ -1,1 +1,1 @@
-{"version":3,"sources":["BlockWrapper.module.scss","BlockWrapper.module.css"],"names":[],"mappings":"AAEA;EACI,kBAAA;ACDJ;;ADIA;EACI,kBAAA;EACA,MAAA;EACA,OAAA;EACA,SAAA;EACA,QAAA;EACA,WAAA;ACDJ","file":"BlockWrapper.module.css"}
+{"version":3,"sources":["BlockWrapper.module.scss","BlockWrapper.module.css"],"names":[],"mappings":"AAEA;EACI,kBAAA;ACDJ;;ADIA;EACI,kBAAA;EACA,MAAA;EACA,OAAA;EACA,SAAA;EACA,QAAA;EACA,WAAA;ACDJ;ADIQ;EACI,WAAA;EACA,kBAAA;EACA,MAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;EACA,0CAAA;ACFZ","file":"BlockWrapper.module.css"}

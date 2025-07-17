@@ -20,6 +20,7 @@ export interface Product {
     pdpSlug?: string;
     category?: string;
     metaDescription?: string;
+    Display_Background_Color?: {color: string};
 }
 
 export interface BlockSettings {

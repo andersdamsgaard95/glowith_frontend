@@ -20,12 +20,12 @@ export interface MultiBoxProps {
     imageOptions?: string;
     openLinkInNewTab?: boolean;
     imageCoverOrContain?: imageCoverOrContainObject[];
+    Button_Text?: string;
 }
 
 export default function MultiBox (props: MultiBoxProps) {
     const [boxIsHovered, setBoxIsHovered] = useState<boolean>(false);
     const [shownImageIndex, setShownImageIndex] = useState<number>(0);
-    //const [isFading, setIsFading] = useState(false);
     
     const textPosition = props.textOptionsIfImage === 'Visible on hover inside box' ? 'insideBox' : 'underneathBox';
 
@@ -59,8 +59,6 @@ export default function MultiBox (props: MultiBoxProps) {
         boxIsHovered,
         props.imageOptions
     ]);
-    
-    
 
     function handleMouseEnter () {
         if (props.imageCoverOrContain && ((props.text && textPosition === 'insideBox') || props.imageCoverOrContain.length > 1)) {
@@ -73,8 +71,6 @@ export default function MultiBox (props: MultiBoxProps) {
             setBoxIsHovered(false);
         } 
     }
-
-    //console.log(styles.backgroundFade);
 
     return (
         props.link ? (
@@ -92,6 +88,11 @@ export default function MultiBox (props: MultiBoxProps) {
                         {!props.imageCoverOrContain && props.text && (
                             <div className={`${styles.textContentInsideBox} ${props.backgroundColor?.color !== 'None' ? styles.hasPadding : ''}`}>
                                 <ReactMarkdown>{props.text}</ReactMarkdown>
+                                {props.Button_Text && (
+                                    <p className={styles.button}>
+                                        {props.Button_Text}
+                                    </p>
+                                )}
                             </div>  
                         )}
     
@@ -99,6 +100,11 @@ export default function MultiBox (props: MultiBoxProps) {
                             <div className={styles.backgroundFade}>
                                 <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
                                     <ReactMarkdown>{props.text}</ReactMarkdown>
+                                    {props.Button_Text && (
+                                        <p className={styles.button}>
+                                            {props.Button_Text}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         )} 
@@ -110,7 +116,8 @@ export default function MultiBox (props: MultiBoxProps) {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.12, ease: 'easeInOut' }}
+                                    //transition={{ duration: 0.12, ease: 'easeInOut' }}
+                                    transition={{ duration: 0.15, ease: 'linear' }}
                                     className={styles.imageContainer}
                                 >
                                     <ImageComponent
@@ -127,6 +134,11 @@ export default function MultiBox (props: MultiBoxProps) {
                     {props.imageCoverOrContain && props.text && textPosition === 'underneathBox' && (
                         <div className={styles.textContentUnderneathBox}>
                             <ReactMarkdown>{props.text}</ReactMarkdown>
+                            {props.Button_Text && (
+                                <p className={styles.button}>
+                                    {props.Button_Text}
+                                </p>
+                            )}
                         </div> 
                     )}
                 </div>
@@ -145,6 +157,11 @@ export default function MultiBox (props: MultiBoxProps) {
                     {!props.imageCoverOrContain && props.text && (
                         <div className={`${styles.textContentInsideBox} ${props.backgroundColor?.color !== 'None' ? styles.hasPadding : ''}`}>
                             <ReactMarkdown>{props.text}</ReactMarkdown>
+                            {props.Button_Text && (
+                                <p className={styles.button}>
+                                    {props.Button_Text}
+                                </p>
+                            )}
                         </div>  
                     )}
 
@@ -152,6 +169,11 @@ export default function MultiBox (props: MultiBoxProps) {
                         <div className={styles.backgroundFade}>
                             <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
                                 <ReactMarkdown>{props.text}</ReactMarkdown>
+                                {props.Button_Text && (
+                                    <p className={styles.button}>
+                                        {props.Button_Text}
+                                    </p>
+                                )}
                             </div>
                         </div>
                     )} 
@@ -163,7 +185,7 @@ export default function MultiBox (props: MultiBoxProps) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                transition={{ duration: 0.2, ease: 'linear' }}
+                                transition={{ duration: 0.3, ease: 'linear', delay: 0.2 }}
                                 className={styles.imageContainer}
                             >
                                 <ImageComponent
@@ -180,6 +202,11 @@ export default function MultiBox (props: MultiBoxProps) {
                 {props.imageCoverOrContain && props.text && textPosition === 'underneathBox' && (
                     <div className={styles.textContentUnderneathBox}>
                         <ReactMarkdown>{props.text}</ReactMarkdown>
+                        {props.Button_Text && (
+                            <p className={styles.button}>
+                                {props.Button_Text}
+                            </p>
+                        )}
                     </div> 
                 )}
             </div>

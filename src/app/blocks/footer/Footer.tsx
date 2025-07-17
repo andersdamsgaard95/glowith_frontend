@@ -16,7 +16,7 @@ export default async function Footer () {
             <ContentWrapper>
                 <div className={styles.container}>
                     <div className={styles.imageContainer}>
-                        <img src="/logo/Glowith_Skincare_logo_Black.svg" alt="" className={styles.logo} />
+                        <img src="/logo/Glowith_Skincare_logo_Black.svg" alt="Glowith logo" className={styles.logo} />
                     </div>
                     <div className={styles.textContainer}>
                         <p className={styles.text}>{footerData.footerText}</p>

@@ -7,10 +7,11 @@ import ReactMarkdown from 'react-markdown';
 import React from 'react';
 import { getThemeColor, getThemeStyles } from '@/app/helperFunctions/helperFunctions';
 import Button from '../NestedComponents/Button/Button';
+import { div } from 'framer-motion/client';
 
 interface TextWithImageProps {
     text?: string;
-    button?: ButtonType;
+    button?: ButtonType[];
     image?: ImageType;
     settings?: BlockSettings;
     imagePosition?: string;
@@ -21,7 +22,8 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
 
     //const imagePosition = props.imagePosition === '' ? 'left' 
     const textHasCustomBackgroundColor = props.textBackgroundColor && props.textBackgroundColor.color !== 'None' ? true : false;
-    
+    const multipleButtons = props.button ? props.button.length > 1 : false;
+
     return (
         <BlockWrapper settings={props.settings}>
             <ContentWrapper isFullBackground={textHasCustomBackgroundColor}>
@@ -51,11 +53,18 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
                                     {props.text}
                                 </ReactMarkdown>
 
-                                {props.button && (
-                                    <Button
-                                        button={props.button}
-                                    />
-                                )}
+                                {props.button && props.button.length > 0 && (
+                                    <div className={styles.buttonsContainer}>
+                                        {props.button.map((button, i) => (
+                                            <div key={i} className={styles.buttonContainer}>
+                                                <Button
+                                                    button={button}
+                                                    fullWidth={multipleButtons}
+                                                /> 
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}   
                             </div>
                             
                         </div>

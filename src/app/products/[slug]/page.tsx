@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/ImageSlider';
 import type { Metadata } from "next";
 import PageNotFound from '@/app/blocks/PageNotFoundComponent/PageNotFound';
+import Button from '@/app/blocks/modules/NestedComponents/Button/Button';
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -55,7 +56,11 @@ export default async function dynamicPdpPage ({ params }: Props) {
         return <PageNotFound/>
     }
 
-    //console.log(product);
+    const button = {
+        buttonText: 'Where to Buy',
+        path: '/wheretobuy',
+        color: 'Theme Blue',
+    }
 
     return (
         <ContentWrapper>
@@ -72,6 +77,7 @@ export default async function dynamicPdpPage ({ params }: Props) {
                         <div className={styles.description}>
                            <ReactMarkdown>{product.description}</ReactMarkdown> 
                         </div>
+                        <Button button={button}/>
                     </div>
                 )}
             </section>

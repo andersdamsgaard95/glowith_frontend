@@ -1,7 +1,9 @@
 .productGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 5rem;
+  -moz-column-gap: 5rem;
+       column-gap: 5rem;
+  row-gap: 10rem;
 }
 @media screen and (max-width: 1000px) {
   .productGrid {

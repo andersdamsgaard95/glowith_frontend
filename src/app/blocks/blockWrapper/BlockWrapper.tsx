@@ -10,6 +10,7 @@ interface BlockWrapperProps {
     backgroundColor?: string;
     isHero?: boolean;
     backgroundImage?: ImageType;
+    imageOverlay?: boolean;
 }
 
 export default function BlockWrapper (props: BlockWrapperProps) {
@@ -25,7 +26,7 @@ export default function BlockWrapper (props: BlockWrapperProps) {
         >
             {/* If background image */}
             {props.backgroundImage && (
-                <div className={styles.backgroundImage}>
+                <div className={`${styles.backgroundImage} ${props.imageOverlay ? styles.imageOverlay : ""}`}>
                     <ImageComponent
                         image={props.backgroundImage}
                     />

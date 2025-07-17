@@ -16,8 +16,9 @@ interface HeroProps {
     backgroundColor?: { color: string; }
     imageFullBackground?: boolean;
     textPosition?: string;
-    textColorOnImage?: string;
+    textColorOnImage?: "Dark" | "Light";
     imageZoomOn?: boolean;
+    Text_Contrast_Background_Fade?: boolean;
 }
 
 const Hero: React.FC<HeroProps> = (props) => {
@@ -30,8 +31,22 @@ const Hero: React.FC<HeroProps> = (props) => {
         <BlockWrapper isHero={true} backgroundColor={props.backgroundColor?.color} noTopBottomPadding={true}>
             <ContentWrapper isFullBackground={props.imageFullBackground}>
                 <section 
-                    style={!props.imageFullBackground ? themeStyles : undefined} 
-                    className={`${styles.container} ${textPositionClass} ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : undefined} ${!props.imageFullBackground ? styles.splitBackground : undefined}`}
+                    style={!props.imageFullBackground 
+                        ? {
+                            ...themeStyles,
+                            color: props.textColorOnImage === "Light" ? "#000000" : "#ffffff"
+                        } : undefined} 
+                    className={`
+                        ${styles.container} 
+                        ${textPositionClass} 
+                        ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : undefined} 
+                        ${!props.imageFullBackground ? styles.splitBackground : undefined} 
+                        ${props.imageFullBackground && props.Text_Contrast_Background_Fade
+                            ? props.textPosition?.includes('Right')
+                                ? styles.backgroundLayerToLeft
+                                : styles.backgroundLayerToRight
+                            : ''}
+                    `}
                 >
 
                     {/* Image */}
@@ -52,7 +67,7 @@ const Hero: React.FC<HeroProps> = (props) => {
                         {props.heading && (
                             <h1 
                                 className={styles.heading}
-                                style={{color: props.imageFullBackground && props.textColorOnImage === 'Dark' ? '#000000' : props.imageFullBackground && props.textColorOnImage === 'Light' ? '#ffffff' : undefined}}
+                                style={{color: props.imageFullBackground && props.textColorOnImage === 'Light' && !props.Text_Contrast_Background_Fade ? '#ffffff' : ''}}
                             >
                                 {props.heading}
                             </h1> 
@@ -62,20 +77,20 @@ const Hero: React.FC<HeroProps> = (props) => {
                         {props.text && (
                             <p 
                                 className={styles.text}
-                                style={{color: props.imageFullBackground && props.textColorOnImage === 'Dark' ? '#000000' : props.imageFullBackground && props.textColorOnImage === 'Light' ? '#ffffff' : undefined}}
+                                style={{color: props.imageFullBackground && props.textColorOnImage === 'Light' && !props.Text_Contrast_Background_Fade ? '#ffffff' : ''}}
                             >
                                 {props.text}
                             </p>
                         )}
 
                         {/* Button */}
-                        {props.button && props.button[0] && props.button[0].path && (
-                            <div className={styles.buttonWrapper}>
+                        {props.button && props.button.length > 0 && props.button.map((button, i) => (
+                            <div key={i} className={styles.buttonWrapper}>
                                 <Button
-                                    button={props.button[0]}
+                                    button={button}
                                 />  
                             </div>
-                        )}  
+                        ))}  
                     </div>                          
 
                 </section>

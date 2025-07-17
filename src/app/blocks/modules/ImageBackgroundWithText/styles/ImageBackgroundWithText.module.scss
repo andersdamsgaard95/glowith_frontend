@@ -16,14 +16,4 @@
         .heading {
             text-align: center;
         }
-
-        &.textBackground {
-            h2, p {
-                text-shadow:
-                    0 0 2px $themeWhite,
-                    0 0 6px $themeWhite,
-                    0 0 12px $themeWhite,
-                    0 0 20px $themeWhite;
-            }     
-        }
 }

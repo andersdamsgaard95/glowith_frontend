@@ -22,10 +22,11 @@
     aspect-ratio: 1/1;
     transition: all 0.3s;
     overflow: hidden;
+    background-color: blue;
 }
 
 .productText {
-    padding: 0 $gap-small $gap-medium $gap-small;
+    //padding: 0 $gap-small $gap-medium $gap-small;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -33,4 +34,19 @@
 
 .name {
     font-size: 2rem;
+}
+
+.button {
+    width: 100%;
+    text-align: center;
+    border: 1px solid $themeBlack;
+    padding: 1rem 0;
+    transition: all 0.2s;
+    margin-top: 2rem;
+    //transition-delay: 0.2s;
+
+    &:hover {
+        transform: translateY(-0.5rem);
+        box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
+    }
 }

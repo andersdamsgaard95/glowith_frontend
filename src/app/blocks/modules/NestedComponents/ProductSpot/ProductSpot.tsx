@@ -6,6 +6,7 @@ import ImageComponent from '../Image/ImageComponent';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getThemeColor } from '@/app/helperFunctions/helperFunctions';
 
 interface ProductSpotProps {
     product: Product;
@@ -28,6 +29,8 @@ export default function ProductSpot(props: ProductSpotProps) {
 
     }, [imageIsHovered, props.product.imageCoverOrContain])
 
+    //const productBackgroundColor = props.product.Display_Background_Color ? getThemeColor(props.product.Display_Background_Color.color)
+
     return (
         <section className={styles.wrapper}>
             <Link className={styles.container} href={props.product.pdpSlug ? `/products/${props.product.pdpSlug ?? ''}` : ''}>
@@ -41,8 +44,11 @@ export default function ProductSpot(props: ProductSpotProps) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.2, ease: 'linear' }}
-                            >
+                            transition={{ duration: 0.15, ease: 'linear' }}
+                            style={{
+                                backgroundColor: getThemeColor(props.product.Display_Background_Color?.color)
+                            }}
+                        >
                             <ImageComponent
                                 image={props.product.imageCoverOrContain[shownImageIndex].image}
                                 isProductImage={props.product.imageCoverOrContain[shownImageIndex].isProductImage}
@@ -58,6 +64,7 @@ export default function ProductSpot(props: ProductSpotProps) {
                         {props.product.shortDescription && (
                             <p>{props.product.shortDescription}</p>
                         )}
+                        <p className={styles.button}>Explore Product</p>
                     </div>
                 )}
             </Link>

@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.container.centerContent {
+  align-items: center;
+}/*# sourceMappingURL=ImageAlone.module.css.map */

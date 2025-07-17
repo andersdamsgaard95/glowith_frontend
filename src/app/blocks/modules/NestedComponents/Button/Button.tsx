@@ -4,7 +4,8 @@ import Link from "next/link";
 
 interface ButtonProps {
     className?: string;
-    button: ButtonType; 
+    button: ButtonType;
+    fullWidth?: boolean; 
 }
 
 export default function Button (props: ButtonProps) {
@@ -14,7 +15,7 @@ export default function Button (props: ButtonProps) {
     return (
         <Link
             href={props.button.path}
-            className={`${styles.button} ${buttonStyleClass}`}
+            className={`${styles.button} ${buttonStyleClass} ${props.fullWidth ? styles.fullWidth : ''}`}
             target={props.button.openInNewTab ? '_blank' : '_self'}
         >
             {props.button.buttonText}

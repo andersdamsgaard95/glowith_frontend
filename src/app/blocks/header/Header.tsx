@@ -112,6 +112,7 @@ export default function Header (props:headerProps) {
                                 src={"/logo/Glowith_Skincare_logo_Black_.png"}
                                 alt="Glowith logo"
                                 fill
+                                sizes='150'
                                 className={styles.logo}
                             />
                         </Link>

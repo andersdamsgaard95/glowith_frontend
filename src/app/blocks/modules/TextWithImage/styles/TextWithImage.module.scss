@@ -135,3 +135,15 @@
         }
     }
 }
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+}
