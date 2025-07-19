@@ -135,9 +135,9 @@ export default function MultiBox (props: MultiBoxProps) {
                         <div className={styles.textContentUnderneathBox}>
                             <ReactMarkdown>{props.text}</ReactMarkdown>
                             {props.Button_Text && (
-                                <p className={styles.button}>
+                                <div className={styles.button}>
                                     {props.Button_Text}
-                                </p>
+                                </div>
                             )}
                         </div> 
                     )}
@@ -203,9 +203,9 @@ export default function MultiBox (props: MultiBoxProps) {
                     <div className={styles.textContentUnderneathBox}>
                         <ReactMarkdown>{props.text}</ReactMarkdown>
                         {props.Button_Text && (
-                            <p className={styles.button}>
+                            <div className={styles.button}>
                                 {props.Button_Text}
-                            </p>
+                            </div>
                         )}
                     </div> 
                 )}

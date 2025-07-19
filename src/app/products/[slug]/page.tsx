@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const product: Product = productData[0];
 
     return {
-        title: product?.name || "Glowith Product Page",
+        title: product?.metaTitle || "Glowith Product Page",
         description: product?.metaDescription || "Details about this product.",
     };
 }
@@ -57,8 +57,8 @@ export default async function dynamicPdpPage ({ params }: Props) {
     }
 
     const button = {
-        buttonText: 'Where to Buy',
-        path: '/wheretobuy',
+        buttonText: 'Where to buy',
+        path: '/where-to-buy',
         color: 'Theme Blue',
     }
 

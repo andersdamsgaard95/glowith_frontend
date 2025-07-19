@@ -64,7 +64,7 @@ export default function ProductSpot(props: ProductSpotProps) {
                         {props.product.shortDescription && (
                             <p>{props.product.shortDescription}</p>
                         )}
-                        <p className={styles.button}>Explore Product</p>
+                        <div className={styles.button}>Explore Product</div>
                     </div>
                 )}
             </Link>
