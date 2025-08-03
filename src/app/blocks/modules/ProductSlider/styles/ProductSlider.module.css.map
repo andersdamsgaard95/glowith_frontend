@@ -1,0 +1,1 @@
+{"version":3,"sources":["ProductSlider.module.scss","../../../../styles/_variables.scss","ProductSlider.module.css"],"names":[],"mappings":"AAEA;EACI,aAAA;EACA,sBAAA;EACA,SCWQ;ACZZ;;AFIA;EACI,aAAA;EACA,sBAAA;EACA,WCIS;EDHT,mBCDY;EDEZ,oBCFY;ACChB;AFGI;EAPJ;IAQQ,kBCNS;IDOT,mBCPS;ECOf;AACF;AFCI;EAXJ;IAYQ,kBCXQ;IDYR,mBCZQ;ECcd;AACF","file":"ProductSlider.module.css"}

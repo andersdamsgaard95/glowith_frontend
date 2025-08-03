@@ -25,7 +25,7 @@ export default function Header (props:headerProps) {
     const [lastScrollY, setLastScrollY] = useState<number>(0);
     const [headerIsAtTop, setHeaderIsAtTop] = useState<boolean>(true);
     const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState<boolean>(false);
-    const [burgerMenuExists, setBurgerMenuExists] = useState<boolean>(false);
+    //const [burgerMenuExists, setBurgerMenuExists] = useState<boolean>(false);
     const [isClient, setIsClient] = useState<boolean>(false);
 
     //Is Hydrated
@@ -78,7 +78,7 @@ export default function Header (props:headerProps) {
     // Close submenu or burgermenu on navigation
     useEffect(() => {
         if (hoveredMenuItem !== null) {
-           setHoveredMenuItem(null); 
+           setHoveredMenuItem(null);
         }
         if (burgerMenuIsOpen) {
             closeBurgerMenu();
@@ -86,10 +86,11 @@ export default function Header (props:headerProps) {
     }, [pathname])
 
     function closeBurgerMenu() {
-        setBurgerMenuIsOpen(false);
+        /*setBurgerMenuIsOpen(false);
         setTimeout(() => {
             setBurgerMenuExists(false);
-        }, 600);
+        }, 600);*/
+        setBurgerMenuIsOpen(false);
     }
 
     const { width } = useWindowSize();
@@ -118,22 +119,23 @@ export default function Header (props:headerProps) {
                         </Link>
 
                         {isClient && isTabletOrSmaller ? (
-                            <div 
+                            <button 
                                 onClick={() => {
-                                    setBurgerMenuExists(true);
+                                    /*setBurgerMenuExists(true);
                                     setTimeout(() => {
                                         setBurgerMenuIsOpen(true) 
-                                    }, 0);
+                                    }, 0);*/
+                                    setBurgerMenuIsOpen(true);
                                 }}
                                 className={styles.burgerIconContainer}
                             >
                                 <Image
                                     src={'/icons/burger_menu.svg'}
-                                    alt='Hamburger icon'
+                                    alt='Open menu'
                                     fill
                                     className={styles.burgerIcon}
                                 />
-                            </div>
+                            </button>
                         ) : (
                             <nav 
                                 className={styles.menu}
@@ -205,9 +207,12 @@ export default function Header (props:headerProps) {
                 </div> 
 
                 {/* Burger Menu */}
-                {burgerMenuExists && (
+                {isClient && isTabletOrSmaller && (
                     <>
-                        <div className={`${styles.burgerMenu} ${burgerMenuIsOpen ? styles.showBurger : ''}`}>
+                        <div 
+                            className={`${styles.burgerMenu} ${burgerMenuIsOpen ? styles.showBurger : ''}`}
+                            aria-hidden={!burgerMenuIsOpen}
+                        >
                             <BurgerMenu
                                 showBurger={burgerMenuIsOpen}
                                 closeBurger={closeBurgerMenu}
@@ -217,7 +222,7 @@ export default function Header (props:headerProps) {
                     </>
                 )}
 
-                {burgerMenuIsOpen && (
+                {isClient && isTabletOrSmaller && burgerMenuIsOpen && (
                     <div 
                         className={styles.burgerBackLayer}
                         onClick={closeBurgerMenu}

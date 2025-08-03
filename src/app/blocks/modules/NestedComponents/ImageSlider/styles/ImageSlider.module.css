@@ -3,6 +3,8 @@
   aspect-ratio: 1/1;
   overflow-x: hidden;
   position: relative;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .imageWrapper .arrowNext {
   position: absolute;
@@ -20,13 +22,20 @@
 .imageSliderTrack {
   display: flex;
   transition: all 0.5s;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.imageSliderTrack::-webkit-scrollbar { /* Chrome, Safari and Opera */
+  display: none;
 }
 
 .imageContainer {
   aspect-ratio: 1/1;
   width: 100%;
   flex: 0 0 100%;
-  overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .arrow {

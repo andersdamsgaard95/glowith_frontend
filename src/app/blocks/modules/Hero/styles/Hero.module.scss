@@ -6,6 +6,10 @@
     display: flex;
     overflow: hidden;
 
+    &.constrainVh {
+        height: 80vh;
+    }
+
     &.textAlignRight {
         justify-content: end;
     }

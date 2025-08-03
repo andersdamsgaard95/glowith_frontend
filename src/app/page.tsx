@@ -20,6 +20,8 @@ export default async function HomePage() {
 
     const blocks = homepageData?.blocks || [];
 
+    //console.log(blocks);
+
     if (blocks.length === 0) {
         return <PageNotFound/>
     }

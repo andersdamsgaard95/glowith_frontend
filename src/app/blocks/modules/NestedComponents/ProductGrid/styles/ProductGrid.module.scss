@@ -5,13 +5,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: $gap-large;
-    row-gap: $gap-xlarge;
+    row-gap: $gap-large;
 
     @media screen and (max-width: $media-large) {
         grid-template-columns: 1fr 1fr;
     }
 
-    @media screen and (max-width: $media-small) {
+    @media screen and (max-width: $media-medium) {
+        column-gap: $gap-medium;
+        row-gap: $gap-large;
+    }
+
+    @media screen and (max-width: $media-xsmall) {
         grid-template-columns: 1fr;
     }
 }

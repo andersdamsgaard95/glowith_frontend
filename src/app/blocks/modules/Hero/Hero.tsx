@@ -1,5 +1,3 @@
-'use client';
-
 import styles from '../Hero/styles/Hero.module.scss';
 import BlockWrapper from '../../blockWrapper/BlockWrapper';
 import ImageComponent from '../NestedComponents/Image/ImageComponent';
@@ -19,6 +17,7 @@ interface HeroProps {
     textColorOnImage?: "Dark" | "Light";
     imageZoomOn?: boolean;
     Text_Contrast_Background_Fade?: boolean;
+    Block_height?: 'Default 100% view height' | 'Smaller 80% view height';
 }
 
 const Hero: React.FC<HeroProps> = (props) => {
@@ -37,10 +36,11 @@ const Hero: React.FC<HeroProps> = (props) => {
                             color: props.textColorOnImage === "Light" ? "#000000" : "#ffffff"
                         } : undefined} 
                     className={`
-                        ${styles.container} 
+                        ${styles.container}
+                        ${props.Block_height === 'Smaller 80% view height' ? styles.constrainVh : ''} 
                         ${textPositionClass} 
-                        ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : undefined} 
-                        ${!props.imageFullBackground ? styles.splitBackground : undefined} 
+                        ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : ''} 
+                        ${!props.imageFullBackground ? styles.splitBackground : ''} 
                         ${props.imageFullBackground && props.Text_Contrast_Background_Fade
                             ? props.textPosition?.includes('Right')
                                 ? styles.backgroundLayerToLeft

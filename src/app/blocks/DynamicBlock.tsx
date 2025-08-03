@@ -7,6 +7,7 @@ import DividerLine from "./modules/DividerLine/DividerLine";
 import DividerColorFade from "./modules/DividerColorFade/DividerColorFade";
 import ImageBackgroundWithText from "./modules/ImageBackgroundWithText/ImageBackgroundWithText";
 import ImageAlone from "./modules/ImageAlone/ImageAlone";
+import ProductSlider from "./modules/ProductSlider/ProductSlider";
 
 interface DynamicBlockProps {
     blockName: string;
@@ -44,6 +45,9 @@ export default function DynamicBlock ({blockName, blockProps}: DynamicBlockProps
             break;
         case 'image-alone.image-alone':
             renderedBlock = <ImageAlone {...blockProps}/>
+            break;
+        case 'slider.product-slider':
+            renderedBlock = <ProductSlider {...blockProps}/>
             break;
     }
 

@@ -23,7 +23,8 @@
   aspect-ratio: 1/1;
   padding: 15px;
   border-radius: 50%;
-  background-color: #e68f9e;
+  background-color: transparent;
+  border: none;
 }
 .burgerLevel1 .exitBurger .closeIcon {
   -o-object-fit: contain;

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+@media screen and (max-width: 1000px) {
+  .text {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  .text {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}/*# sourceMappingURL=ProductSlider.module.css.map */

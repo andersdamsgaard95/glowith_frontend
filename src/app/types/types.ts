@@ -22,6 +22,8 @@ export interface Product {
     metaDescription?: string;
     metaTitle?: string;
     Display_Background_Color?: {color: string};
+    New_arrival?: boolean;
+    Featured_product?: boolean;
 }
 
 export interface BlockSettings {

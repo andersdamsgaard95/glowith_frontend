@@ -34,28 +34,34 @@ export default function ProductSpot(props: ProductSpotProps) {
     return (
         <section className={styles.wrapper}>
             <Link className={styles.container} href={props.product.pdpSlug ? `/products/${props.product.pdpSlug ?? ''}` : ''}>
-                {props.product.imageCoverOrContain && props.product.imageCoverOrContain.length > 0 && (
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={shownImageIndex} // triggers animation when image changes
-                            className={styles.imageContainer}
-                            onMouseEnter={() => setImageIsHovered(true)}
-                            onMouseLeave={() => setImageIsHovered(false)}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.15, ease: 'linear' }}
-                            style={{
-                                backgroundColor: getThemeColor(props.product.Display_Background_Color?.color)
-                            }}
-                        >
-                            <ImageComponent
-                                image={props.product.imageCoverOrContain[shownImageIndex].image}
-                                isProductImage={props.product.imageCoverOrContain[shownImageIndex].isProductImage}
-                            />
-                        </motion.div>
-                  </AnimatePresence>
-                )}
+                <div
+                    className={styles.imageWrapper}
+                    style={{
+                        backgroundColor: getThemeColor(props.product.Display_Background_Color?.color),
+                    }}
+                    onMouseEnter={() => setImageIsHovered(true)}
+                    onMouseLeave={() => setImageIsHovered(false)}
+                >
+                    <AnimatePresence mode='sync'>
+                        {props.product.imageCoverOrContain && props.product.imageCoverOrContain.length > 0 && (
+                                <motion.div
+                                    key={shownImageIndex} // triggers animation when image changes
+                                    className={styles.imageContainer}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.3, ease: 'linear' }}
+                                >
+                                    <ImageComponent
+                                        image={props.product.imageCoverOrContain[shownImageIndex].image}
+                                        isProductImage={props.product.imageCoverOrContain[shownImageIndex].isProductImage}
+                                    />
+                                </motion.div> 
+                            
+                        )}    
+                    </AnimatePresence>
+                </div>
+                
                 {props.product.name && (
                     <div className={styles.productText}>
                         {props.product.name && (

@@ -197,6 +197,8 @@ transition: all 0.3s;
     position: relative;
     width: 50px;
     aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
 
     .burgerIcon {
         object-fit: contain;

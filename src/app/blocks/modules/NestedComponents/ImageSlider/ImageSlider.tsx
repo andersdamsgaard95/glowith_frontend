@@ -1,8 +1,8 @@
 'use client';
 
 import styles from './styles/ImageSlider.module.scss';
-import { ImageType, imageCoverOrContainObject } from "@/app/types/types";
-import { useState } from "react";
+import { imageCoverOrContainObject } from "@/app/types/types";
+import { useEffect, useRef, useState } from "react";
 import ImageComponent from '../Image/ImageComponent';
 import Image from 'next/image';
 
@@ -11,47 +11,81 @@ interface ImageSliderProps {
 }
 
 export default function ImageSlider(props: ImageSliderProps) {
-    const [currentIndex, setCurrentIndex] = useState<number>(0);
-    //const [touchStartX, setTouchStartX] = useState(0);
+    const [slideWidth, setSlideWidth] = useState<number>(0);
+    const [isAtStart, setIsAtStart] = useState(true);
+    const [isAtEnd, setIsAtEnd] = useState(false);
 
     const { images } = props;
 
+    const sliderRef = useRef<HTMLDivElement>(null);
+
+    // Measure slide width after render
+    useEffect(() => {
+        if (sliderRef.current?.firstElementChild) {
+            setSlideWidth(sliderRef.current.firstElementChild.clientWidth);
+        }
+
+        // Optional: update on window resize
+        /*const handleResize = () => {
+            if (sliderRef.current?.firstElementChild) {
+                setSlideWidth(sliderRef.current.firstElementChild.clientWidth);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);*/
+
+    }, [images]);
+
     const nextSlide = () => {
-        images && setCurrentIndex((prev) => (prev + 1));
+        if (!sliderRef.current) return;
+        sliderRef.current.scrollBy({
+            left: slideWidth,
+            behavior: 'smooth',
+        });
     };
     
-      const prevSlide = () => {
-        images && setCurrentIndex((prev) => (prev - 1));
+    const prevSlide = () => {
+        if (!sliderRef.current) return;
+        sliderRef.current.scrollBy({
+            left: -slideWidth,
+            behavior: 'smooth',
+        });
+    };   
+    
+    const handleScroll = () => {
+        if (!sliderRef.current) return;
+    
+        const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+    
+        setIsAtStart(scrollLeft === 0);
+        setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 1); // subtract 1 to allow for rounding errors
     };
 
-    /*const handleTouchStart = (e: React.TouchEvent) => {
-        setTouchStartX(e.changedTouches[0].clientX);
-    };*/
-
-    /*const handleTouchEnd = (e: React.TouchEvent) => {
-
-        const distance = touchStartX - e.changedTouches[0].clientX;
-
-        if (distance > 50) {
-            nextSlide(); // Swiped left
-        } else if (distance < -50) {
-            prevSlide(); // Swiped right
-        }
-    };*/
+    useEffect(() => {
+        const slider = sliderRef.current;
+        if (!slider) return;
+    
+        handleScroll(); // Initial check
+        slider.addEventListener('scroll', handleScroll);
+    
+        return () => slider.removeEventListener('scroll', handleScroll);
+    }, []);
+    
     
     return (
         images && (
             <div className={styles.imageWrapper}>
                 <div 
                     className={styles.imageSliderTrack}
-                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    //onTouchStart={handleTouchStart}
-                    //onTouchEnd={handleTouchEnd}
+                    //style={{ transform: `translateX(-${currentIndex * slideWidth}px)` }}
+                    ref={sliderRef}
                 >
                     {images?.map((image, index) => (
                         <div 
                             className={styles.imageContainer}
                             key={index}
+                            
                         >
                             <ImageComponent image={image.image} isProductImage={image.isProductImage} />
                         </div>
@@ -64,27 +98,27 @@ export default function ImageSlider(props: ImageSliderProps) {
                         <button 
                             className={`${styles.arrowNext} ${styles.arrow}`} 
                             onClick={nextSlide}
-                            disabled={currentIndex === images.length - 1}
+                            disabled={isAtEnd}
                         >
                             <Image
                                 src={'/icons/arrow_right.svg'}
                                 height={50}
                                 width={50}
-                                alt='Arrow to right'
-                                className={`${currentIndex === images.length - 1 ? styles.hideArrow : ''} ${styles.arrowIcon}`}
+                                alt='Slide to next image'
+                                className={`${isAtEnd ? styles.hideArrow : ''} ${styles.arrowIcon}`}
                             />
                         </button>
                         <button 
                             className={`${styles.arrowPrev} ${styles.arrow}`} 
                             onClick={prevSlide}
-                            disabled={currentIndex === 0}
+                            disabled={isAtStart}
                         >
                             <Image
                                 src={'/icons/arrow_left.svg'}
                                 height={50}
                                 width={50}
-                                alt='Arrow to right'
-                                className={`${currentIndex === 0 ? styles.hideArrow : ''} ${styles.arrowIcon}`}
+                                alt='Slide to previous image'
+                                className={`${isAtStart ? styles.hideArrow : ''} ${styles.arrowIcon}`}
                             />
                         </button>
                     </>

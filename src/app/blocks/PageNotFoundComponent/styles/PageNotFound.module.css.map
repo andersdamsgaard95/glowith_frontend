@@ -1,1 +1,1 @@
-{"version":3,"sources":["PageNotFound.module.scss","../../../styles/_variables.scss","PageNotFound.module.css"],"names":[],"mappings":"AAEA;EACI,YAAA;EACA,WAAA;EACA,kBAAA;EACA,uBAAA;EAAA,kBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,SCKQ;ACNZ","file":"PageNotFound.module.css"}
+{"version":3,"sources":["PageNotFound.module.scss","../../../styles/_variables.scss","PageNotFound.module.css"],"names":[],"mappings":"AAEA;EACI,YAAA;EACA,WAAA;EACA,kBAAA;EACA,uBAAA;EAAA,kBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,SCMQ;ACPZ","file":"PageNotFound.module.css"}

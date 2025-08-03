@@ -109,15 +109,14 @@ export default function MultiBox (props: MultiBoxProps) {
                             </div>
                         )} 
     
-                        <AnimatePresence mode="wait">
+                        <AnimatePresence mode="sync">
                             {props.imageCoverOrContain && props.imageCoverOrContain.length > 0 && (
                                 <motion.div
                                     key={shownImageIndex} // this triggers re-animation on index change
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    //transition={{ duration: 0.12, ease: 'easeInOut' }}
-                                    transition={{ duration: 0.15, ease: 'linear' }}
+                                    transition={{ duration: 0.3, ease: 'linear' }}
                                     className={styles.imageContainer}
                                 >
                                     <ImageComponent
@@ -185,7 +184,7 @@ export default function MultiBox (props: MultiBoxProps) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3, ease: 'linear', delay: 0.2 }}
+                                transition={{ duration: 0.2, ease: 'linear', delay: 0.2 }}
                                 className={styles.imageContainer}
                             >
                                 <ImageComponent

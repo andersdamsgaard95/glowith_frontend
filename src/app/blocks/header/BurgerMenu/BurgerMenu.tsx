@@ -27,17 +27,17 @@ export default function BurgerMenu(props: BurgerMenuProps) {
             
             {/* Level 1 */}
             <div className={styles.burgerLevel1}>
-                <div 
+                <button 
                     className={styles.exitBurger}
                     onClick={props.closeBurger}
                 >
                     <Image
                         src={'/icons/close.svg'}
                         fill
-                        alt='Close mobile menu'
+                        alt='Close menu'
                         className={styles.closeIcon}
                     />
-                </div>
+                </button>
                 {menuItems.map((menuItem: menuItem, index: number) => (
                     <div
                         className={styles.menuItemWrapper}

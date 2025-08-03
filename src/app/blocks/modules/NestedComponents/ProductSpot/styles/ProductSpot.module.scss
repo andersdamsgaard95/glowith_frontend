@@ -1,15 +1,21 @@
 @use '../../../../../styles/variables' as *;
 
+.wrapper {
+    height: 100%;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     gap: $gap-medium;
+    justify-content: space-between;
     text-decoration: none;
     color: $themeBlack;
+    height: 100%;
 
     &:hover {
 
-        .imageContainer {
+        .imageWrapper {
             transform: translateY(-0.5rem);
             box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);  
         }
@@ -17,19 +23,32 @@
     }
 }
 
-.imageContainer {
+.imageWrapper {
+    transition: all 0.3s;
     width: 100%;
     aspect-ratio: 1/1;
+    position: relative;
+}
+
+.imageContainer {
+    //width: 100%;
+    //aspect-ratio: 1/1;
     transition: all 0.3s;
     overflow: hidden;
-    background-color: blue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: opacity;
 }
 
 .productText {
-    //padding: 0 $gap-small $gap-medium $gap-small;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .name {
@@ -44,7 +63,8 @@
     transition: all 0.2s;
     margin-top: 2rem;
     font-size: $button-font-size;
-    //transition-delay: 0.2s;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.7rem;
 
     &:hover {
         transform: translateY(-0.5rem);

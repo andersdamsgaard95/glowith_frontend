@@ -1,4 +1,5 @@
 // Screen Sizes
+$media-xsmall: 400px;
 $media-small: 500px;
 $media-medium: 700px;
 $media-large: 1000px;
@@ -88,5 +89,11 @@ $headerHeight: 100px;
     }
 }
 
+//Hover effekt
+@mixin hover-effekt {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
+}
+
 // Border Radius
-$border-radius: 2rem;
+$border-radius: 0.4rem;

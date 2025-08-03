@@ -3,14 +3,21 @@
   grid-template-columns: 1fr 1fr 1fr;
   -moz-column-gap: 5rem;
        column-gap: 5rem;
-  row-gap: 10rem;
+  row-gap: 5rem;
 }
 @media screen and (max-width: 1000px) {
   .productGrid {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
+  .productGrid {
+    -moz-column-gap: 2.5rem;
+         column-gap: 2.5rem;
+    row-gap: 5rem;
+  }
+}
+@media screen and (max-width: 400px) {
   .productGrid {
     grid-template-columns: 1fr;
   }

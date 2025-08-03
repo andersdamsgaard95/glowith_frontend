@@ -1,6 +1,7 @@
 @import url("https://use.typekit.net/onl5exr.css");
 :root {
   --text-color: #000000;
+  --gap-width: 5rem;
 }
 
 * {

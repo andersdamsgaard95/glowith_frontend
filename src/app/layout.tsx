@@ -4,7 +4,14 @@ import Header from "./blocks/header/Header";
 import { fetchMenuData } from "@/lib/api";
 import Footer from "./blocks/footer/Footer";
 
+export const metadata = {
+  icons: {
+    icon: '/favicon.png',
+  },
+};
+
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+
   const menuItems = await fetchMenuData();
 
   return (
