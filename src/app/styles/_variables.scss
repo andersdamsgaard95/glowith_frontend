@@ -53,10 +53,6 @@ $headerHeight: 100px;
     @media screen and (max-width: $media-medium) {
         font-size: 4rem;
     }
-
-    @media screen and (max-width: $media-small) {
-        font-size: 3rem;
-    }
 }
 
 @mixin h2-styles {
@@ -74,10 +70,6 @@ $headerHeight: 100px;
     @media screen and (max-width: $media-medium) {
         font-size: 3rem;
     }
-
-    @media screen and (max-width: $media-small) {
-        font-size: 2rem;
-    }
 }
 
 @mixin h3-styles {
@@ -94,10 +86,6 @@ $headerHeight: 100px;
 
     @media screen and (max-width: $media-medium) {
         font-size: 2rem;
-    }
-
-    @media screen and (max-width: $media-small) {
-        font-size: 1.8rem;
     }
 }
 
