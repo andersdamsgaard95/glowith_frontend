@@ -53,6 +53,10 @@
 
 .name {
     font-size: 2rem;
+
+    @media screen and (max-width: $media-small) {
+        font-size: 1.8rem;
+    }
 }
 
 .button {
@@ -61,10 +65,10 @@
     border: 1px solid $themeBlack;
     padding: 1rem 0;
     transition: all 0.2s;
-    margin-top: 2rem;
-    font-size: $button-font-size;
+    margin-top: 1.5rem;
     letter-spacing: 0.1rem;
     margin-bottom: 0.7rem;
+    @include button-styles;
 
     &:hover {
         transform: translateY(-0.5rem);

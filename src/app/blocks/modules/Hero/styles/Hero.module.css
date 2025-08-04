@@ -87,7 +87,6 @@
   flex: 1;
   overflow: hidden;
   position: relative;
-  border-radius: 0.4rem;
 }
 @media screen and (max-width: 700px) {
   .imageWrapperHalfScreen {

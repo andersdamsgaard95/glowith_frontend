@@ -85,35 +85,39 @@ export default function Slider (props: SliderProps) {
             </div>
 
             {/* Arrow buttons */}
-            <button
-                aria-label='Slide to previous slide' 
-                className={styles.arrowBack}
-                onClick={prevSlide}
-                disabled={prevIsDisabled}
-            >
-                <Image
-                    src={'/icons/arrow_left.svg'}
-                    alt='Slide to next slide'
-                    width={50}
-                    height={50}
-                    className={styles.arrow}
-                />
-            </button>
+            {width >= 700 && (
+                <>
+                    <button
+                        aria-label='Slide to previous slide' 
+                        className={styles.arrowBack}
+                        onClick={prevSlide}
+                        disabled={prevIsDisabled}
+                    >
+                        <Image
+                            src={'/icons/arrow_left.svg'}
+                            alt='Slide to next slide'
+                            width={50}
+                            height={50}
+                            className={styles.arrow}
+                        />
+                    </button>
 
-            <button 
-                aria-label='Slide to next slide' 
-                className={styles.arrowNext}
-                onClick={nextSlide}
-                disabled={nextIsDisabled}
-            >
-                <Image
-                    src={'/icons/arrow_right.svg'}
-                    alt='Slide to next slide'
-                    width={50}
-                    height={50}
-                    className={styles.arrow}
-                />
-            </button>
+                    <button 
+                        aria-label='Slide to next slide' 
+                        className={styles.arrowNext}
+                        onClick={nextSlide}
+                        disabled={nextIsDisabled}
+                    >
+                        <Image
+                            src={'/icons/arrow_right.svg'}
+                            alt='Slide to next slide'
+                            width={50}
+                            height={50}
+                            className={styles.arrow}
+                        />
+                    </button>
+                </>
+            )}
 
         </div>
     )
