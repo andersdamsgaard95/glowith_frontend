@@ -144,7 +144,7 @@ export async function fetchProducts() {
 
 // Fetch single Product
 export async function fetchSingleProduct(slug: string) {
-    const res = await fetch(`${API_URL}/api/products?filters[pdpSlug][$eq]=${slug}&populate[imageCoverOrContain][populate]=image`, {
+    const res = await fetch(`${API_URL}/api/products?filters[pdpSlug][$eq]=${slug}&populate[imageCoverOrContain][populate]=image&populate=Display_Background_Color`, {
         headers: {
             Authorization: `Bearer ${API_TOKEN}`,
         },

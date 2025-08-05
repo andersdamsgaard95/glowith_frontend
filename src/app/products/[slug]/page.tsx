@@ -7,6 +7,8 @@ import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/Image
 import type { Metadata } from "next";
 import PageNotFound from '@/app/blocks/PageNotFoundComponent/PageNotFound';
 import Button from '@/app/blocks/modules/NestedComponents/Button/Button';
+import { div } from 'framer-motion/client';
+import { getThemeColor } from '@/app/helperFunctions/helperFunctions';
 
 type Props = {
     params: Promise<{ slug: string }>
@@ -68,7 +70,8 @@ export default async function dynamicPdpPage ({ params }: Props) {
                 {product.imageCoverOrContain && product.imageCoverOrContain.length > 0 && (
                     <ImageSlider
                         images={product.imageCoverOrContain}
-                    />
+                        productBackgroundColor={getThemeColor(product.Display_Background_Color?.color)}
+                    />  
                 )}
                 {(product.name || product.description) && (
                     <div className={styles.text}>

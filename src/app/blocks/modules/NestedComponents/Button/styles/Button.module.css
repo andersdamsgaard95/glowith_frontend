@@ -10,7 +10,7 @@
   letter-spacing: 0.1rem;
 }
 .button.fullWidth {
-  width: 100%;
+  min-width: 30rem;
   text-align: center;
 }
 .button.themeDarkPink {

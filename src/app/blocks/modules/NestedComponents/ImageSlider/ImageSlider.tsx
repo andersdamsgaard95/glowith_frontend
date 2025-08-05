@@ -8,6 +8,7 @@ import Image from 'next/image';
 
 interface ImageSliderProps {
     images: imageCoverOrContainObject[];
+    productBackgroundColor?: string;
 }
 
 export default function ImageSlider(props: ImageSliderProps) {
@@ -71,21 +72,21 @@ export default function ImageSlider(props: ImageSliderProps) {
     
         return () => slider.removeEventListener('scroll', handleScroll);
     }, []);
-    
-    
+
     return (
         images && (
             <div className={styles.imageWrapper}>
                 <div 
                     className={styles.imageSliderTrack}
-                    //style={{ transform: `translateX(-${currentIndex * slideWidth}px)` }}
                     ref={sliderRef}
+                    style={{
+                        backgroundColor: props.productBackgroundColor
+                    }}
                 >
                     {images?.map((image, index) => (
                         <div 
                             className={styles.imageContainer}
                             key={index}
-                            
                         >
                             <ImageComponent image={image.image} isProductImage={image.isProductImage} />
                         </div>
