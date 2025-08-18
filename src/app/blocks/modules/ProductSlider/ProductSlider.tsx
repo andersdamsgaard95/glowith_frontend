@@ -40,7 +40,7 @@ const ProductSlider = async (props: ProductSliderProps) => {
                     {/* Text */}
                     {(props.Heading || props.Description) && (
                         <div className={styles.text}>
-                            {props.Heading && <h1>{props.Heading}</h1>}
+                            {props.Heading && <h2>{props.Heading}</h2>}
                             {props.Description && <p>{props.Description}</p>}
                         </div>
                     )} 
