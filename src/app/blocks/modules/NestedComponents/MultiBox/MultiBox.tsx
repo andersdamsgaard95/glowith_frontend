@@ -7,7 +7,6 @@ import ImageComponent from '../Image/ImageComponent';
 import { useEffect, useState } from 'react';
 import { getThemeStyles } from '@/app/helperFunctions/helperFunctions';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import { imageCoverOrContainObject } from '@/app/types/types';
 
 export interface MultiBoxProps {
@@ -17,7 +16,7 @@ export interface MultiBoxProps {
     id?: number;
     text?: string;
     link?: string;
-    imageOptions?: string;
+    imageOptions?: 'Shift automatically' | 'Shift to next on hover';
     openLinkInNewTab?: boolean;
     imageCoverOrContain?: imageCoverOrContainObject[];
     Button_Text?: string;
@@ -72,144 +71,108 @@ export default function MultiBox (props: MultiBoxProps) {
         } 
     }
 
-    return (
-        props.link ? (
-            <Link className={styles.link} href={props.link} target={props.openLinkInNewTab ? '_blank' : '_self'}>
-                <div className={`${styles.container} ${styles.boxHover}`}>
-                    <div 
-                        className={`${styles.box} ${props.imageCoverOrContain ? styles.hasImage : ''}`}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        style={{
-                            ...(props.backgroundColor && !props.imageCoverOrContain ? getThemeStyles(props.backgroundColor.color) : {}),
-                            ...(props.backgroundColor ? { backgroundColor: getThemeColor(props.backgroundColor.color) } : {})
-                        }}
-                    >
-                        {!props.imageCoverOrContain && props.text && (
-                            <div className={`${styles.textContentInsideBox} ${props.backgroundColor?.color !== 'None' ? styles.hasPadding : ''}`}>
-                                <ReactMarkdown>{props.text}</ReactMarkdown>
-                                {props.Button_Text && (
-                                    <p className={styles.button}>
-                                        {props.Button_Text}
-                                    </p>
-                                )}
-                            </div>  
+    const boxContent = 
+        <div className={`${styles.container}`}>
+            <div 
+                className={`${styles.box} ${props.imageCoverOrContain ? styles.hasImage : ''}`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                    ...(props.backgroundColor && !props.imageCoverOrContain ? getThemeStyles(props.backgroundColor.color) : {}),
+                    ...(props.backgroundColor ? { backgroundColor: getThemeColor(props.backgroundColor.color) } : {})
+                }}
+            >
+                {!props.imageCoverOrContain && props.text && (
+                    <div className={`${styles.textContentInsideBox} ${props.backgroundColor?.color !== 'None' ? styles.hasPadding : ''}`}>
+                        <ReactMarkdown>{props.text}</ReactMarkdown>
+                        {props.Button_Text && (
+                            <p className={styles.button}>
+                                {props.Button_Text}
+                            </p>
                         )}
-    
-                        {props.imageCoverOrContain && props.text && textPosition === 'insideBox' && (
-                            <div className={styles.backgroundFade}>
-                                <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
-                                    <ReactMarkdown>{props.text}</ReactMarkdown>
-                                    {props.Button_Text && (
-                                        <p className={styles.button}>
-                                            {props.Button_Text}
-                                        </p>
-                                    )}
-                                </div>
-                            </div>
-                        )} 
-    
-                        <AnimatePresence mode="sync">
-                            {props.imageCoverOrContain && props.imageCoverOrContain.length > 0 && (
-                                <motion.div
-                                    key={shownImageIndex} // this triggers re-animation on index change
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.3, ease: 'linear' }}
-                                    className={styles.imageContainer}
-                                >
-                                    <ImageComponent
-                                        image={props.imageCoverOrContain[shownImageIndex].image}
-                                        isProductImage={props.imageCoverOrContain[shownImageIndex].isProductImage}
-                                        className={styles.image}
-                                    />
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                    </div>  
+                )}
 
-                    </div>
-    
-                    {props.imageCoverOrContain && props.text && textPosition === 'underneathBox' && (
-                        <div className={styles.textContentUnderneathBox}>
-                            <ReactMarkdown>{props.text}</ReactMarkdown>
-                            {props.Button_Text && (
-                                <div className={styles.button}>
-                                    {props.Button_Text}
-                                </div>
-                            )}
-                        </div> 
-                    )}
-                </div>
-            </Link>
-        ) : (
-            <div className={`${styles.container}`}>
-                <div 
-                    className={`${styles.box} ${props.imageCoverOrContain ? styles.hasImage : ''}`}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    style={{
-                        ...(props.backgroundColor && !props.imageCoverOrContain ? getThemeStyles(props.backgroundColor.color) : {}),
-                        ...(props.backgroundColor ? { backgroundColor: getThemeColor(props.backgroundColor.color) } : {})
-                    }}
-                >
-                    {!props.imageCoverOrContain && props.text && (
-                        <div className={`${styles.textContentInsideBox} ${props.backgroundColor?.color !== 'None' ? styles.hasPadding : ''}`}>
+                {props.imageCoverOrContain && props.text && textPosition === 'insideBox' && (
+                    <div className={styles.backgroundFade}>
+                        <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
                             <ReactMarkdown>{props.text}</ReactMarkdown>
                             {props.Button_Text && (
                                 <p className={styles.button}>
                                     {props.Button_Text}
                                 </p>
                             )}
-                        </div>  
-                    )}
-
-                    {props.imageCoverOrContain && props.text && textPosition === 'insideBox' && (
-                        <div className={styles.backgroundFade}>
-                            <div className={`${styles.textWithImage} ${boxIsHovered ? styles.textFadeIn : ''}`}>
-                                <ReactMarkdown>{props.text}</ReactMarkdown>
-                                {props.Button_Text && (
-                                    <p className={styles.button}>
-                                        {props.Button_Text}
-                                    </p>
-                                )}
-                            </div>
                         </div>
-                    )} 
+                    </div>
+                )} 
 
-                    <AnimatePresence mode="wait">
-                        {props.imageCoverOrContain && props.imageCoverOrContain.length > 0 && (
-                            <motion.div
-                                key={shownImageIndex} // this triggers re-animation on index change
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.2, ease: 'linear', delay: 0.2 }}
-                                className={styles.imageContainer}
-                            >
-                                <ImageComponent
-                                    image={props.imageCoverOrContain[shownImageIndex].image}
-                                    isProductImage={props.imageCoverOrContain[shownImageIndex].isProductImage}
-                                    className={styles.image}
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-
-                </div>
-
-                {props.imageCoverOrContain && props.text && textPosition === 'underneathBox' && (
-                    <div className={styles.textContentUnderneathBox}>
-                        <ReactMarkdown>{props.text}</ReactMarkdown>
-                        {props.Button_Text && (
-                            <div className={styles.button}>
-                                {props.Button_Text}
-                            </div>
-                        )}
-                    </div> 
+                {props.imageCoverOrContain && props.imageCoverOrContain.length > 1 && props.imageOptions === 'Shift automatically' ? (
+                    props.imageCoverOrContain.map((image, index) => (
+                        <div
+                            key={index}
+                            className={`${styles.imageContainer} ${shownImageIndex === index ? styles.visible : styles.invisible}`}
+                        >
+                            <ImageComponent
+                                image={image.image}
+                                isProductImage={image.isProductImage}
+                                className={styles.image}
+                            />
+                        </div>
+                    ))
+                ) : props.imageCoverOrContain && props.imageCoverOrContain.length > 1 && props.imageOptions === 'Shift to next on hover' ? (
+                    <>
+                        <div
+                            className={`${styles.imageContainer} ${shownImageIndex === 1 ? styles.invisible : ''}`}
+                        >
+                            <ImageComponent
+                                image={props.imageCoverOrContain[0].image}
+                                isProductImage={props.imageCoverOrContain[0].isProductImage}
+                                className={styles.image}
+                            />
+                        </div>
+                        <div
+                            className={`${styles.imageContainer} ${shownImageIndex === 0 ? styles.invisible : ''}`}
+                        >
+                            <ImageComponent
+                                image={props.imageCoverOrContain[1].image}
+                                isProductImage={props.imageCoverOrContain[1].isProductImage}
+                                className={styles.image}
+                            />
+                        </div>
+                    </>
+                    
+                ) : props.imageCoverOrContain && props.imageCoverOrContain.length === 1 && (
+                    <div
+                        className={styles.imageContainer}
+                    >
+                        <ImageComponent
+                            image={props.imageCoverOrContain[0].image}
+                            isProductImage={props.imageCoverOrContain?.[0].isProductImage}
+                            className={styles.image}
+                        />
+                    </div>
                 )}
             </div>
+
+            {props.imageCoverOrContain && props.text && textPosition === 'underneathBox' && (
+                <div className={styles.textContentUnderneathBox}>
+                    <ReactMarkdown>{props.text}</ReactMarkdown>
+                    {props.Button_Text && (
+                        <div className={styles.button}>
+                            {props.Button_Text}
+                        </div>
+                    )}
+                </div> 
+            )}
+        </div>
+
+    return (
+        props.link ? (
+            <Link className={styles.link} href={props.link} target={props.openLinkInNewTab ? '_blank' : '_self'}>
+                {boxContent}
+            </Link>
+        ) : (
+            boxContent
         )
     );
-    
 }
