@@ -6,7 +6,7 @@ import styles from './styles/header.module.scss';
 //import { fetchMenuData } from '@/lib/api';
 import BlockWrapper from '../blockWrapper/BlockWrapper';
 import ContentWrapper from '../contentWrapper/ContentWrapper';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { menuItem } from '@/app/types/types';
 import ImageComponent from '../modules/NestedComponents/Image/ImageComponent';
 import { useWindowSize } from 'react-use';
@@ -17,12 +17,12 @@ export interface headerProps {
     menuItems: menuItem[];
 }
 
-export default function Header (props:headerProps) {
+export default function Header(props: headerProps) {
     //const menuItems = await fetchMenuData();
-    const {menuItems} = props;
+    const { menuItems } = props;
     const [hoveredMenuItem, setHoveredMenuItem] = useState<number | null>(null);
     const [showHeader, setShowHeader] = useState<boolean>(true);
-    const [lastScrollY, setLastScrollY] = useState<number>(0);
+    //const [lastScrollY, setLastScrollY] = useState<number>(0);
     const [headerIsAtTop, setHeaderIsAtTop] = useState<boolean>(true);
     const [burgerMenuIsOpen, setBurgerMenuIsOpen] = useState<boolean>(false);
     //const [burgerMenuExists, setBurgerMenuExists] = useState<boolean>(false);
@@ -36,49 +36,58 @@ export default function Header (props:headerProps) {
     // Submenu hide on scroll
     useEffect(() => {
         function handleScroll() {
-          if (hoveredMenuItem !== null) {
-            setHoveredMenuItem(null);
-          }
+            if (hoveredMenuItem !== null) {
+                setHoveredMenuItem(null);
+            }
         };
-      
+
         document.addEventListener('scroll', handleScroll);
 
         return () => {
-          document.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('scroll', handleScroll);
         };
-    }, [hoveredMenuItem]);
+    }, []);
+
+    const lastScrollYRef = useRef(0);
 
     // Smart sticky header
     useEffect(() => {
-        const handleScroll = () => {
+        let ticking = false;
+
+        function handleScroll() {
             const currentScrollY = window.scrollY;
 
-            setHeaderIsAtTop(currentScrollY <= 100);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    setHeaderIsAtTop(currentScrollY <= 100);
 
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling down
-                setShowHeader(false);
-            } else {
-                // Scrolling up
-                setShowHeader(true);
+                    if (currentScrollY > lastScrollYRef.current && currentScrollY > 100) {
+                        // Scrolling down
+                        setShowHeader(false);
+                    } else {
+                        // Scrolling up
+                        setShowHeader(true);
+                    }
+
+                    lastScrollYRef.current = currentScrollY;
+                    ticking = false;
+                });
+
+                ticking = true;
             }
-
-            setLastScrollY(currentScrollY);
         };
 
         window.addEventListener('scroll', handleScroll);
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollY]);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const pathname = usePathname();
 
     // Close submenu or burgermenu on navigation
     useEffect(() => {
         if (hoveredMenuItem !== null) {
-           setHoveredMenuItem(null);
+            setHoveredMenuItem(null);
         }
         if (burgerMenuIsOpen) {
             closeBurgerMenu();
@@ -100,12 +109,12 @@ export default function Header (props:headerProps) {
     return (
         <BlockWrapper noTopBottomPadding={true}>
             <ContentWrapper isFullBackground={true}>
-                
+
                 {/* Header */}
                 <div className={`${styles.header} ${!showHeader ? styles.hideHeader : ''}`}>
                     <div className={`${styles.innerHeader} ${!headerIsAtTop ? styles.scrolledHeader : ''}`}>
 
-                        <Link 
+                        <Link
                             className={styles.logoContainer}
                             href={'/'}
                         >
@@ -119,7 +128,7 @@ export default function Header (props:headerProps) {
                         </Link>
 
                         {isClient && isTabletOrSmaller ? (
-                            <button 
+                            <button
                                 onClick={() => {
                                     /*setBurgerMenuExists(true);
                                     setTimeout(() => {
@@ -137,11 +146,11 @@ export default function Header (props:headerProps) {
                                 />
                             </button>
                         ) : (
-                            <nav 
+                            <nav
                                 className={styles.menu}
                                 onMouseLeave={() => setHoveredMenuItem(null)}
                             >
-                                {menuItems.map((menuItem:menuItem, index:number) => (
+                                {menuItems.map((menuItem: menuItem, index: number) => (
                                     <div
                                         key={menuItem.id}
                                         className={`${styles.menuItemWrapper} ${hoveredMenuItem === index && menuItem.menuChild.length > 0 ? styles.activeStyle : ''} ${pathname === menuItem.destinationPath ? styles.active : ''}`}
@@ -164,14 +173,14 @@ export default function Header (props:headerProps) {
                                                 {menuItems[hoveredMenuItem].menuChild.map((menuChild) => (
                                                     <Link
                                                         className={styles.subMenuItem}
-                                                        key={menuChild.id} 
+                                                        key={menuChild.id}
                                                         href={menuChild.destinationPath ?? '/'}
                                                     >
                                                         <div className={styles.hoverItem}>
                                                             <span className={styles.childMenuItemName}>{menuChild.name}</span>
                                                             <span className={styles.childMenuItemDescription}>{menuChild.description}</span>
                                                         </div>
-                                                        
+
                                                     </Link>
                                                 ))}
                                             </div>
@@ -193,23 +202,23 @@ export default function Header (props:headerProps) {
                                                             )}
                                                         </div>
                                                     )}
-                                    
+
                                                 </div>
                                             )}
-                                            
-                                            
+
+
                                         </div>
                                     </div>
                                 )}
                             </nav>
                         )}
                     </div>
-                </div> 
+                </div>
 
                 {/* Burger Menu */}
                 {isClient && isTabletOrSmaller && (
                     <>
-                        <div 
+                        <div
                             className={`${styles.burgerMenu} ${burgerMenuIsOpen ? styles.showBurger : ''}`}
                             aria-hidden={!burgerMenuIsOpen}
                         >
@@ -217,13 +226,13 @@ export default function Header (props:headerProps) {
                                 showBurger={burgerMenuIsOpen}
                                 closeBurger={closeBurgerMenu}
                                 menuItems={menuItems}
-                            /> 
+                            />
                         </div>
                     </>
                 )}
 
                 {isClient && isTabletOrSmaller && burgerMenuIsOpen && (
-                    <div 
+                    <div
                         className={styles.burgerBackLayer}
                         onClick={closeBurgerMenu}
                     ></div>
