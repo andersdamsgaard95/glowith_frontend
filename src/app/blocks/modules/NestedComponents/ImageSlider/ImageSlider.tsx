@@ -22,21 +22,20 @@ export default function ImageSlider(props: ImageSliderProps) {
 
     // Measure slide width after render
     useEffect(() => {
-        if (sliderRef.current?.firstElementChild) {
-            setSlideWidth(sliderRef.current.firstElementChild.clientWidth);
-        }
-
-        // Optional: update on window resize
-        /*const handleResize = () => {
+        function updateSlideWidth() {
             if (sliderRef.current?.firstElementChild) {
-                setSlideWidth(sliderRef.current.firstElementChild.clientWidth);
+                setSlideWidth(
+                    (sliderRef.current.firstElementChild as HTMLElement).clientWidth
+                );
             }
         };
-        window.addEventListener('resize', handleResize);
 
-        return () => window.removeEventListener('resize', handleResize);*/
+        updateSlideWidth(); // initial måling
 
+        window.addEventListener('resize', updateSlideWidth);
+        return () => window.removeEventListener('resize', updateSlideWidth);
     }, [images]);
+
 
     const nextSlide = () => {
         if (!sliderRef.current) return;
@@ -45,20 +44,20 @@ export default function ImageSlider(props: ImageSliderProps) {
             behavior: 'smooth',
         });
     };
-    
+
     const prevSlide = () => {
         if (!sliderRef.current) return;
         sliderRef.current.scrollBy({
             left: -slideWidth,
             behavior: 'smooth',
         });
-    };   
-    
+    };
+
     const handleScroll = () => {
         if (!sliderRef.current) return;
-    
+
         const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
-    
+
         setIsAtStart(scrollLeft === 0);
         setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 1); // subtract 1 to allow for rounding errors
     };
@@ -66,17 +65,17 @@ export default function ImageSlider(props: ImageSliderProps) {
     useEffect(() => {
         const slider = sliderRef.current;
         if (!slider) return;
-    
+
         handleScroll(); // Initial check
         slider.addEventListener('scroll', handleScroll);
-    
+
         return () => slider.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
         images && (
             <div className={styles.imageWrapper}>
-                <div 
+                <div
                     className={styles.imageSliderTrack}
                     ref={sliderRef}
                     style={{
@@ -84,7 +83,7 @@ export default function ImageSlider(props: ImageSliderProps) {
                     }}
                 >
                     {images?.map((image, index) => (
-                        <div 
+                        <div
                             className={styles.imageContainer}
                             key={index}
                         >
@@ -92,12 +91,12 @@ export default function ImageSlider(props: ImageSliderProps) {
                         </div>
                     ))}
                 </div>
-    
+
                 {/* Slide Buttons */}
                 {images.length > 1 && (
                     <>
-                        <button 
-                            className={`${styles.arrowNext} ${styles.arrow}`} 
+                        <button
+                            className={`${styles.arrowNext} ${styles.arrow}`}
                             onClick={nextSlide}
                             disabled={isAtEnd}
                         >
@@ -109,8 +108,8 @@ export default function ImageSlider(props: ImageSliderProps) {
                                 className={`${isAtEnd ? styles.hideArrow : ''} ${styles.arrowIcon}`}
                             />
                         </button>
-                        <button 
-                            className={`${styles.arrowPrev} ${styles.arrow}`} 
+                        <button
+                            className={`${styles.arrowPrev} ${styles.arrow}`}
                             onClick={prevSlide}
                             disabled={isAtStart}
                         >

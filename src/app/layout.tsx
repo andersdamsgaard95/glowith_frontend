@@ -3,8 +3,9 @@ import { AppProvider } from '@/context/AppContext';
 import Header from "./blocks/header/Header";
 import { fetchMenuData } from "@/lib/api";
 import Footer from "./blocks/footer/Footer";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   icons: {
     icon: '/favicon.png',
   },
@@ -19,13 +20,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
       <body>
         <AppProvider>
           <header>
-            <Header menuItems={menuItems}/>
+            <Header menuItems={menuItems} />
           </header>
           <main>
             {children}
           </main>
           <footer>
-            <Footer/>
+            <Footer />
           </footer>
         </AppProvider>
       </body>

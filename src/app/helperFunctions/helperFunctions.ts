@@ -1,5 +1,5 @@
-{/* Get Theme Color */}
-export function getThemeColor (backgroundColor: string | undefined) {
+{/* Get Theme Color */ }
+export function getThemeColor(backgroundColor: string | undefined): string {
     switch (backgroundColor) {
         case 'Theme Blue':
             return '#b2d7e4';
@@ -24,7 +24,7 @@ export function getThemeColor (backgroundColor: string | undefined) {
     }
 }
 
-export function getThemeStyles (backgroundColor: string) {
+export function getThemeStyles(backgroundColor: string) {
     switch (backgroundColor) {
         case 'Theme Blue':
             return {
@@ -65,7 +65,7 @@ export function getThemeStyles (backgroundColor: string) {
     }
 }
 
-export function getBlockPadding (blockPadding: string) {
+export function getBlockPadding(blockPadding: string) {
     switch (blockPadding) {
         case 'Default 50px':
             return '50px';

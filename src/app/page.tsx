@@ -11,6 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: homepageData?.title || 'Glowith Skincare',
         description: homepageData?.metaDescription || 'Default description for SEO.',
+        alternates: {
+            canonical: "https://glowithskincare.com"
+        }
     };
 }
 
@@ -23,20 +26,20 @@ export default async function HomePage() {
     //console.log(blocks);
 
     if (blocks.length === 0) {
-        return <PageNotFound/>
+        return <PageNotFound />
     }
 
     return (
         <>
-            {blocks.map((block:any, index:number) => {
+            {blocks.map((block: any, index: number) => {
                 return (
-                    <DynamicBlock 
-                            key={index}
-                            blockName={block.__component} 
-                            blockProps={block}
-                        />
-                    )
-                
+                    <DynamicBlock
+                        key={index}
+                        blockName={block.__component}
+                        blockProps={block}
+                    />
+                )
+
             })}
         </>
     )

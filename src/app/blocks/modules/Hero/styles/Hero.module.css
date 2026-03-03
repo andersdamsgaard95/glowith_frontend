@@ -99,7 +99,7 @@
 .contentWrapper {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 5rem;
   z-index: 2;
   align-self: end;
   margin-top: 10rem;

@@ -30,39 +30,39 @@
 
     &.flipped {
         @media screen and (min-width: calc(#{$media-medium + 1px})) {
-           flex-direction: row-reverse; 
+            flex-direction: row-reverse;
         }
-        
+
     }
 
     &.backgroundLayerToRight {
         position: relative;
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(to right, rgba($themeWhite, 0.5), transparent);
-                z-index: 1;
-            }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba($themeWhite, 0.5), transparent);
+            z-index: 1;
+        }
     }
 
     &.backgroundLayerToLeft {
         position: relative;
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(to left, rgba($themeWhite, 0.5), transparent);
-                z-index: 1;
-            }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to left, rgba($themeWhite, 0.5), transparent);
+            z-index: 1;
+        }
     }
 }
 
@@ -85,11 +85,11 @@
         animation: zoomIn 15s ease forwards;
     }
 
-        @keyframes zoomIn {
-            to {
-                transform: scale(1.1);
-            }
+    @keyframes zoomIn {
+        to {
+            transform: scale(1.1);
         }
+    }
 }
 
 .imageWrapperHalfScreen {
@@ -110,7 +110,7 @@
 .contentWrapper {
     display: flex;
     flex-direction: column;
-    gap: $gap-medium;
+    gap: $gap-large;
     z-index: 2;
     align-self: end;
     margin-top: $gap-xlarge;
@@ -124,22 +124,22 @@
         width: auto;
     }
 
-        &.alignCenter {
-            align-self: center;
-        }
+    &.alignCenter {
+        align-self: center;
+    }
 
-        &.alignStart {
-            align-self: start;
-        }
+    &.alignStart {
+        align-self: start;
+    }
 
-        .heading {
-            color: var(--text-color);
-        }
+    .heading {
+        color: var(--text-color);
+    }
 
-        .text {
-            color: var(--text-color);
-            font-size: $h3-font-size;
-        }
+    .text {
+        color: var(--text-color);
+        font-size: $h3-font-size;
+    }
 }
 
 .contentWrapperSplitBackground {
@@ -162,24 +162,24 @@
         flex: 0;
     }
 
-        &.alignCenter {
-            @media screen and (min-width: calc(#{$media-medium + 1px})) {
-                align-self: center;
-            }
+    &.alignCenter {
+        @media screen and (min-width: calc(#{$media-medium + 1px})) {
+            align-self: center;
         }
+    }
 
-        &.alignStart {
-            align-self: start;
-        }
+    &.alignStart {
+        align-self: start;
+    }
 
-        .heading {
-            color: var(--text-color);
-        }
+    .heading {
+        color: var(--text-color);
+    }
 
-        .text {
-            color: var(--text-color);
-            font-size: $h3-font-size;
-        }
+    .text {
+        color: var(--text-color);
+        font-size: $h3-font-size;
+    }
 }
 
 .contentPadding {

@@ -32,7 +32,6 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 10rem;
-  animation: scroll 30s linear infinite;
   width: -moz-max-content;
   width: max-content;
   transform-style: preserve-3d;
@@ -41,13 +40,4 @@
   white-space: nowrap;
   font-size: 2.5rem;
   font-weight: bold;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }/*# sourceMappingURL=TextCarrousel.module.css.map */

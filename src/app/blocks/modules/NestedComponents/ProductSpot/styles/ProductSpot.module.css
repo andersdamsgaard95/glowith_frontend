@@ -30,7 +30,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition: opacity 0.3s linear;
+  will-change: opacity;
+  transition: opacity 0.2s linear;
 }
 .imageContainer.invisible {
   opacity: 0;

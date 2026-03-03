@@ -32,6 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             title: data?.title || data?.title || "Product Category",
             description: data?.metaDescription || `Explore products in the ${data?.category || 'selected'} category.`,
         },
+        alternates: {
+            canonical: `https://glowithskincare.com/${slug}`
+        }
     };
 }
 
@@ -45,24 +48,24 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function dynamicProductCategoryPage ({ params }: Props) {
-    
+export default async function dynamicProductCategoryPage({ params }: Props) {
+
     const resolvedParams = await params;
     const slug = resolvedParams?.slug;
 
     if (!slug) {
-        return <PageNotFound/>
+        return <PageNotFound />
     }
 
     const data = await fetchDynamicProductCategoryPageData(slug);
 
     if (!data) {
-        return <PageNotFound/>
+        return <PageNotFound />
     }
 
     const blocksBeforeProducts = data.blocksBeforeProducts;
     const blocksAfterProducts = data.blocksAfterProducts;
-    const productPageCategory = data.category; 
+    const productPageCategory = data.category;
 
     const allProducts = await fetchProducts();
 
@@ -71,7 +74,7 @@ export default async function dynamicProductCategoryPage ({ params }: Props) {
     })
 
     if (thisCategoryProducts.length === 0 && blocksBeforeProducts.length === 0 && blocksAfterProducts.length === 0) {
-        return <PageNotFound/>
+        return <PageNotFound />
     }
 
     //console.log(thisCategoryProducts);
@@ -79,16 +82,16 @@ export default async function dynamicProductCategoryPage ({ params }: Props) {
     return (
         <>
             {/* Blocks before products */}
-            {blocksBeforeProducts.map((block:any, index:number) => {
+            {blocksBeforeProducts.map((block: any, index: number) => {
                 return (
                     <DynamicBlock
                         key={index}
-                        blockName={block.__component} 
+                        blockName={block.__component}
                         blockProps={block}
                     />
                 )
             })}
-            
+
             {/* Products */}
             {thisCategoryProducts.length > 0 && (
                 <div className={blocksBeforeProducts.length === 0 ? styles.topMargin : ''}>
@@ -99,11 +102,11 @@ export default async function dynamicProductCategoryPage ({ params }: Props) {
             )}
 
             {/* Blocks after products */}
-            {blocksAfterProducts.map((block:any, index:number) => {
+            {blocksAfterProducts.map((block: any, index: number) => {
                 return (
                     <DynamicBlock
                         key={index}
-                        blockName={block.__component} 
+                        blockName={block.__component}
                         blockProps={block}
                     />
                 )

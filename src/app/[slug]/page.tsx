@@ -27,37 +27,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: pageData?.title || 'Default Page Title',
     description: pageData?.metaDescription || 'Default page description',
+    alternates: {
+      canonical: `https://glowithskincare.com/${slug}`
+    }
   };
 }
 
-export default async function Page( { params }: Props ) {
+export default async function Page({ params }: Props) {
 
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
   if (!slug) {
-    return <PageNotFound/>
+    return <PageNotFound />
   }
-  
+
   const pageData = await fetchDynamicPageData(slug);
 
   const blocks = pageData?.blocks || [];
 
   if (blocks.length === 0) {
-    return <PageNotFound/>
+    return <PageNotFound />
   }
 
   return (
     <>
-        {blocks.map((block:any) => {
-            return (
-                <DynamicBlock 
-                    key={block.id}
-                    blockName={block.__component} 
-                    blockProps={block}
-                /> 
-            )
-        })}
+      {blocks.map((block: any) => {
+        return (
+          <DynamicBlock
+            key={block.id}
+            blockName={block.__component}
+            blockProps={block}
+          />
+        )
+      })}
     </>
   );
 }

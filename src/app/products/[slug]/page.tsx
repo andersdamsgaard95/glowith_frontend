@@ -30,6 +30,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: product?.metaTitle || "Glowith Product Page",
         description: product?.metaDescription || "Details about this product.",
+        alternates: {
+            canonical: `https://glowithskincare.com/${slug}`
+        }
     };
 }
 
@@ -41,13 +44,13 @@ export async function generateStaticParams() {
     }))
 }
 
-export default async function dynamicPdpPage ({ params }: Props) {
+export default async function dynamicPdpPage({ params }: Props) {
 
     const resolvedParams = await params;
     const slug = resolvedParams?.slug;
 
     if (!slug) {
-        return <PageNotFound/>
+        return <PageNotFound />
     }
 
     const productData = await fetchSingleProduct(slug);
@@ -55,7 +58,7 @@ export default async function dynamicPdpPage ({ params }: Props) {
     const product: Product = productData[0];
 
     if (!product) {
-        return <PageNotFound/>
+        return <PageNotFound />
     }
 
     const button = {
@@ -71,16 +74,16 @@ export default async function dynamicPdpPage ({ params }: Props) {
                     <ImageSlider
                         images={product.imageCoverOrContain}
                         productBackgroundColor={getThemeColor(product.Display_Background_Color?.color)}
-                    />  
+                    />
                 )}
                 {(product.name || product.description) && (
                     <div className={styles.text}>
                         <h1 className={styles.name}>{product.name}</h1>
                         <h2 className={styles.shortDescription}>{product.shortDescription}</h2>
                         <div className={styles.description}>
-                           <ReactMarkdown>{product.description}</ReactMarkdown> 
+                            <ReactMarkdown>{product.description}</ReactMarkdown>
                         </div>
-                        <Button button={button}/>
+                        <Button button={button} />
                     </div>
                 )}
             </section>
