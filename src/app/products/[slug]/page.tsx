@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: product?.metaTitle || "Glowith Product Page",
         description: product?.metaDescription || "Details about this product.",
         alternates: {
-            canonical: `https://glowithskincare.com/${slug}`
+            canonical: `https://glowithskincare.com/products/${slug}`
         }
     };
 }

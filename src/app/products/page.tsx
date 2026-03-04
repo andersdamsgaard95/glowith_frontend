@@ -17,18 +17,21 @@ export async function generateMetadata() {
             title: data?.title || "Product Category",
             description: data?.metaDescription || `Explore products in the ${data?.category || 'selected'} category.`,
         },
+        alternates: {
+            canonical: `https://glowithskincare.com/products`
+        }
     };
 }
 
 export default async function AllProductsPage() {
-    
+
     const data = await fetchDynamicProductCategoryPageData('products');
     const blocksBeforeProducts = data.blocksBeforeProducts;
     const blocksAfterProducts = data.blocksAfterProducts;
     const allProducts = await fetchProducts();
 
     if (allProducts.length === 0) {
-        return <PageNotFound/>
+        return <PageNotFound />
     }
 
     return (
@@ -37,7 +40,7 @@ export default async function AllProductsPage() {
                 return (
                     <DynamicBlock
                         key={index}
-                        blockName={block.__component} 
+                        blockName={block.__component}
                         blockProps={block}
                     />
                 )
@@ -53,7 +56,7 @@ export default async function AllProductsPage() {
                 return (
                     <DynamicBlock
                         key={index}
-                        blockName={block.__component} 
+                        blockName={block.__component}
                         blockProps={block}
                     />
                 )

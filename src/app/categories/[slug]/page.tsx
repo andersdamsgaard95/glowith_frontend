@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             description: data?.metaDescription || `Explore products in the ${data?.category || 'selected'} category.`,
         },
         alternates: {
-            canonical: `https://glowithskincare.com/${slug}`
+            canonical: `https://glowithskincare.com/categories/${slug}`
         }
     };
 }
