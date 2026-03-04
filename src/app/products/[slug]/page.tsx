@@ -7,7 +7,7 @@ import ImageSlider from '@/app/blocks/modules/NestedComponents/ImageSlider/Image
 import type { Metadata } from "next";
 import PageNotFound from '@/app/blocks/PageNotFoundComponent/PageNotFound';
 import Button from '@/app/blocks/modules/NestedComponents/Button/Button';
-import { div } from 'framer-motion/client';
+//import { div } from 'framer-motion/client';
 import { getThemeColor } from '@/app/helperFunctions/helperFunctions';
 
 type Props = {
@@ -62,7 +62,7 @@ export default async function dynamicPdpPage({ params }: Props) {
     }
 
     const button = {
-        buttonText: 'Where to buy',
+        buttonText: 'WHERE TO BUY',
         path: '/where-to-buy',
         color: 'Theme Blue',
     }

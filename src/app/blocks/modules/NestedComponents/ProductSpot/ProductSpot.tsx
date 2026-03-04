@@ -34,7 +34,7 @@ export default function ProductSpot(props: ProductSpotProps) {
                                 isProductImage={props.product.imageCoverOrContain[0].isProductImage}
                             />
                         </div>
-                        
+
                     ) : props.product.imageCoverOrContain.length > 1 ? (
                         <>
                             <div
@@ -56,16 +56,16 @@ export default function ProductSpot(props: ProductSpotProps) {
                         </>
                     ) : null}
                 </div>
-                
+
                 {props.product.name && (
                     <div className={styles.productText}>
                         {props.product.name && (
-                           <h2 className={styles.name}>{props.product.name}</h2> 
+                            <h2 className={styles.name}>{props.product.name}</h2>
                         )}
                         {props.product.shortDescription && (
                             <p>{props.product.shortDescription}</p>
                         )}
-                        <div className={styles.button}>Explore Product</div>
+                        <div className={styles.button}>EXPLORE PRODUCT</div>
                     </div>
                 )}
             </Link>
