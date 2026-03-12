@@ -27,6 +27,7 @@ export default function PageLoader() {
                     //width={476}
                     //height={161}
                     className={styles.logo}
+                    priority
                 />
             </div>
         </div>
