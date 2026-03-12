@@ -9,9 +9,10 @@ interface ImageComponentProps {
     className?: string;
     image: ImageType;
     isProductImage?: boolean;
+    isPriority?: boolean;
 }
 
-export default function ImageComponent (props:ImageComponentProps) {
+export default function ImageComponent(props: ImageComponentProps) {
     const { backendUrl } = useAppContext()
 
     return (
@@ -25,6 +26,7 @@ export default function ImageComponent (props:ImageComponentProps) {
                 //fill
                 height={props.image.height}
                 width={props.image.width}
+                priority={props.isPriority}
             />
         </div>
     )

@@ -22,19 +22,19 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = (props) => {
 
-    const themeStyles = !props.imageFullBackground && props.backgroundColor?.color ? getThemeStyles(props.backgroundColor.color) : undefined; 
+    const themeStyles = !props.imageFullBackground && props.backgroundColor?.color ? getThemeStyles(props.backgroundColor.color) : undefined;
 
     const textPositionClass = props.imageFullBackground && props.textPosition?.includes('Right') ? styles.textAlignRight : undefined;
 
     return (
         <BlockWrapper isHero={true} backgroundColor={props.backgroundColor?.color} noTopBottomPadding={true}>
             <ContentWrapper isFullBackground={props.imageFullBackground}>
-                <section 
-                    style={!props.imageFullBackground 
+                <section
+                    style={!props.imageFullBackground
                         ? {
                             ...themeStyles,
                             color: props.textColorOnImage === "Light" ? "#000000" : "#ffffff"
-                        } : undefined} 
+                        } : undefined}
                     className={`
                         ${styles.container}
                         ${props.Block_height === 'Smaller 80% view height' ? styles.constrainVh : ''} 
@@ -51,33 +51,34 @@ const Hero: React.FC<HeroProps> = (props) => {
 
                     {/* Image */}
                     {props.image && (
-                        <div className={`${props.imageFullBackground ? styles.imageWrapperFullScreen : styles.imageWrapperHalfScreen}`}>  
+                        <div className={`${props.imageFullBackground ? styles.imageWrapperFullScreen : styles.imageWrapperHalfScreen}`}>
                             <div
                                 className={`${styles.imageContainer} ${props.imageZoomOn ? styles.zoom : ''}`}
                             >
                                 <ImageComponent
                                     image={props.image}
-                                /> 
-                            </div>         
-                        </div> 
-                    )}  
-                    
+                                    isPriority={true}
+                                />
+                            </div>
+                        </div>
+                    )}
+
                     <div className={`${props.imageFullBackground ? styles.contentWrapper : styles.contentWrapperSplitBackground} ${props.imageFullBackground ? styles.contentPadding : undefined} ${props.textPosition?.includes('Center') ? styles.alignCenter : props.textPosition?.includes('Top') ? styles.alignStart : undefined}`}>
                         {/* Heading */}
                         {props.heading && (
-                            <h1 
+                            <h1
                                 className={styles.heading}
-                                style={{color: props.imageFullBackground && props.textColorOnImage === 'Light' && !props.Text_Contrast_Background_Fade ? '#ffffff' : ''}}
+                                style={{ color: props.imageFullBackground && props.textColorOnImage === 'Light' && !props.Text_Contrast_Background_Fade ? '#ffffff' : '' }}
                             >
                                 {props.heading}
-                            </h1> 
+                            </h1>
                         )}
 
                         {/* Text */}
                         {props.text && (
-                            <p 
+                            <p
                                 className={styles.text}
-                                style={{color: props.imageFullBackground && props.textColorOnImage === 'Light' && !props.Text_Contrast_Background_Fade ? '#ffffff' : ''}}
+                                style={{ color: props.imageFullBackground && props.textColorOnImage === 'Light' && !props.Text_Contrast_Background_Fade ? '#ffffff' : '' }}
                             >
                                 {props.text}
                             </p>
@@ -88,16 +89,16 @@ const Hero: React.FC<HeroProps> = (props) => {
                             <div key={i} className={styles.buttonWrapper}>
                                 <Button
                                     button={button}
-                                />  
+                                />
                             </div>
-                        ))}  
-                    </div>                          
+                        ))}
+                    </div>
 
                 </section>
             </ContentWrapper>
-            
+
         </BlockWrapper>
     )
-} 
+}
 
 export default Hero;

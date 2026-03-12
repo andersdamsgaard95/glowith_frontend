@@ -4,6 +4,7 @@ import Header from "./blocks/header/Header";
 import { fetchMenuData } from "@/lib/api";
 import Footer from "./blocks/footer/Footer";
 import { Metadata } from "next";
+import PageLoader from "./blocks/PageLoader/PageLoader";
 
 export const metadata: Metadata = {
   icons: {
@@ -29,6 +30,8 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <Footer />
           </footer>
         </AppProvider>
+
+        <PageLoader />
       </body>
     </html>
   );
