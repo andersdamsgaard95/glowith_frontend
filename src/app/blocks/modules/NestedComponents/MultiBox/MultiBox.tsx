@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { imageCoverOrContainObject } from '@/app/types/types';
 
 export interface MultiBoxProps {
-    backgroundColor?: {color: string};
+    backgroundColor?: { color: string };
     textOptionsIfImage?: string;
     ImageDisplayOptions?: string;
     id?: number;
@@ -22,30 +22,30 @@ export interface MultiBoxProps {
     Button_Text?: string;
 }
 
-export default function MultiBox (props: MultiBoxProps) {
+export default function MultiBox(props: MultiBoxProps) {
     const [boxIsHovered, setBoxIsHovered] = useState<boolean>(false);
     const [shownImageIndex, setShownImageIndex] = useState<number>(0);
-    
+
     const textPosition = props.textOptionsIfImage === 'Visible on hover inside box' ? 'insideBox' : 'underneathBox';
 
     useEffect(() => {
         //const hasCoverOrContain = props.imageCoverOrContain && props.imageCoverOrContain.length > 0;
         const imagesArray = props.imageCoverOrContain ?? null;
-    
+
         const multipleImages = imagesArray && imagesArray.length > 1;
-    
+
         if (!multipleImages) return;
-    
+
         if (props.imageOptions === 'Shift automatically') {
             if (boxIsHovered) return;
-    
+
             const interval = setInterval(() => {
                 setShownImageIndex(prev => (prev + 1) % imagesArray!.length);
-            }, 2000);
-    
+            }, 4000);
+
             return () => clearInterval(interval); // Cleanup on unmount or deps change
         }
-    
+
         if (props.imageOptions === 'Shift to next on hover') {
             if (boxIsHovered) {
                 setShownImageIndex(1);
@@ -59,21 +59,21 @@ export default function MultiBox (props: MultiBoxProps) {
         props.imageOptions
     ]);
 
-    function handleMouseEnter () {
+    function handleMouseEnter() {
         if (props.imageCoverOrContain && ((props.text && textPosition === 'insideBox') || props.imageCoverOrContain.length > 1)) {
             setBoxIsHovered(true);
-        } 
+        }
     }
 
-    function handleMouseLeave () {
+    function handleMouseLeave() {
         if (props.imageCoverOrContain && ((props.text && textPosition === 'insideBox') || props.imageCoverOrContain.length > 1)) {
             setBoxIsHovered(false);
-        } 
+        }
     }
 
-    const boxContent = 
+    const boxContent =
         <div className={`${styles.container}`}>
-            <div 
+            <div
                 className={`${styles.box} ${props.imageCoverOrContain ? styles.hasImage : ''}`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -90,7 +90,7 @@ export default function MultiBox (props: MultiBoxProps) {
                                 {props.Button_Text}
                             </p>
                         )}
-                    </div>  
+                    </div>
                 )}
 
                 {props.imageCoverOrContain && props.text && textPosition === 'insideBox' && (
@@ -104,25 +104,35 @@ export default function MultiBox (props: MultiBoxProps) {
                             )}
                         </div>
                     </div>
-                )} 
+                )}
 
                 {props.imageCoverOrContain && props.imageCoverOrContain.length > 1 && props.imageOptions === 'Shift automatically' ? (
-                    props.imageCoverOrContain.map((image, index) => (
+                    <div className={styles.imageSlider}>
                         <div
-                            key={index}
-                            className={`${styles.imageContainer} ${shownImageIndex === index ? styles.visible : styles.invisible}`}
+                            className={styles.sliderInner}
+                            style={{ transform: `translateX(-${shownImageIndex * 100}%)` }}
                         >
-                            <ImageComponent
-                                image={image.image}
-                                isProductImage={image.isProductImage}
-                                className={styles.image}
-                            />
+                            {props.imageCoverOrContain.map((image, index) => (
+                                <div
+                                    key={index}
+                                    className={`${styles.imageContainer}`}
+                                    style={{
+                                        backgroundColor: image.Background_color ? getThemeColor(image.Background_color.color) : ''
+                                    }}
+                                >
+                                    <ImageComponent
+                                        image={image.image}
+                                        isProductImage={image.isProductImage}
+                                        className={styles.image}
+                                    />
+                                </div>
+                            ))}
                         </div>
-                    ))
+                    </div>
                 ) : props.imageCoverOrContain && props.imageCoverOrContain.length > 1 && props.imageOptions === 'Shift to next on hover' ? (
                     <>
                         <div
-                            className={`${styles.imageContainer} ${shownImageIndex === 1 ? styles.invisible : ''}`}
+                            className={`${styles.absolutImageContainer} ${shownImageIndex === 1 ? styles.invisible : ''}`}
                         >
                             <ImageComponent
                                 image={props.imageCoverOrContain[0].image}
@@ -131,7 +141,7 @@ export default function MultiBox (props: MultiBoxProps) {
                             />
                         </div>
                         <div
-                            className={`${styles.imageContainer} ${shownImageIndex === 0 ? styles.invisible : ''}`}
+                            className={`${styles.absolutImageContainer} ${shownImageIndex === 0 ? styles.invisible : ''}`}
                         >
                             <ImageComponent
                                 image={props.imageCoverOrContain[1].image}
@@ -140,7 +150,7 @@ export default function MultiBox (props: MultiBoxProps) {
                             />
                         </div>
                     </>
-                    
+
                 ) : props.imageCoverOrContain && props.imageCoverOrContain.length === 1 && (
                     <div
                         className={styles.imageContainer}
@@ -162,7 +172,7 @@ export default function MultiBox (props: MultiBoxProps) {
                             {props.Button_Text}
                         </div>
                     )}
-                </div> 
+                </div>
             )}
         </div>
 

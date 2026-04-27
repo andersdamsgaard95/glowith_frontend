@@ -21,16 +21,16 @@ export interface Product {
     category?: string;
     metaDescription?: string;
     metaTitle?: string;
-    Display_Background_Color?: {color: string};
+    Display_Background_Color?: { color: string };
     New_arrival?: boolean;
     Featured_product?: boolean;
 }
 
 export interface BlockSettings {
-    backgroundColor?: {color: string};
+    backgroundColor?: { color: string };
     blockPadding?: {
         paddingTop?: string;
-        paddingBottom?: string;  
+        paddingBottom?: string;
     }
 }
 
@@ -56,4 +56,5 @@ export interface menuChildItem {
 export interface imageCoverOrContainObject {
     image: ImageType;
     isProductImage?: boolean;
+    Background_color?: { color: string };
 }
