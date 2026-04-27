@@ -6,26 +6,39 @@ import Image from 'next/image';
 
 export default function PageLoader() {
     const [isShown, setIsShown] = useState<boolean>(true);
+    const [canStartAnimation, setCanStartAnimation] = useState<boolean>(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsShown(false);
-        }, 3000)
+        function startSequence() {
+            // Starter animationen
+            setCanStartAnimation(true);
 
-        return () => clearTimeout(timer);
-    }, [])
+            // Og vi fjerner loaderen præcis efter de 3 sekunder, som animationen tager
+            setTimeout(() => {
+                setIsShown(false);
+            }, 3000);
+        };
+
+        // Hvis siden allerede er loadet (f.eks. ved hurtig navigation)
+        if (document.readyState === 'complete') {
+            startSequence();
+        } else {
+            // Ellers vent til ALT er loadet i browseren
+            window.addEventListener('load', startSequence);
+            return () => window.removeEventListener('load', startSequence);
+        }
+    }, []);
 
     if (!isShown) return null;
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.imageWrapper}>
+            {/* Animationen kører kun, når canStartAnimation er true */}
+            <div className={`${styles.imageWrapper} ${canStartAnimation ? styles.animationWrapper : ''}`}>
                 <Image
                     src={"/logo/Glowith_Skincare_logo_Black_.png"}
                     alt="Glowith logo"
                     fill
-                    //width={476}
-                    //height={161}
                     className={styles.logo}
                     priority
                 />

@@ -17,8 +17,13 @@
     width: 40rem;
     aspect-ratio: 476/161;
     max-width: 100vw;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.1);
+    transition: opacity 0.2s ease;
+}
 
-    // PULSE ANIMATION
+.animationWrapper {
     animation: logoLoad 3s forwards ease-in-out;
 }
 
