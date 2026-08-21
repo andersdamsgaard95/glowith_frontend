@@ -28,7 +28,7 @@
 .innerHeader {
     height: 100%;
     //background-color: $themeWhite;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); 
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,9 +57,9 @@
     height: 100px;
     position: relative;
 
-        .logo {
-            object-fit: contain;
-        }
+    .logo {
+        object-fit: contain;
+    }
 }
 
 .menu {
@@ -120,76 +120,76 @@
         right: $padding-small;
     }
 
-        .subMenu {
-            background-color: $themeWhite;
-            padding: $gap-large;
-            display: flex;
-            gap: $gap-medium;
-            border: 1px solid $themeBlack;
+    .subMenu {
+        background-color: $themeWhite;
+        padding: $gap-large;
+        display: flex;
+        gap: $gap-medium;
+        border: 1px solid $themeBlack;
 
-            .subMenuItems {
-                flex: 2;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: $gap-large;
+        .subMenuItems {
+            flex: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: $gap-large;
 
-                    .subMenuItem {
-                        text-decoration: none;
-                        color: $themeBlack;
-                        font-size: 1.8rem;
+            .subMenuItem {
+                text-decoration: none;
+                color: $themeBlack;
+                font-size: 1.8rem;
 
-                        .hoverItem {
-                            display: flex;
-                            flex-direction: column;
-                            gap: $gap-small;
+                .hoverItem {
+                    display: flex;
+                    flex-direction: column;
+                    gap: $gap-small;
 
-                            .childMenuItemName {
-                                transition: all 0.3s;
-                            }   
+                    .childMenuItemName {
+                        transition: all 0.3s;
+                    }
 
-                            .childMenuItemDescription {
-                                font-size: 1.4rem;
-                            }
+                    .childMenuItemDescription {
+                        font-size: 1.4rem;
+                    }
 
-                            &:hover {
-                                .childMenuItemName {
-                                    transform: translateY(-0.2rem);
-                                    //text-shadow: 0 5px 6px rgba(181, 182, 218, 1);
-                                    text-shadow: 0 5px 6px rgba(0, 0, 0, 0.4);
-                                }
-                            }
+                    &:hover {
+                        .childMenuItemName {
+                            transform: translateY(-0.2rem);
+                            //text-shadow: 0 5px 6px rgba(181, 182, 218, 1);
+                            text-shadow: 0 5px 6px rgba(0, 0, 0, 0.4);
                         }
                     }
-            }
-    
-            .submenuInspirationContainer {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                gap: $gap-small;
-                padding-left: $gap-medium;
-                border-left: 1px solid $themeBlack;
-
-                    .inspirationHeading {
-                        color: $themeGrey;
-                    }
-
-                    .submenuImageContainer {
-                        width: 100%;
-                        aspect-ratio: 1/1;
-                        overflow: hidden;
-                    }
+                }
             }
         }
+
+        .submenuInspirationContainer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: $gap-small;
+            padding-left: $gap-medium;
+            border-left: 1px solid $themeBlack;
+
+            .inspirationHeading {
+                color: $themeGrey;
+            }
+
+            .submenuImageContainer {
+                width: 100%;
+                aspect-ratio: 1/1;
+                overflow: hidden;
+            }
+        }
+    }
 }
 
 .hoverEffect {
-transition: all 0.3s;
+    transition: all 0.3s;
 
     &:hover {
         transform: translateY(-0.5rem);
         box-shadow: 0 6px 10px -3px rgba(0, 0, 0, 0.3);
-    } 
+    }
 }
 
 .burgerIconContainer {

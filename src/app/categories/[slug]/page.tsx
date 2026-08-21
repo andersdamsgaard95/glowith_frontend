@@ -41,9 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export async function generateStaticParams() {
     const allCategoryPages = await fetchAllCategoryPages();
 
-    const filtered = allCategoryPages.filter((page: any) => page.slug !== "products");
+    //const filtered = allCategoryPages.filter((page: any) => page.slug !== "products");
 
-    return filtered.map((page: any) => ({
+    return allCategoryPages.map((page: any) => ({
         slug: page.slug,
     }));
 }
@@ -69,7 +69,7 @@ export default async function dynamicProductCategoryPage({ params }: Props) {
 
     const allProducts = await fetchProducts();
 
-    const thisCategoryProducts = allProducts.filter((product: Product) => {
+    const thisCategoryProducts = productPageCategory === 'all products' ? allProducts : allProducts.filter((product: Product) => {
         return product.category?.toLowerCase() === productPageCategory?.toLowerCase();
     })
 
