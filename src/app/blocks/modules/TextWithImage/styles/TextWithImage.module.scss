@@ -9,7 +9,7 @@
     @media screen and (max-width: $media-medium) {
         flex-direction: column;
         gap: $gap-medium;
-    } 
+    }
 
     &.imageRight {
         //flex-direction: row-reverse;
@@ -32,8 +32,8 @@
 
     &.imageToLeft {
         display: flex;
-        justify-content: end;  
-    }    
+        justify-content: end;
+    }
 }
 
 .imageContainer {
@@ -110,28 +110,29 @@
             padding-left: $gap-xlarge;
             padding-top: $gap-large;
             padding-bottom: $gap-large;
-    
+
             @media screen and (max-width: $media-large) {
                 padding-left: $gap-large;
             }
-    
+
             @media screen and (max-width: $media-medium) {
                 padding-left: $gap-small;
             }
         }
-    
+
         &.textPaddingRight {
             padding-right: $gap-xlarge;
             padding-left: $gap-large;
             padding-top: $gap-large;
             padding-bottom: $gap-large;
-    
+
             @media screen and (max-width: $media-large) {
                 padding-right: $gap-large;
             }
-    
+
             @media screen and (max-width: $media-medium) {
                 padding-right: $gap-small;
+                padding-left: $gap-small;
             }
         }
     }

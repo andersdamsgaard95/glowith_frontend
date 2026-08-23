@@ -7,7 +7,6 @@ import ReactMarkdown from 'react-markdown';
 import React from 'react';
 import { getThemeColor, getThemeStyles } from '@/app/helperFunctions/helperFunctions';
 import Button from '../NestedComponents/Button/Button';
-import { div } from 'framer-motion/client';
 
 interface TextWithImageProps {
     text?: string;
@@ -15,7 +14,7 @@ interface TextWithImageProps {
     image?: ImageType;
     settings?: BlockSettings;
     imagePosition?: string;
-    textBackgroundColor?: {color: string;}
+    textBackgroundColor?: { color: string; }
 }
 
 const TextWithImage: React.FC<TextWithImageProps> = (props) => {
@@ -36,14 +35,14 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
                                 />
                             </div>
                         </div>
-                        
+
                     )}
                     {props.text && (
-                        <div 
+                        <div
                             className={`${styles.textContainer} ${textHasCustomBackgroundColor && props.imagePosition === 'Right' ? styles.textAlignEnd : ''}`}
-                            style={{backgroundColor: textHasCustomBackgroundColor ? getThemeColor(props.textBackgroundColor?.color) : undefined}}
+                            style={{ backgroundColor: textHasCustomBackgroundColor ? getThemeColor(props.textBackgroundColor?.color) : undefined }}
                         >
-                            <div 
+                            <div
                                 className={`${styles.text} ${textHasCustomBackgroundColor ? styles.textMaxWidth : ''} ${textHasCustomBackgroundColor && props.imagePosition === 'Right' ? styles.textPaddingLeft : textHasCustomBackgroundColor && props.imagePosition === 'Left (default)' ? styles.textPaddingRight : ''}`}
                                 style={
                                     props.textBackgroundColor && props.textBackgroundColor.color !== 'None' ? getThemeStyles(props.textBackgroundColor.color) : props.settings?.backgroundColor ? getThemeStyles(props.settings?.backgroundColor?.color) : undefined
@@ -60,13 +59,13 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
                                                 <Button
                                                     button={button}
                                                     fullWidth={multipleButtons}
-                                                /> 
+                                                />
                                             </div>
                                         ))}
                                     </div>
-                                )}   
+                                )}
                             </div>
-                            
+
                         </div>
                     )}
                 </section>

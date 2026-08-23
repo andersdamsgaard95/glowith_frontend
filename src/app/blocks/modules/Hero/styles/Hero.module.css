@@ -153,6 +153,9 @@
     padding: 0;
     flex: 0;
   }
+  .contentWrapperSplitBackground.noMinHeight {
+    margin-top: 12.5rem;
+  }
 }
 @media screen and (min-width: calc(701px)) {
   .contentWrapperSplitBackground.alignCenter {

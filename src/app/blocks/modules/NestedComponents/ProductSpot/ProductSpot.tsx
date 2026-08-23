@@ -60,7 +60,7 @@ export default function ProductSpot(props: ProductSpotProps) {
                 {props.product.name && (
                     <div className={styles.productText}>
                         {props.product.name && (
-                            <h2 className={styles.name}>{props.product.name}</h2>
+                            <h3 className={styles.name}>{props.product.name}</h3>
                         )}
                         {props.product.shortDescription && (
                             <p>{props.product.shortDescription}</p>

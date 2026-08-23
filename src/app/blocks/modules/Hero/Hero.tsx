@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = (props) => {
                         ${props.Block_height === 'Smaller 80% view height' ? styles.constrainVh : props.Block_height === 'No minimum height' ? styles.noMinHeight : ''} 
                         ${textPositionClass} 
                         ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : ''} 
-                        ${!props.imageFullBackground ? styles.splitBackground : ''} 
+                        ${!props.imageFullBackground ? styles.splitBackground : ''}
                         ${props.imageFullBackground && props.Text_Contrast_Background_Fade
                             ? props.textPosition?.includes('Right')
                                 ? styles.backgroundLayerToLeft
@@ -63,7 +63,7 @@ const Hero: React.FC<HeroProps> = (props) => {
                         </div>
                     )}
 
-                    <div className={`${props.imageFullBackground ? styles.contentWrapper : styles.contentWrapperSplitBackground} ${props.imageFullBackground ? styles.contentPadding : undefined} ${props.textPosition?.includes('Center') ? styles.alignCenter : props.textPosition?.includes('Top') ? styles.alignStart : undefined}`}>
+                    <div className={`${props.imageFullBackground ? styles.contentWrapper : styles.contentWrapperSplitBackground} ${props.imageFullBackground ? styles.contentPadding : undefined} ${props.textPosition?.includes('Center') ? styles.alignCenter : props.textPosition?.includes('Top') ? styles.alignStart : undefined} ${props.Block_height === 'No minimum height' ? styles.noMinHeight : ''}`}>
                         {/* Heading */}
                         {props.heading && (
                             <h1
