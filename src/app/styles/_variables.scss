@@ -29,8 +29,8 @@ $themeWhite: #fafafa;
 $themeGrey: grey;
 
 // Font Sizes
-$button-font-size: 2rem;
-$h1-font-size: 10rem;
+$button-font-size: 1.6rem;
+$h1-font-size: 6rem;
 $h2-font-size: 4rem;
 $h3-font-size: 3rem;
 $p-font-size: 1.6rem;
@@ -39,11 +39,11 @@ $p-font-size: 1.6rem;
 $headerHeight: 100px;
 
 @mixin h1-styles {
-    font-size: 10rem;
+    font-size: 6rem;
     line-height: 100%;
 
     @media screen and (max-width: $media-xlarge) {
-        font-size: 7rem;
+        font-size: 6rem;
     }
 
     @media screen and (max-width: $media-large) {
@@ -56,28 +56,11 @@ $headerHeight: 100px;
 }
 
 @mixin h2-styles {
-    font-size: 6rem;
+    font-size: 3rem;
     line-height: 100%;
 
     @media screen and (max-width: $media-xlarge) {
-        font-size: 5rem;
-    }
-
-    @media screen and (max-width: $media-large) {
-        font-size: 4rem;
-    }
-
-    @media screen and (max-width: $media-medium) {
         font-size: 3rem;
-    }
-}
-
-@mixin h3-styles {
-    font-size: 5rem;
-    line-height: 100%;
-
-    @media screen and (max-width: $media-xlarge) {
-        font-size: 4rem;
     }
 
     @media screen and (max-width: $media-large) {
@@ -89,11 +72,28 @@ $headerHeight: 100px;
     }
 }
 
-@mixin button-styles {
+@mixin h3-styles {
     font-size: 2rem;
+    line-height: 100%;
+
+    @media screen and (max-width: $media-xlarge) {
+        font-size: 2rem;
+    }
+
+    @media screen and (max-width: $media-large) {
+        font-size: 2rem;
+    }
+
+    @media screen and (max-width: $media-medium) {
+        font-size: 1.5rem;
+    }
+}
+
+@mixin button-styles {
+    font-size: 1.6rem;
 
     @media screen and (max-width: $media-small) {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 }
 

@@ -17,7 +17,7 @@ interface HeroProps {
     textColorOnImage?: "Dark" | "Light";
     imageZoomOn?: boolean;
     Text_Contrast_Background_Fade?: boolean;
-    Block_height?: 'Default 100% view height' | 'Smaller 80% view height';
+    Block_height?: 'Default 100% view height' | 'Smaller 80% view height' | 'No minimum height';
 }
 
 const Hero: React.FC<HeroProps> = (props) => {
@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = (props) => {
                         } : undefined}
                     className={`
                         ${styles.container}
-                        ${props.Block_height === 'Smaller 80% view height' ? styles.constrainVh : ''} 
+                        ${props.Block_height === 'Smaller 80% view height' ? styles.constrainVh : props.Block_height === 'No minimum height' ? styles.noMinHeight : ''} 
                         ${textPositionClass} 
                         ${!props.imageFullBackground && props.textPosition?.includes('Left') ? styles.flipped : ''} 
                         ${!props.imageFullBackground ? styles.splitBackground : ''} 

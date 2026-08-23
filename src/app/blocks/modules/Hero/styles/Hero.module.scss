@@ -10,6 +10,10 @@
         height: 80vh;
     }
 
+    &.noMinHeight {
+        height: auto;
+    }
+
     &.textAlignRight {
         justify-content: end;
     }

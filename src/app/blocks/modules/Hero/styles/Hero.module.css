@@ -7,6 +7,9 @@
 .container.constrainVh {
   height: 80vh;
 }
+.container.noMinHeight {
+  height: auto;
+}
 .container.textAlignRight {
   justify-content: end;
 }
