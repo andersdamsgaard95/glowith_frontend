@@ -1,0 +1,50 @@
+.container {
+  max-width: 50rem;
+  padding: 1rem;
+}
+.container.hasBorder {
+  border: 1px solid #000000;
+}
+
+.toggleAccordianBtn {
+  cursor: pointer;
+  position: relative;
+  width: 3rem;
+  aspect-ratio: 1/1;
+}
+.toggleAccordianBtn .arrow {
+  -o-object-fit: contain;
+     object-fit: contain;
+  transform: rotate(90deg);
+  transition: transform 0.3s;
+}
+.toggleAccordianBtn .arrow.isOpen {
+  transform: rotate(-90deg);
+}
+
+.heading {
+  font-size: 1.7rem;
+}
+
+.headingButtonWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+}
+
+.toggleContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.btnsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}/*# sourceMappingURL=Accordian.module.css.map */

@@ -3,7 +3,7 @@ const API_TOKEN = process.env.STRAPI_API_TOKEN;
 
 // Homepage data
 export async function fetchHomepageData() {
-  const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=home&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxSmall.imageCoverOrContain.image,blocks.multiBoxSmall.imageCoverOrContain.Background_color,blocks.multiBoxBig.imageCoverOrContain.Background_color,blocks.multiBoxBig.imageCoverOrContain.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor,blocks.lineColor`, {
+  const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=home&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxSmall.imageCoverOrContain.image,blocks.multiBoxSmall.imageCoverOrContain.Background_color,blocks.multiBoxBig.imageCoverOrContain.Background_color,blocks.multiBoxBig.imageCoverOrContain.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor,blocks.lineColor,blocks.accordian.buttons,blocks.accordian.background_color`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
@@ -21,7 +21,7 @@ export async function fetchHomepageData() {
 
 //Dynamic Page Data
 export async function fetchDynamicPageData(slug: string) {
-  const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=${slug}&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxSmall.imageCoverOrContain.image,blocks.multiBoxBig.imageCoverOrContain.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor,blocks.lineColor`, {
+  const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=${slug}&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxSmall.imageCoverOrContain.image,blocks.multiBoxBig.imageCoverOrContain.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor,blocks.lineColor,blocks.accordian.buttons,blocks.accordian.background_color`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
     },
@@ -80,7 +80,7 @@ export async function fetchAllContentPages() {
 // Dynamic Product Category Page Data
 export async function fetchDynamicProductCategoryPageData(slug: string) {
   const res = await fetch(
-    `${API_URL}/api/product-category-pages?filters[slug][$eq]=${slug}&populate=blocksBeforeProducts.image,blocksBeforeProducts.button,blocksBeforeProducts.backgroundColor,blocksBeforeProducts.multiBoxSmall.imageCoverOrContain.image,blocksBeforeProducts.multiBoxSmall.backgroundColor,blocksBeforeProducts.multiBoxBig.imageCoverOrContain.image,blocksBeforeProducts.multiBoxBig.backgroundColor,blocksBeforeProducts.settings.backgroundColor,blocksBeforeProducts.settings.blockPadding,blocksBeforeProducts.textBackgroundColor,blocksAfterProducts.image,blocksAfterProducts.button,blocksAfterProducts.backgroundColor,blocksAfterProducts.multiBoxSmall.imageCoverOrContain.image,blocksAfterProducts.multiBoxSmall.backgroundColor,blocksAfterProducts.multiBoxBig.imageCoverOrContain.image,blocksAfterProducts.multiBoxBig.backgroundColor,blocksAfterProducts.settings.backgroundColor,blocksAfterProducts.settings.blockPadding,blocksAfterProducts.textBackgroundColor,blocksAfterProducts.lineColor,blocksBeforeProducts.lineColor`,
+    `${API_URL}/api/product-category-pages?filters[slug][$eq]=${slug}&populate=blocksBeforeProducts.image,blocksBeforeProducts.button,blocksBeforeProducts.backgroundColor,blocksBeforeProducts.multiBoxSmall.imageCoverOrContain.image,blocksBeforeProducts.multiBoxSmall.backgroundColor,blocksBeforeProducts.multiBoxBig.imageCoverOrContain.image,blocksBeforeProducts.multiBoxBig.backgroundColor,blocksBeforeProducts.settings.backgroundColor,blocksBeforeProducts.settings.blockPadding,blocksBeforeProducts.textBackgroundColor,blocksBeforeProducts.accordian.buttons,blocksAfterProducts.image,blocksAfterProducts.button,blocksAfterProducts.backgroundColor,blocksAfterProducts.multiBoxSmall.imageCoverOrContain.image,blocksAfterProducts.multiBoxSmall.backgroundColor,blocksAfterProducts.multiBoxBig.imageCoverOrContain.image,blocksAfterProducts.multiBoxBig.backgroundColor,blocksAfterProducts.settings.backgroundColor,blocksAfterProducts.settings.blockPadding,blocksAfterProducts.textBackgroundColor,blocksAfterProducts.lineColor,blocksBeforeProducts.lineColor,blocksAfterProducts.accordian.buttons,blocksAfterProducts.accordian.background_color,blocksBeforeProducts.accordian.background_color`,
     {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,

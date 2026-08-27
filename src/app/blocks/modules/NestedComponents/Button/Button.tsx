@@ -2,13 +2,13 @@ import styles from '../Button/styles/Button.module.scss';
 import { ButtonType } from "@/app/types/types";
 import Link from "next/link";
 
-interface ButtonProps {
+export interface ButtonProps {
     className?: string;
     button: ButtonType;
-    fullWidth?: boolean; 
+    fullWidth?: boolean;
 }
 
-export default function Button (props: ButtonProps) {
+export default function Button(props: ButtonProps) {
 
     const buttonStyleClass = props.button.color === 'Theme Dark Pink' ? styles.themeDarkPink : props.button.color === 'Theme Blue' ? styles.themeBlue : props.button.color === 'Theme Green' ? styles.themeGreen : styles.themeBlue;
 

@@ -1,0 +1,55 @@
+@use '../../../../../styles/variables' as *;
+
+.container {
+    //border-radius: 0.8rem;
+    max-width: 50rem;
+    padding: $gap-small;
+
+    &.hasBorder {
+        border: 1px solid $themeBlack;
+    }
+}
+
+.toggleAccordianBtn {
+    cursor: pointer;
+    position: relative;
+    width: 3rem;
+    aspect-ratio: 1/1;
+
+    .arrow {
+        object-fit: contain;
+        transform: rotate(90deg);
+        transition: transform 0.3s;
+
+        &.isOpen {
+            transform: rotate(-90deg);
+        }
+    }
+}
+
+.heading {
+    font-size: 1.7rem;
+}
+
+.headingButtonWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+.toggleContentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+    margin-top: $gap-medium;
+}
+
+.btnsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-small;
+}

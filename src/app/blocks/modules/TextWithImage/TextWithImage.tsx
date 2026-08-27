@@ -1,4 +1,4 @@
-import { BlockSettings, ButtonType, ImageType } from '@/app/types/types';
+import { AccordianType, BlockSettings, ButtonType, ImageType } from '@/app/types/types';
 import styles from './styles/TextWithImage.module.scss';
 import BlockWrapper from '../../blockWrapper/BlockWrapper';
 import ContentWrapper from '../../contentWrapper/ContentWrapper';
@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import React from 'react';
 import { getThemeColor, getThemeStyles } from '@/app/helperFunctions/helperFunctions';
 import Button from '../NestedComponents/Button/Button';
+import Accordian, { AccordianProps } from '../NestedComponents/Accordian/Accordian';
 
 interface TextWithImageProps {
     text?: string;
@@ -15,18 +16,22 @@ interface TextWithImageProps {
     settings?: BlockSettings;
     imagePosition?: string;
     textBackgroundColor?: { color: string; }
+    paragraph_in_accordian?: boolean;
+    accordian?: AccordianType[];
 }
 
 const TextWithImage: React.FC<TextWithImageProps> = (props) => {
 
-    //const imagePosition = props.imagePosition === '' ? 'left' 
     const textHasCustomBackgroundColor = props.textBackgroundColor && props.textBackgroundColor.color !== 'None' ? true : false;
     const multipleButtons = props.button ? props.button.length > 1 : false;
+
+    console.log(props);
 
     return (
         <BlockWrapper settings={props.settings}>
             <ContentWrapper isFullBackground={textHasCustomBackgroundColor}>
                 <section className={`${styles.container} ${props.imagePosition === 'Right' ? styles.imageRight : ''} ${textHasCustomBackgroundColor ? styles.noGap : ''}`}>
+
                     {props.image && (
                         <div className={`${styles.imageWrapper} ${textHasCustomBackgroundColor && props.imagePosition === 'Left (default)' ? styles.imageToLeft : ''}`}>
                             <div className={`${styles.imageContainer} ${textHasCustomBackgroundColor ? styles.imageMaxWidth : ''} ${textHasCustomBackgroundColor && props.imagePosition === 'Right' ? styles.imageMarginRight : textHasCustomBackgroundColor && props.imagePosition === 'Left (default)' ? styles.imageMarginLeft : ''}`}>
@@ -35,8 +40,8 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
                                 />
                             </div>
                         </div>
-
                     )}
+
                     {props.text && (
                         <div
                             className={`${styles.textContainer} ${textHasCustomBackgroundColor && props.imagePosition === 'Right' ? styles.textAlignEnd : ''}`}
@@ -49,7 +54,7 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
                                 }
                             >
                                 <ReactMarkdown>
-                                    {props.text}
+                                    {props.text!}
                                 </ReactMarkdown>
 
                                 {props.button && props.button.length > 0 && (
@@ -64,10 +69,21 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
                                         ))}
                                     </div>
                                 )}
-                            </div>
 
+                                {props.accordian && props.accordian.length > 0 && (
+                                    <div>
+                                        {props.accordian.map((acc, i) => (
+                                            <Accordian
+                                                accordian={acc}
+                                                key={i}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     )}
+
                 </section>
             </ContentWrapper>
         </BlockWrapper>

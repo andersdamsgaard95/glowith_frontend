@@ -12,6 +12,13 @@ export interface ButtonType {
     color?: string;
 }
 
+export interface AccordianType {
+    heading?: string;
+    text?: string;
+    buttons?: ButtonType[];
+    background_color: { color: string }
+}
+
 export interface Product {
     name?: string;
     shortDescription: string;
