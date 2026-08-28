@@ -10,6 +10,7 @@ interface ImageComponentProps {
     image: ImageType;
     isProductImage?: boolean;
     isPriority?: boolean;
+    packagingHasEar?: boolean;
 }
 
 export default function ImageComponent(props: ImageComponentProps) {
@@ -22,7 +23,7 @@ export default function ImageComponent(props: ImageComponentProps) {
                 src={backendUrl.includes("localhost") ? `${backendUrl}${props.image?.url}` : props.image?.url}
                 alt={props.image.alternativeText ?? ''}
                 //className={props.className}
-                className={`${styles.image} ${props.isProductImage ? styles.productImage : ""}`}
+                className={`${styles.image} ${props.isProductImage ? styles.productImage : ""} ${props.packagingHasEar ? styles.imgABitTaller : ''}`}
                 //fill
                 height={props.image.height}
                 width={props.image.width}

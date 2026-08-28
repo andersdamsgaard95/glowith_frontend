@@ -13,11 +13,14 @@
     object-fit: cover;
     transition: object-fit 0.3s ease;
 
-        &.productImage {
-            //width: 90%;
-            //height: 90%;
-            object-fit: contain;
-        }
+    &.productImage {
+        //width: 50%;
+        height: 70%;
+        object-fit: contain;
+    }
+
+    &.imgABitTaller {
+        height: 77%;
+        transform: translateY(-3.5%);
+    }
 }
-
-

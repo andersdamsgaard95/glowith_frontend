@@ -89,6 +89,24 @@
     flex-direction: column;
     justify-content: center;
 
+    &.textTop {
+        justify-content: start;
+        margin-top: $gap-large;
+
+        @media screen and (max-width: $media-large) {
+            margin-top: 0;
+        }
+    }
+
+    &.textBottom {
+        justify-content: end;
+        margin-bottom: $gap-large;
+
+        @media screen and (max-width: $media-large) {
+            margin-bottom: 0;
+        }
+    }
+
     &.textAlignEnd {
         align-items: end;
     }

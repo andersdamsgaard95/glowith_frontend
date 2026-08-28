@@ -63,5 +63,5 @@ export interface menuChildItem {
 export interface imageCoverOrContainObject {
     image: ImageType;
     isProductImage?: boolean;
-    Background_color?: { color: string };
+    packaging_has_ear?: boolean;
 }

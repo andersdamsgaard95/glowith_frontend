@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import React from 'react';
 import { getThemeColor, getThemeStyles } from '@/app/helperFunctions/helperFunctions';
 import Button from '../NestedComponents/Button/Button';
-import Accordian, { AccordianProps } from '../NestedComponents/Accordian/Accordian';
+import Accordian from '../NestedComponents/Accordian/Accordian';
 
 interface TextWithImageProps {
     text?: string;
@@ -18,6 +18,7 @@ interface TextWithImageProps {
     textBackgroundColor?: { color: string; }
     paragraph_in_accordian?: boolean;
     accordian?: AccordianType[];
+    text_alignment?: 'top' | 'center (default)' | 'bottom';
 }
 
 const TextWithImage: React.FC<TextWithImageProps> = (props) => {
@@ -26,6 +27,8 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
     const multipleButtons = props.button ? props.button.length > 1 : false;
 
     console.log(props);
+
+    const textAlignmentClass = props.text_alignment === 'top' ? styles.textTop : props.text_alignment === 'bottom' ? styles.textBottom : '';
 
     return (
         <BlockWrapper settings={props.settings}>
@@ -44,7 +47,7 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
 
                     {props.text && (
                         <div
-                            className={`${styles.textContainer} ${textHasCustomBackgroundColor && props.imagePosition === 'Right' ? styles.textAlignEnd : ''}`}
+                            className={`${styles.textContainer} ${textHasCustomBackgroundColor && props.imagePosition === 'Right' ? styles.textAlignEnd : ''} ${textAlignmentClass}`}
                             style={{ backgroundColor: textHasCustomBackgroundColor ? getThemeColor(props.textBackgroundColor?.color) : undefined }}
                         >
                             <div

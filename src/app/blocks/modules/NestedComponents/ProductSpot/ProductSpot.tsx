@@ -32,6 +32,7 @@ export default function ProductSpot(props: ProductSpotProps) {
                             <ImageComponent
                                 image={props.product.imageCoverOrContain[0].image}
                                 isProductImage={props.product.imageCoverOrContain[0].isProductImage}
+                                packagingHasEar={props.product.imageCoverOrContain[0].packaging_has_ear}
                             />
                         </div>
 
