@@ -130,7 +130,7 @@
         .subMenuItems {
             flex: 2;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: $gap-large;
 
             .subMenuItem {
@@ -176,7 +176,7 @@
 
             .submenuImageContainer {
                 width: 100%;
-                aspect-ratio: 1/1;
+                aspect-ratio: 5/3;
                 overflow: hidden;
             }
         }
