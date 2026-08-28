@@ -26,7 +26,7 @@ const TextWithImage: React.FC<TextWithImageProps> = (props) => {
     const textHasCustomBackgroundColor = props.textBackgroundColor && props.textBackgroundColor.color !== 'None' ? true : false;
     const multipleButtons = props.button ? props.button.length > 1 : false;
 
-    console.log(props);
+    //console.log(props);
 
     const textAlignmentClass = props.text_alignment === 'top' ? styles.textTop : props.text_alignment === 'bottom' ? styles.textBottom : '';
 

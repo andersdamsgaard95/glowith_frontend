@@ -116,9 +116,6 @@ export default function MultiBox(props: MultiBoxProps) {
                                 <div
                                     key={index}
                                     className={`${styles.imageContainer}`}
-                                    style={{
-                                        backgroundColor: image.Background_color ? getThemeColor(image.Background_color.color) : ''
-                                    }}
                                 >
                                     <ImageComponent
                                         image={image.image}
