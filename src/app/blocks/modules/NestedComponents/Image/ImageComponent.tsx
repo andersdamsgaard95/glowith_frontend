@@ -25,8 +25,8 @@ export default function ImageComponent(props: ImageComponentProps) {
                 //className={props.className}
                 className={`${styles.image} ${props.isProductImage ? styles.productImage : ""} ${props.packagingHasEar ? styles.imgABitTaller : ''}`}
                 //fill
-                height={props.image.height}
-                width={props.image.width}
+                height={props.image?.height}
+                width={props.image?.width}
                 priority={props.isPriority}
             />
         </div>
