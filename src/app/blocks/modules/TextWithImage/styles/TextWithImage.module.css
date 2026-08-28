@@ -83,6 +83,24 @@
   flex-direction: column;
   justify-content: center;
 }
+.textContainer.textTop {
+  justify-content: start;
+  margin-top: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .textContainer.textTop {
+    margin-top: 0;
+  }
+}
+.textContainer.textBottom {
+  justify-content: end;
+  margin-bottom: 5rem;
+}
+@media screen and (max-width: 1000px) {
+  .textContainer.textBottom {
+    margin-bottom: 0;
+  }
+}
 .textContainer.textAlignEnd {
   align-items: end;
 }
