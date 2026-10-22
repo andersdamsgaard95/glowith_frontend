@@ -7,7 +7,7 @@
     overflow: hidden;
 
     @media screen and (max-width: $media-small) {
-        height: calc(100vh - 5rem);
+        height: calc(100vh - 10rem);
     }
 
     &.constrainVh {
