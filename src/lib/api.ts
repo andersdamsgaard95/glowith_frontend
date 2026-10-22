@@ -2,7 +2,7 @@ const API_URL = process.env.NEXT_PUBLIC_BACKEND_STRAPI_URL;
 const API_TOKEN = process.env.STRAPI_API_TOKEN;
 
 // Homepage data
-export async function fetchHomepageData() {
+/*export async function fetchHomepageData() {
   const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=home&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxSmall.imageCoverOrContain.image,blocks.multiBoxSmall.imageCoverOrContain.Background_color,blocks.multiBoxBig.imageCoverOrContain.Background_color,blocks.multiBoxBig.imageCoverOrContain.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor,blocks.lineColor,blocks.accordian.buttons,blocks.accordian.background_color`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
@@ -13,6 +13,22 @@ export async function fetchHomepageData() {
 
   if (!res.ok) {
     throw new Error('Failed to fetch homepage data');
+  }
+
+  const json = await res.json();
+  return json.data[0] || {};
+}*/
+export async function fetchHomepageData() {
+  const res = await fetch(`${API_URL}/api/content-pages?filters[slug][$eq]=home&populate=blocks.image,blocks.button,blocks.backgroundColor,blocks.multiBoxSmall.backgroundColor,blocks.multiBoxSmall.imageCoverOrContain.image,blocks.multiBoxBig.imageCoverOrContain.image,blocks.multiBoxBig.backgroundColor,blocks.settings.backgroundColor,blocks.settings.blockPadding,blocks.textBackgroundColor,blocks.lineColor,blocks.accordian.buttons,blocks.accordian.background_color`, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+    cache: 'force-cache',
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Failed to fetch homepage data: ${res.status} ${res.statusText} — ${body}`);
   }
 
   const json = await res.json();
