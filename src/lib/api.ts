@@ -68,7 +68,7 @@ export async function fetchAllContentPages() {
     }
   
     const json = await res.json();
-    console.log('Fetched slugs:', json.data); // 👈 log this
+    console.log('Fetched slugs:', json.data); //
 
     return json.data.map((item: any) => ({
         slug: item?.attributes?.slug, // safer
@@ -143,7 +143,8 @@ export async function fetchAllCategoryPages() {
 }*/
 
 export async function fetchProducts() {
-  const url = `${API_URL}/api/products?populate[imageCoverOrContain][populate]=image&populate=Display_Background_Color`;
+  //const url = `${API_URL}/api/products?populate[imageCoverOrContain][populate]=image&populate=Display_Background_Color`;
+  const url = `${API_URL}/api/products?populate[imageCoverOrContain][populate]=image&populate[Display_Background_Color]=true&pagination[pageSize]=100`;
 
   console.log("Fetching products from:", url);
   console.log("Token present:", !!API_TOKEN);
@@ -170,7 +171,7 @@ export async function fetchProducts() {
 }
 
 // Fetch single Product
-export async function fetchSingleProduct(slug: string) {
+/*export async function fetchSingleProduct(slug: string) {
   const res = await fetch(`${API_URL}/api/products?filters[pdpSlug][$eq]=${slug}&populate[imageCoverOrContain][populate]=image&populate=Display_Background_Color`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
@@ -181,6 +182,24 @@ export async function fetchSingleProduct(slug: string) {
 
   if (!res.ok) {
     throw new Error('Failed to fetch product data');
+  }
+
+  const json = await res.json();
+  return json.data || [];
+}*/
+export async function fetchSingleProduct(slug: string) {
+  const url = `${API_URL}/api/products?filters[pdpSlug][$eq]=${slug}&populate[imageCoverOrContain][populate]=image&populate[Display_Background_Color]=true`;
+
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+    },
+    cache: 'force-cache',
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`fetchSingleProduct failed (${slug}): ${res.status} ${res.statusText} — ${body}`);
   }
 
   const json = await res.json();
