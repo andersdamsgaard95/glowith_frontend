@@ -125,7 +125,7 @@ export async function fetchAllCategoryPages() {
 }
 
 // Fetch products
-export async function fetchProducts() {
+/*export async function fetchProducts() {
   const res = await fetch(`${API_URL}/api/products?populate[imageCoverOrContain][populate]=image&populate=Display_Background_Color`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
@@ -135,7 +135,34 @@ export async function fetchProducts() {
   });
 
   if (!res.ok) {
-    throw new Error('Failed to fetch product data');
+    throw new Error(`Failed to fetch product data`);
+  }
+
+  const json = await res.json();
+  return json.data || [];
+}*/
+
+export async function fetchProducts() {
+  const url = `${API_URL}/api/products?populate[imageCoverOrContain][populate]=image&populate=Display_Background_Color`;
+
+  console.log("Fetching products from:", url);
+  console.log("Token present:", !!API_TOKEN);
+
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${API_TOKEN}`,
+      },
+      cache: 'force-cache',
+    });
+  } catch (err) {
+    throw new Error(`Network error fetching ${url}: ${err}`);
+  }
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Failed to fetch product data: ${res.status} ${res.statusText} — ${body}`);
   }
 
   const json = await res.json();
